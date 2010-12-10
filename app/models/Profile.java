@@ -1,9 +1,11 @@
 package models;
 
+import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -18,10 +20,9 @@ import play.db.jpa.Model;
 @Entity
 public class Profile extends Model {
 
-    @Required
     @OneToOne
     public User user = null;
-    //
+
     @Required
     @OneToOne
     @Embedded
@@ -60,13 +61,23 @@ public class Profile extends Model {
     @OneToMany
     public Set<Status> statuses = null;
     //
-    @Valid
-    public boolean lastName = true;
-    //
-    @Valid
-    public boolean company = true;
-    //
+    public String profession = null;
+    public String company = null;
+    public StringBuffer about = null;
+    public Date createdAt = null;
+    public Date updatedAt = null;
+    public String firstName = null;
+    public String lastName = null;
+    public String photoFileName = null;
+    public String photoContentType = null;
+    public int photoFileSize = 0;
+
     public Profile() {
         
     }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
 }

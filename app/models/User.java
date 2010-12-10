@@ -23,7 +23,7 @@ public class User extends Model {
     public Profile profile;
 
     public User () {
-        //this.profile= new Profile();
+        
     }
 
     public User(String login, String password) {

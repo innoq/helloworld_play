@@ -1,11 +1,11 @@
 package controllers;
 
 import java.util.Random;
+import models.Profile;
 import models.User;
 import play.Logger;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
-import play.mvc.*;
 import play.mvc.Scope.Session;
 
 /**
@@ -18,8 +18,10 @@ public class Auth extends Application {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
         Logger.info("Method login()");
         User sampleUser = Auth.userByRandomId();
+        Logger.info("Sample User %s", sampleUser);
         String hint = null;
         if (sampleUser == null) {
+            Logger.info("check database, table \"user\" and data");
         } else {
             hint = "Try User " + sampleUser.login +
                     " with Password " + sampleUser.password +
@@ -55,8 +57,9 @@ public class Auth extends Application {
                     login();
                 }
             } else {
-                //renderArgs.put("user", user);
+                Logger.info("User Profile: %s", user.profile);
                 Session.current().put("user", user.id);
+                Session.current().put("user.profile", user.profile);
                 checkLogin();
                 //render("home/dashboard.html", login, password, user);
                 render("home/dashboard.html", login, password);
@@ -91,6 +94,7 @@ public class Auth extends Application {
             User user = User.find("byLogin", login).first();
             if (user == null) {
                 user = new User(login, password);
+                user.profile = new Profile();
                 user.save();
                 Session.current().put("id", user.id);
             } else {

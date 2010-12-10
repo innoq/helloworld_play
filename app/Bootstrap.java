@@ -12,6 +12,7 @@ public class Bootstrap extends Job {
         if(User.count() == 0) {
             Fixtures.load("initial-data.yml");
         }
+
     }
  
 }

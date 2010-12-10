@@ -1,93 +1,115 @@
 # Test data
 
-User(bob):
-    email:          bob@gmail.com
-    password:       secret
-    fullname:       Bob
-    isAdmin:        true
-    
-User(jeff):
-    email:          jeff@gmail.com
-    password:       secret
-    fullname:       Jeff    
-    
-User(paul):
-    email:          paul@gmail.com
-    password:       secret
-    fullname:       Paul    
-    
-Tag(play):
-    name:           Play
-    
-Tag(architecture):
-    name:           Architecture
-    
-Tag(test):
-    name:           Test
-    
-Tag(mvc):
-    name:           MVC    
-    
-Post(firstBobPost):
-    title:          About the model layer
-    postedAt:       2009-06-14
-    author:         bob
-    tags:           
-                    - play
-                    - architecture
-    content:        >
-                    The model has a central position in a Play! application. It is the domain-specific 
-                    representation of the information on which the application operates.
-                     
-                    Martin fowler defines it as :
-                        
-                    Responsible for representing concepts of the business, information about the 
-                    business situation, and business rules. State that reflects the business situation 
-                    is controlled and used here, even though the technical details of storing it are 
-                    delegated to the infrastructure. This layer is the heart of business software.
+Profile(p_august):
+    about:              null
+    company:            innoQ GmbH
+    firstName:          august
+    lastName:           meier
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
 
-Post(secondBobPost):
-    title:          Just a test of YABE
-    postedAt:       2009-03-25
-    author:         bob
-    tags:           
-                    - test
-    content:        >
-                    Well, it's just a test.
-                    
-Post(jeffPost):
-    title:          The MVC application
-    postedAt:       2009-06-06
-    author:         jeff
-    tags:           
-                    - play
-                    - architecture
-                    - mvc
-    content:        >
-                    A Play! application follows the MVC architectural pattern as applied to the 
-                    architecture of the Web.
-                     
-                    This pattern splits the application into separate layers: the Presentation 
-                    layer and the Model layer. The Presentation layer is further split into a 
-                    View and a Controller layer.
-                    
-Comment(c1):
-    author:         Guest
-    content:        >
-                    You are right !
-    postedAt:       2009-06-14
-    post:           firstBobPost
-    
-Comment(c2):
-    author:         Mike
-    content:        >
-                    I knew that ...
-    postedAt:       2009-06-15
-    post:           firstBobPost    
-    
-Comment(c3):
-    author:         Tom
-    content:        >
-                    This post is useless ?
-    postedAt:       2009-04-05
-    post:           secondBobPost    
+Profile(p_bettina):
+    about:              null
+    company:            innoQ GmbH
+    firstName:          bettina
+    lastName:           krasnik
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_christa):
+    company:            innoQ GmbH
+    firstName:          christa
+    lastName:           oetzli
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_folkertm):
+    company:            Meeuw-Technologie
+    firstName:          Folkert
+    lastName:           Meeuw
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         System and Software Archaeologist
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_philipph):
+    company:            innoQ GmbH
+    firstName:          Philipp
+    lastName:           Haußleiter
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_phillipg):
+    company:            innoQ GmbH
+    firstName:          Phillip
+    lastName:           Ghadir
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_thomasee):
+    company:            innoQ GmbH
+    firstName:          Thomas
+    lastName:           Eichstädt-Engelen
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+User(august):
+    login:          august
+    password:       aug12
+    profile:        p_august
+
+User(bettina):
+    login:          bettina
+    password:       bet23
+    profile:        p_bettina
+
+User(christa):
+    login:          christa
+    password:       chr34
+    profile:        p_christa
+
+User(folkertm):
+    login:          folkertm
+    password:       hmsygc
+    profile:        p_folkertm
+
+User(philipph):
+    login:          philipph
+    password:       iqumf
+    profile:        p_philipph
+
+User(phillipg):
+    login:          phillipg
+    password:       pg456
+    profile:        p_phillipg
+
+User(thomasee):
+    login:          thomasee
+    password:       tom67
+    profile:        p_thomasee

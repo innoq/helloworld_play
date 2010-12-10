@@ -1,5 +1,8 @@
 package controllers;
 
+import play.Logger;
+
+
 /**
  *
  * @editor Folkert Meeuw
@@ -28,7 +31,8 @@ public class Profiles extends Application {
     }
 
     public static void show(int id) {
-        System.out.println("show");
+        Logger.info("Method show(int id)");
+        Logger.info("Profiles ID: %d", id);
         render();
     }
 
