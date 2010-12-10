@@ -1,0 +1,39 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                               Application.index
+GET     /layouts/display                Application.show
+
+GET     /search                         Search.search
+
+GET     /auth/login                     Auth.login
+GET     /auth/logout                    Auth.logout
+POST    /auth/user                      Auth.authenticate
+GET     /auth/signup                    Auth.signup
+POST    /auth/signup                    Auth.register
+
+GET     /contacts                       Contacts.index
+
+GET     /home/dashboard                 Home.dashboard
+GET     /home/imprint                   Home.imprint
+GET     /home/about                     Home.about
+
+GET     /profiles/_contact_data         Profiles._contact_data
+GET     /profiles/_editaddress          Profiles._edit_address
+
+GET     /profiles/edit                  Profiles.edit
+GET     /profiles/privat/{id}           Profiles.privat
+GET     /profiles/show/{id}             Profiles.show
+GET     /statuses                       Statuses.feed
+
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                        staticDir:public
+
+# Catch all
+# *       /{controller}/{action}          {controller}.{action}
+
+#
+*       /admin                          module:crud

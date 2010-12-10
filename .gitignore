@@ -1,0 +1,6 @@
+.svn
+test-result
+logs
+db/*
+nbproject
+tmp

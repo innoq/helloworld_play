@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>#{get 'title' /}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/reset.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/dropdown.css'}">
+        #{get 'moreStyles' /}
+        <link rel="shortcut icon" type="image/ico" href="@{'/public/favicon.ico'}">
+        <script src="@{'/public/javascripts/jquery-1.4.3.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <!--#{script 'jquery-1.4.3.min.js' /}-->
+        #{get 'moreScripts' /}
+    </head>
+    <body>
+        <a name="tothetop"></a>
+
+        <div id="main">
+
+            #{include 'tags/layouts/header.tag' /}
+            <div id="content-holder">
+                <div class="flash_messages">
+                    #{list items:olderPosts, as:'oldPost'}
+                    <div class="information_class">
+                        #{display post:oldPost, as:'teaser' /}
+                    </div>
+                    #{/list}
+                </div>
+            </div>
+            #{doLayout /}
+        </div>
+        #{include 'tags/layouts/footer.tag' /}
+    </body>
+</html>
