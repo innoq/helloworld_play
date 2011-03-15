@@ -73,7 +73,7 @@ public class Auth extends Application {
         Logger.info("User: %s", currentUser());
         Session.current().clear();
         renderArgs.put("user", null);
-        render();
+        render("auth/logout.html");
 
     }
 
