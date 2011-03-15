@@ -28,7 +28,7 @@ public class Auth extends Application {
                     " to get started";
         }
         renderArgs.put("hint", hint);
-        render();
+        render("auth/login.html");
     }
 
     public static void authenticate(
