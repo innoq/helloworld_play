@@ -15,17 +15,17 @@ public class Home extends Application {
         dashboard = true;
         renderArgs.put("dashboard", dashboard);
         System.out.println("dashboard " + dashboard);
-        render();
+        render("home/dashboard.html");
     }
 
     public static void imprint() {
         System.out.println("imprint");
-        render();
+        render("home/imprint.html");
     }
 
     public static void about() {
         System.out.println("about");
-        render();
+        render("home/about.html");
     }
 
 }

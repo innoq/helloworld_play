@@ -11,7 +11,7 @@ public class Search extends Application {
 
     public static void search(){
         System.out.println("search");
-        render();
+        render("search/search.html");
     }
 
 }

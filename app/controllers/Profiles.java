@@ -27,7 +27,7 @@ public class Profiles extends Application {
 
     public static void privat(int id){
         System.out.println("privat");
-        render();
+        render("profiles/privat.html");
     }
 
     public static void show(int id) {

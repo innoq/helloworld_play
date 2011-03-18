@@ -11,7 +11,7 @@ public class Statuses extends Application {
 
     public static void feed(){
         System.out.println("feed");
-        render();
+        render("statuses/feed.html");
     }
 
 }

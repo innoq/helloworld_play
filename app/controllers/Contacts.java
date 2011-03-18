@@ -15,7 +15,7 @@ public class Contacts extends Application {
         contacts = true;
         renderArgs.put("contacts", contacts);
         System.out.println("contacts " + contacts);
-        render();
+        render("contacts/index.html");
     }
 
 }

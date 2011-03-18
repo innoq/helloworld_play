@@ -95,6 +95,7 @@ public class Auth extends Application {
             if (user == null) {
                 user = new User(login, password);
                 user.profile = new Profile();
+                user.profile.save();
                 user.save();
                 Session.current().put("id", user.id);
             } else {
