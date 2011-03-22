@@ -33,7 +33,7 @@ public class Profiles extends Application {
     public static void show(int id) {
         Logger.info("Method show(int id)");
         Logger.info("Profiles ID: %d", id);
-        render();
+        render("profiles/show.html");
     }
 
 }

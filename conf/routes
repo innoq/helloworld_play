@@ -26,8 +26,8 @@ GET     /profiles/_editaddress          Profiles._edit_address
 GET     /profiles/edit                  Profiles.edit
 GET     /profiles/privat/{id}           Profiles.privat
 GET     /profiles/show/{id}             Profiles.show
-GET     /statuses                       Statuses.feed
 
+GET     /statuses/index                 Statuses.index
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                        staticDir:public

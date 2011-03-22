@@ -1,5 +1,6 @@
 package controllers;
 
+import play.mvc.Before;
 import play.mvc.Controller;
 
 /**
@@ -9,9 +10,12 @@ import play.mvc.Controller;
 
 public class Statuses extends Application {
 
-    public static void feed(){
-        System.out.println("feed");
-        render("statuses/feed.html");
+    @Before (unless= {"Auth.login", "Auth.authenticate", "Auth.signup",
+    "Auth.register", "Auth.registerUser"})
+
+    public static void index(){
+
+        render("statuses/index.html");
     }
 
 }
