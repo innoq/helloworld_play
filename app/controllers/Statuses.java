@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Iterator;
 import java.util.List;
 import models.Status;
 import play.Logger;
@@ -18,12 +19,16 @@ public class Statuses extends Application {
     public static void form() {
         Logger.info("Method form()");
         List<Status> statuses = Status.findAll();
+        Iterator i = statuses.listIterator();
+        while (i.hasNext()) {
+            Logger.info("Status "+i.next().toString());
+        }
         render("statuses/form.html", statuses);
     }
 
     public static void save(String message) {
         Logger.info("Method save()");
-        Logger.info("Message "+message);
+        Logger.info("Message " + message);
         Status status = new Status(message);
         validation.valid(status);
         if (validation.hasErrors()) {
@@ -31,6 +36,7 @@ public class Statuses extends Application {
         }
         // Save
         status.save();
-        render("statuses/form.html");
+        form();
+        render();
     }
 }
