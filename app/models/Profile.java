@@ -22,7 +22,6 @@ public class Profile extends Model {
 
     @OneToOne
     public User user = null;
-
     @Required
     @OneToOne
     @Embedded
@@ -37,7 +36,6 @@ public class Profile extends Model {
     @OneToMany
     @Embedded
     public Set<ProfileAttribute> profileAttribute = null;
-
     @Required
     @OneToMany
     public Set<Contact> contact = null;
@@ -73,11 +71,9 @@ public class Profile extends Model {
     public int photoFileSize = 0;
 
     public Profile() {
-        
     }
 
     public String getFullName() {
         return firstName + " " + lastName;
     }
-
 }

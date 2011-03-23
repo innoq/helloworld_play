@@ -42,6 +42,9 @@
             <div class="status-message">
                 ${status.message}
             </div>
+            #{if status.profile != null}
+                ${status.profile.getFullName()}
+            #{/if}
         </div>
         #{/list}
 

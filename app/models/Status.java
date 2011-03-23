@@ -20,7 +20,8 @@ public class Status extends Model {
     public Status() {
     }
 
-    public Status(String message) {
+    public Status(String message, Profile profile) {
         this.message = message;
+        this.profile = profile;
     }
 }

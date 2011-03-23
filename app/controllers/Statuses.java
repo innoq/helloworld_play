@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.Iterator;
 import java.util.List;
+import models.Profile;
 import models.Status;
 import play.Logger;
 
@@ -19,17 +20,23 @@ public class Statuses extends Application {
     public static void form() {
         Logger.info("Method form()");
         List<Status> statuses = Status.findAll();
-        Iterator i = statuses.listIterator();
+        /*Iterator<Status> i = statuses.listIterator();
         while (i.hasNext()) {
-            Logger.info("Status "+i.next().toString());
-        }
+            Status s = i.next();
+            Logger.info("Status " + s.toString());
+            if(s.profile!=null){
+                Logger.info("FullName " + s.profile.firstName);
+            }
+
+        }*/
         render("statuses/form.html", statuses);
     }
 
     public static void save(String message) {
         Logger.info("Method save()");
         Logger.info("Message " + message);
-        Status status = new Status(message);
+        Profile profile = currentUser().profile;
+        Status status = new Status(message, profile);
         validation.valid(status);
         if (validation.hasErrors()) {
             render("statuses/form.html", status);
