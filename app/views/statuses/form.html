@@ -8,16 +8,22 @@
 
     <h2>What do you want to share with the world?</h2>
 
-    #{form @Statuses.index()}
-    <ul class="status-form">
-        <li>
-            <!--%= f.block :message do %-->
-            <label for="message"></label>
-            <textarea cols="35" rows="3">Your message</textarea>
+    #{form @save()}
 
-            <!--%= f.block :submit do %>
-            <!--%= f.submit "Publish" %>
-            <!--%- end -%-->
+    #{ifErrors}
+    <p class="error">
+        Please correct these errors.
+    </p>
+    #{/ifErrors}
+
+    <ul>
+        <li>
+            #{field 'message'}
+            <textarea name="${field.name}"
+                      class="${field.errorClass}" cols="35" rows="3">${status?.message}</textarea>
+            #{/field}
+        </li>
+        <li>
             <input class="button-blue" name="submit" id="submit" type="submit" />
         </li>
     </ul>
@@ -25,8 +31,6 @@
 
 </div>
 <!-- two-col-left -->
-
-
 
 <div class="two-col-right">
 

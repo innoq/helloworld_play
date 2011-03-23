@@ -1,6 +1,8 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 /**
@@ -10,22 +12,15 @@ import play.db.jpa.Model;
 @Entity
 public class Status extends Model {
 
-    private static Status instance = null;
+    @Required(message = "required")
+    public String message;
+    @OneToOne(optional = true)
+    public Profile profile;
 
-    /**
-     * Default-Konstruktor, der nicht außerhalb dieser Klasse
-     * aufgerufen werden kann
-     */
-    private Status() {}
+    public Status() {
+    }
 
-    /**
-     * Statische Methode, liefert die einzige Instanz dieser
-     * Klasse zurück
-     */
-    public static Status getInstance() {
-        if (instance == null) {
-            instance = new Status();
-        }
-        return instance;
+    public Status(String message) {
+        this.message = message;
     }
 }

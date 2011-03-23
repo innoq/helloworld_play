@@ -14,6 +14,9 @@ POST    /auth/user                      Auth.authenticate
 GET     /auth/signup                    Auth.signup
 POST    /auth/signup                    Auth.register
 
+GET     /statuses                       Statuses.form
+POST    /statuses                       Statuses.save
+
 GET     /contacts                       Contacts.index
 
 GET     /home/dashboard                 Home.dashboard
@@ -26,8 +29,6 @@ GET     /profiles/_editaddress          Profiles._edit_address
 GET     /profiles/edit                  Profiles.edit
 GET     /profiles/privat/{id}           Profiles.privat
 GET     /profiles/show/{id}             Profiles.show
-
-GET     /statuses/index                 Statuses.index
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                        staticDir:public

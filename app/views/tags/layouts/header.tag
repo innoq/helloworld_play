@@ -36,7 +36,7 @@
 
     <ul id="menu">
         <li class="first">#{a @Home.dashboard()}Dashboard#{/a}</li>
-        <li>#{a @Statuses.index()}World status feed#{/a}</li>
+        <li>#{a @Statuses.form()}World status feed#{/a}</li>
         <li>#{a @Contacts.index()}Contacts#{/a}</li>
         <li>
             #{if user!=null}
