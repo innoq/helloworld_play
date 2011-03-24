@@ -58,7 +58,7 @@ public class Statuses extends Application {
         }
         // Save
         status.save();
-        index();
+        form();
         render();
     }
 }
