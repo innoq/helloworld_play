@@ -12,29 +12,44 @@ import play.Logger;
  */
 public class Statuses extends Application {
 
-    public static void index(String message) {
-        Logger.info("Method index");
-        render();
-    }
-
-    public static void form() {
+    public static void form(int size) {
         Logger.info("Method form()");
+
         List<Status> statuses = Status.findAll();
+        List<Status> sublist = null;
         /*Iterator<Status> i = statuses.listIterator();
         while (i.hasNext()) {
-            Status s = i.next();
-            Logger.info("Status " + s.toString());
-            if(s.profile!=null){
-                Logger.info("FullName " + s.profile.firstName);
-            }
-
+        Status s = i.next();
+        Logger.info("Status " + s.toString());
+        if(s.profile!=null){
+        Logger.info("FullName " + s.profile.firstName);
+        }
         }*/
-        render("statuses/form.html", statuses);
+
+        int start = 0;
+        int end = 0;
+
+        if (size == 0) {
+            end = 4;
+            size = end;
+        } else {
+            start = size;
+            end = start + start;
+        }
+
+        if (statuses.size() < end) {
+            end = statuses.size();
+            size = 0;
+        } else {
+            size = end;
+        }
+
+        sublist = statuses.subList(start, end);
+        render("statuses/form.html", sublist, size);
     }
 
     public static void save(String message) {
         Logger.info("Method save()");
-        Logger.info("Message " + message);
         Profile profile = currentUser().profile;
         Status status = new Status(message, profile);
         validation.valid(status);
@@ -43,7 +58,7 @@ public class Statuses extends Application {
         }
         // Save
         status.save();
-        form();
+        index();
         render();
     }
 }
