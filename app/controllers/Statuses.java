@@ -1,6 +1,6 @@
 package controllers;
 
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 import models.Profile;
 import models.Status;
@@ -17,6 +17,9 @@ public class Statuses extends Application {
 
         List<Status> statuses = Status.findAll();
         List<Status> sublist = null;
+      
+        Collections.reverse(statuses);
+
         /*Iterator<Status> i = statuses.listIterator();
         while (i.hasNext()) {
         Status s = i.next();
@@ -58,7 +61,7 @@ public class Statuses extends Application {
         }
         // Save
         status.save();
-        form();
+        form(0);
         render();
     }
 }
