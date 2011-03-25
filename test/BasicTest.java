@@ -21,22 +21,30 @@ public class BasicTest extends UnitTest {
     public void tryConnectAsUser() {
         new User("tom@some.com","where");
         assertNull(User.connect("tom@some.com", "some"));
-        assertNotNull(User.connect("christa", "chr"));
+        assertNotNull(User.connect("christa", "chr34"));
     }
 
     @Test
     public void testCountUser() {
-        assertNotNull("Count User", Auth.countUser());
+        long count = Auth.countUser();
+        Long value = Long.valueOf(count);
+        assertNotNull(value);
     }
 
     @Test
     public void testRandomId() {
-        assertNotNull("Random Id", Auth.randomId());
+        Integer id = Integer.valueOf(Auth.randomId());
+        assertNotNull(id);
+        User user = User.findById(Long.valueOf(id.longValue()));
+        assertNotNull(user);
+        assertEquals(user, User.connect(user.login, user.password));
     }
 
     @Test
     public void testUserByRandomId() {
-        assertNotNull("User", Auth.userByRandomId());
+        User user = Auth.userByRandomId();
+        assertNotNull(user);
+        assertEquals(user, User.connect(user.login, user.password));
     }
 
     @Test
