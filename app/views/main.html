@@ -13,17 +13,15 @@
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/ico" href="@{'/public/favicon.ico'}" />
         <script src="@{'/public/javascripts/jquery-1.4.3.min.js'}" type="text/javascript" charset="utf-8">
-            
+
         </script>
-            
+
         <!--#{script src:'jquery-1.4.3.min.js', charset:'utf-8'/}-->
         #{get 'moreScripts' /}
     </head>
     <body>
         <a name="tothetop"></a>
-
         <div id="main">
-
             #{include 'tags/layouts/header.tag' /}
             <div id="content-holder">
                 <div class="flash_messages">
@@ -33,8 +31,8 @@
                     </div>
                     #{/list}
                 </div>
+                #{doLayout /}
             </div>
-            #{doLayout /}
         </div>
         #{include 'tags/layouts/footer.tag' /}
     </body>

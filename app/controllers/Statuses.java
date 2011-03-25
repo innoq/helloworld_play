@@ -17,7 +17,7 @@ public class Statuses extends Application {
 
         List<Status> statuses = Status.findAll();
         List<Status> sublist = null;
-      
+
         Collections.reverse(statuses);
 
         /*Iterator<Status> i = statuses.listIterator();
@@ -33,14 +33,14 @@ public class Statuses extends Application {
         int end = 0;
 
         if (size == 0) {
-            end = 4;
+            end = 5;
             size = end;
         } else {
-            start = size;
-            end = start + start;
+            end = start = size;
+            end += end;
         }
 
-        if (statuses.size() < end) {
+        if (statuses.size() <= end) {
             end = statuses.size();
             size = 0;
         } else {

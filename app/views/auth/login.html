@@ -28,7 +28,7 @@
         <label for="password">Password</label>
         <input type="password" name="password" id="password" value="${flash.password}" />
         <span class="loginError">#{error 'password' /}</span>
-        <input class="button-blue" name="submit" id="submit" type="submit" />
+        <input class="button-blue" value="Log in" name="submit" id="submit" type="submit" />
         #{ifErrors}
         <span class="loginError">#{error 'user' /}</span>
         #{/ifErrors}
