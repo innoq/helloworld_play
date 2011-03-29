@@ -1,6 +1,15 @@
 .svn
-test-result
+build.xml
+build/
+build/*
 logs
+logs/*
+db/
 db/*
+manifest.mf
 nbproject
-tmp
+nbproject/*
+test-result/
+test-result/*
+tmp/
+tmp/*

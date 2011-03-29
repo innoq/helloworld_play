@@ -1,13 +1,38 @@
 *{ You can use plain selenium command using the selenium tag }*
 
+#{selenium 'Index'}
+
+    // Open the index
+    clearSession()
+    open('/')
+
+#{/selenium}
+
 #{selenium 'Login'}
 
     // Open the login page, and login
-    clearSession();
+    clearSession()
     open('/auth/login')
     type('login', 'folkertm')
     type('password', 'hmsygc')
     clickAndWait('submit')
+    waitForPageToLoad(10000)
     verifyTextPresent('Welcome, folkertm')
+
+#{/selenium}
+
+#{selenium 'Logout'}
+
+    // Open the logout page
+    clearSession()
+    open('/auth/login')
+    type('login', 'folkertm')
+    type('password', 'hmsygc')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('Welcome, folkertm')
+    open('/auth/logout')
+    verifyTextPresent('Good bye.')
+    verifyTextPresent('You have been logged out.')
 
 #{/selenium}
