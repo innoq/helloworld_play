@@ -95,9 +95,9 @@ public class AuthTest extends BasicTest {
 
     @Test
     public void testRegister() {
-        login = "Donatelli";
+        login = "david01";
         assertNotSame(login, "folkertm");
-        password = "";
+        password = "hgiue";
         assertNotSame(password, "hmsygc");
         assertNotNull(login);
         assertNotNull(password);
@@ -130,7 +130,7 @@ public class AuthTest extends BasicTest {
     }*/
     @Override
     public void setUpChild() {
-        login = "folkertm";
-        password = "hmsygc";
+        login = "david01";
+        password = "hgiue";
     }
 }

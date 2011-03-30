@@ -13,11 +13,11 @@
     // Open the login page, and login
     clearSession()
     open('/auth/login')
-    type('login', 'folkertm')
-    type('password', 'hmsygc')
+    type('login', 'david01')
+    type('password', 'hgiue')
     clickAndWait('submit')
     waitForPageToLoad(10000)
-    verifyTextPresent('Welcome, folkertm')
+    verifyTextPresent('Welcome, david01')
 
 #{/selenium}
 
@@ -26,11 +26,11 @@
     // Open the logout page
     clearSession()
     open('/auth/login')
-    type('login', 'folkertm')
-    type('password', 'hmsygc')
+    type('login', 'david01')
+    type('password', 'hgiue')
     clickAndWait('submit')
     waitForPageToLoad(10000)
-    verifyTextPresent('Welcome, folkertm')
+    verifyTextPresent('Welcome, david01')
     open('/auth/logout')
     verifyTextPresent('Good bye.')
     verifyTextPresent('You have been logged out.')
