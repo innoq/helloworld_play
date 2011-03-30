@@ -33,7 +33,7 @@ public class Statuses extends Application {
         int end = 0;
 
         if (size == 0) {
-            end = 5;
+            end = 25;
             size = end;
         } else {
             end = start = size;

@@ -40,34 +40,25 @@
     <div class="stream">
         #{list items:sublist, as:'status'}
         <div class="status">
-            <div class="status-message">
-                ${status.message}
-            </div>
             #{if status.profile != null}
-            ${status.profile.getFullName()}
+            <a href="${status.profile.getFullName()}"><img src="/public/${status.profile.getPhotoFileName()}" class="stream-image" alt="${status.profile.getFullName()}"/></a>
+            <div class="status-message">${status.message}</div>
+            <a href="${status.profile}" class="username">${status.profile.getFullName()}</a> <span class="status-date">Datum</span>
             #{/if}
         </div>
+
+        <div class="clear"></div>
         #{/list}
 
-        <!--%- @statuses.each do |status| -%>
-        <div class="status">
-            <%= link_to (image_tag status.profile.photo.url , :alt => "username", :class=> "stream-image"), profile_url(status.profile) %>
-            <div class="status-message"><%= status.message %></div>
-
-            <%= link_to status.profile.full_name, profile_url(status.profile), :class=>"username" %> <span class="status-date"><%= l(status.created_at, :format => :long) %></span>
-
-        </div>
-        <div class="clear"></div>
-        <%- end -%-->
+        *{
+        #{if size>0 }
+        #{a @Statuses.form(size) }[more]#{/a}
+        #{/if}
+        }*
     </div>
     <!-- /stream -->
 
-    #{if size>0 }
-    #{a @Statuses.form(size) }[more]#{/a}
-    #{/if}
-
 </div>
 <!-- two-col-right -->
-
 
 <div class="clear"><!-- clear --></div>

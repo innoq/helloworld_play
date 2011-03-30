@@ -1,0 +1,115 @@
+# Test data
+
+Profile(p_august):
+    about:              null
+    company:            innoQ GmbH
+    firstName:          august
+    lastName:           meier
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_bettina):
+    about:              null
+    company:            innoQ GmbH
+    firstName:          bettina
+    lastName:           krasnik
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         Angestellte
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_christa):
+    company:            innoQ GmbH
+    firstName:          christa
+    lastName:           oetzli
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         Angestellte
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_folkertm):
+    company:            Meeuw-Technologie
+    firstName:          Folkert
+    lastName:           Meeuw
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         System and Software Archaeologist
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_philipph):
+    company:            innoQ GmbH
+    firstName:          Philipp
+    lastName:           Haußleiter
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         Software-Entwickler
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_phillipg):
+    company:            innoQ GmbH
+    firstName:          Phillip
+    lastName:           Ghadir
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         Prokurist
+    businessAddress_id: null
+    privateAddress_id:  null
+
+Profile(p_thomasee):
+    company:            innoQ GmbH
+    firstName:          Thomas
+    lastName:           Eichstädt-Engelen
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      0
+    profession:         Software-Entwickler
+    businessAddress_id: null
+    privateAddress_id:  null
+
+User(august):
+    login:          august
+    password:       aug12
+    profile:        p_august
+
+User(bettina):
+    login:          bettina
+    password:       bet23
+    profile:        p_bettina
+
+User(christa):
+    login:          christa
+    password:       chr34
+    profile:        p_christa
+
+User(folkertm):
+    login:          folkertm
+    password:       hmsygc
+    profile:        p_folkertm
+
+User(philipph):
+    login:          philipph
+    password:       iqumf
+    profile:        p_philipph
+
+User(phillipg):
+    login:          phillipg
+    password:       pg456
+    profile:        p_phillipg
+
+User(thomasee):
+    login:          thomasee
+    password:       tom67
+    profile:        p_thomasee

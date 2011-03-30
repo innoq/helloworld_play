@@ -1,115 +1,168 @@
 # Test data
 
-Profile(p_august):
+Profile(p_david01):
     about:              null
-    company:            innoQ GmbH
-    firstName:          august
-    lastName:           meier
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         null
+    company:            HP
+    firstName:          David
+    lastName:           Donatelli
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/david-donatelli.jpg
+    photoFileSize:      300992
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-Profile(p_bettina):
+Profile(p_rene01):
     about:              null
-    company:            innoQ GmbH
-    firstName:          bettina
-    lastName:           krasnik
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         Angestellte
+    company:            Telekom
+    firstName:          Rene
+    lastName:           Obermann
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/rene-obermann.jpg
+    photoFileSize:      391744
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-Profile(p_christa):
-    company:            innoQ GmbH
-    firstName:          christa
-    lastName:           oetzli
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         Angestellte
+Profile(p_larry01):
+    about:
+    company:            Oracle
+    firstName:          Larry
+    lastName:           Ellison
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/larry-ellison.jpg
+    photoFileSize:      88480
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-Profile(p_folkertm):
-    company:            Meeuw-Technologie
-    firstName:          Folkert
-    lastName:           Meeuw
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         System and Software Archaeologist
+Profile(p_samuel01):
+    company:            IBM
+    firstName:          Samuel
+    lastName:           Palmisano
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/samuel-palmisano.jpg
+    photoFileSize:      216272
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-Profile(p_philipph):
-    company:            innoQ GmbH
-    firstName:          Philipp
-    lastName:           Haußleiter
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         Software-Entwickler
+Profile(p_mike01):
+    company:            AMD
+    firstName:          Mike
+    lastName:           Wolfe
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/mike-wolfe.jpg
+    photoFileSize:      95112
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-Profile(p_phillipg):
-    company:            innoQ GmbH
-    firstName:          Phillip
-    lastName:           Ghadir
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         Prokurist
+Profile(p_leo01):
+    company:            HP
+    firstName:          Leo
+    lastName:           Apotheker
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/leo-apotheker.jpg
+    photoFileSize:      129440
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-Profile(p_thomasee):
-    company:            innoQ GmbH
-    firstName:          Thomas
-    lastName:           Eichstädt-Engelen
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      0
-    profession:         Software-Entwickler
+Profile(p_oliver01):
+    company:            SAP
+    firstName:          Oliver
+    lastName:           Bussmann
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/oliver-bussmann.jpg
+    photoFileSize:      10160
+    profession:         Manager
     businessAddress_id: null
     privateAddress_id:  null
 
-User(august):
-    login:          august
-    password:       aug12
-    profile:        p_august
+Profile(p_charles01):
+    company:            Infor
+    firstName:          Charles
+    lastName:           Phillips
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/charles-phillips.jpg
+    photoFileSize:      11312
+    profession:         Manager
+    businessAddress_id: null
+    privateAddress_id:  null
 
-User(bettina):
-    login:          bettina
-    password:       bet23
-    profile:        p_bettina
+User(david01):
+    login:          david01
+    password:       hgiue
+    profile:        p_david01
 
-User(christa):
-    login:          christa
-    password:       chr34
-    profile:        p_christa
+User(rene01):
+    login:          rene01
+    password:       48fwwr
+    profile:        p_rene01
 
-User(folkertm):
-    login:          folkertm
-    password:       hmsygc
-    profile:        p_folkertm
+User(larry01):
+    login:          larry01
+    password:       80gjo5
+    profile:        p_larry01
 
-User(philipph):
-    login:          philipph
-    password:       iqumf
-    profile:        p_philipph
+User(samuel01):
+    login:          samuel01
+    password:       ß8m2ee
+    profile:        p_samuel01
 
-User(phillipg):
-    login:          phillipg
-    password:       pg456
-    profile:        p_phillipg
+User(mike01):
+    login:          mike01
+    password:       t6i76kjt
+    profile:        p_mike01
 
-User(thomasee):
-    login:          thomasee
-    password:       tom67
-    profile:        p_thomasee
+User(leo01):
+    login:          leo01
+    password:       nmxsczvm3
+    profile:        p_leo01
+
+User(oliver01):
+    login:          oliver01
+    password:       lp809hk
+    profile:        p_oliver01
+
+User(charles01):
+    login:          charles01
+    password:       4z6t4r2
+    profile:        p_charles01
+
+Status(david01):
+    message:        Wir sind schockiert, dass Oracle Unternehmen und Behörden einem Risiko aussetzt, das sie Hunderte Millionen Dollar an Produktivität kostet.
+    profile:        p_david01
+
+Status(rene01):
+    message:        Mit dem Verkauf von T-Mobile-USA hat die Telekom ein Problem weniger.
+    profile:        p_rene01
+
+Status(larry01):
+    message:        Der Entschluss die Softwareentwicklung für Intel's Itanium zu stoppen, fiel nach mehreren Unterredungen mit dem Senior-Management von Intel.
+    profile:        p_larry01
+
+Status(samuel01):
+    message:        Der Konzern verpflichtet seine Mitarbeiter zu hohen ethiscen Standards. Die eingeleiteten Maßnahmen sollen Korruptionsvorfälle für die Zukunft ausschließen.
+    profile:        p_samuel01
+
+Status(mike01):
+    message:        Der 52-Jährihe Mike Wolfe ist neuer Verantwortlicher der Informations-Technologie von AMD.
+    profile:        p_mike01
+
+Status(leo01):
+    message:        HP wird das Unternehmen sein, das der neuen IT-Welt die Form gibt.
+    profile:        p_leo01
+
+Status(oliver01):
+    message:        Ein Consumer-Produkt mit Enterprise-Anwendungen zu bestücken ist eine Herausforderung.
+    profile:        p_oliver01
+
+Status(leo01):
+    message:        Die Auswirkungen von Cloud Computing und wachsender Konnektivität verändern die Art und Weise, wie Endanwender sowie kleine und große Unternehmen IT konsumieren, einsetzen und nutzen.
+    profile:        p_leo01
+
+Status(charles01):
+    message:        Der Ex Oracle President hat viel Erfahrung mit Akquisitionen.
+    profile:        p_charles01

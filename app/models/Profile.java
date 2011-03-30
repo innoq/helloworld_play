@@ -5,12 +5,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import play.data.validation.Required;
-import play.data.validation.Valid;
 import play.db.jpa.Model;
 
 /**
@@ -74,6 +72,13 @@ public class Profile extends Model {
     }
 
     public String getFullName() {
-        return firstName + " " + lastName;
+        return firstName.trim() + " " + lastName.trim();
+    }
+
+    public String getPhotoFileName() {
+        if (photoFileName == null) {
+            photoFileName = "null";
+        }
+        return photoFileName.trim();
     }
 }
