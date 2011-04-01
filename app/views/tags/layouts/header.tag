@@ -40,7 +40,7 @@
         <li>#{a @Contacts.index()}Contacts#{/a}</li>
         <li>
             #{if user!=null}
-                #{a @Profiles.privat(user.profile)}Profile#{/a}
+                #{a @Profiles.privat(user.profile.id)}Profile#{/a}
             #{/if}
             #{else}
                 #{a @Auth.login()}Profile#{/a}

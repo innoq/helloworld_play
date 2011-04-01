@@ -1,6 +1,7 @@
 package models;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -16,6 +18,7 @@ import play.db.jpa.Model;
  * @editor Folkert Meeuw
  */
 @Entity
+@Table(name = "T_PROFILE")
 public class Profile extends Model {
 
     @OneToOne
@@ -31,9 +34,10 @@ public class Profile extends Model {
     public Address businessAddress = null;
     //
     @Required
-    @OneToMany
+    @OneToMany(mappedBy = "profile")
     @Embedded
-    public Set<ProfileAttribute> profileAttribute = null;
+    public Set<ProfileAttribute> profileAttribute = new HashSet<ProfileAttribute>();
+    //
     @Required
     @OneToMany
     public Set<Contact> contact = null;
@@ -62,8 +66,8 @@ public class Profile extends Model {
     public StringBuffer about = null;
     public Date createdAt = null;
     public Date updatedAt = null;
-    public String firstName = null;
-    public String lastName = null;
+    public String firstName = "";
+    public String lastName = "";
     public String photoFileName = null;
     public String photoContentType = null;
     public int photoFileSize = 0;

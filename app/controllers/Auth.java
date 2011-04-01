@@ -59,7 +59,7 @@ public class Auth extends Application {
             } else {
                 Logger.info("User Profile: %s", user.profile);
                 Session.current().put("user", user.id);
-                Session.current().put("user.profile", user.profile);
+                Session.current().put("user.profile.id", user.profile.id);
                 checkLogin();
                 //render("home/dashboard.html", login, password, user);
                 render("home/dashboard.html", login, password);

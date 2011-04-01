@@ -2,6 +2,7 @@ package models;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import play.db.jpa.Model;
 
 /**
@@ -9,6 +10,7 @@ import play.db.jpa.Model;
  * @editor Folkert Meeuw
  */
 @Entity
+@Table(name="T_PROFILES")
 public class Profiles extends Model {
 
     public String profession = null;

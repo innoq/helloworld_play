@@ -25,7 +25,7 @@ Profile(p_rene01):
     privateAddress_id:  null
 
 Profile(p_larry01):
-    about:
+    about:              null
     company:            Oracle
     firstName:          Larry
     lastName:           Ellison
@@ -37,6 +37,7 @@ Profile(p_larry01):
     privateAddress_id:  null
 
 Profile(p_samuel01):
+    about:              null
     company:            IBM
     firstName:          Samuel
     lastName:           Palmisano
@@ -48,6 +49,7 @@ Profile(p_samuel01):
     privateAddress_id:  null
 
 Profile(p_mike01):
+    about:              null
     company:            AMD
     firstName:          Mike
     lastName:           Wolfe
@@ -59,6 +61,7 @@ Profile(p_mike01):
     privateAddress_id:  null
 
 Profile(p_leo01):
+    about:              null
     company:            HP
     firstName:          Leo
     lastName:           Apotheker
@@ -70,6 +73,7 @@ Profile(p_leo01):
     privateAddress_id:  null
 
 Profile(p_oliver01):
+    about:              null
     company:            SAP
     firstName:          Oliver
     lastName:           Bussmann
@@ -81,6 +85,7 @@ Profile(p_oliver01):
     privateAddress_id:  null
 
 Profile(p_charles01):
+    about:              null
     company:            Infor
     firstName:          Charles
     lastName:           Phillips
@@ -159,10 +164,69 @@ Status(oliver01):
     message:        Ein Consumer-Produkt mit Enterprise-Anwendungen zu bestücken ist eine Herausforderung.
     profile:        p_oliver01
 
-Status(leo01):
+Status(leo02):
     message:        Die Auswirkungen von Cloud Computing und wachsender Konnektivität verändern die Art und Weise, wie Endanwender sowie kleine und große Unternehmen IT konsumieren, einsetzen und nutzen.
     profile:        p_leo01
 
 Status(charles01):
     message:        Der Ex Oracle President hat viel Erfahrung mit Akquisitionen.
     profile:        p_charles01
+
+ProfileAttribute(david01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+    profile:        p_david01
+
+ProfileAttribute(david02):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+    profile:        p_david01
+
+ProfileAttribute(p_larry01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+
+ProfileAttribute(p_samuel01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+
+ProfileAttribute(p_mike01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+
+ProfileAttribute(p_leo01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+
+ProfileAttribute(p_oliver01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+
+ProfileAttribute(p_charles01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+

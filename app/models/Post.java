@@ -13,6 +13,7 @@ import play.db.jpa.Model;
  */
 
 @Entity
+@Table(name="T_POST")
 public class Post extends Model {
  
     @Required

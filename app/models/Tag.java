@@ -12,6 +12,7 @@ import play.data.validation.*;
  */
 
 @Entity
+@Table(name="T_TAG")
 public class Tag extends Model implements Comparable<Tag> {
  
     @Required

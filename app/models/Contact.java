@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import play.db.jpa.Model;
 
 /**
@@ -9,6 +10,7 @@ import play.db.jpa.Model;
  */
 
 @Entity
+@Table(name="T_CONTACT")
 public class Contact extends Model {
 
 }

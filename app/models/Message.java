@@ -10,6 +10,7 @@ import play.db.jpa.*;
  * @editor Folkert Meeuw
  */
 @Entity
+@Table(name="T_MESSAGE")
 public class Message extends Model {
     
     public String subject;

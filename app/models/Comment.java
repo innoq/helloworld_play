@@ -1,10 +1,14 @@
 package models;
- 
-import java.util.*;
-import javax.persistence.*;
- 
-import play.db.jpa.*;
-import play.data.validation.*;
+
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import play.data.validation.MaxSize;
+import play.data.validation.Required;
+import play.db.jpa.Model;
+
 
 /**
  *
@@ -12,6 +16,7 @@ import play.data.validation.*;
  */
 
 @Entity
+@Table(name="T_COMMENT")
 public class Comment extends Model {
  
     @Required
