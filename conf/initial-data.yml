@@ -108,6 +108,19 @@ Profile(p_james01):
     businessAddress_id: null
     privateAddress_id:  null
 
+Profile(p_buelent01):
+    about:              null
+    company:            null
+    firstName:          null
+    lastName:           null
+    photoContentType:   null
+    photoFileName:      null
+    photoFileSize:      null
+    profession:         null
+    businessAddress_id: null
+    privateAddress_id:  null
+
+
 User(david01):
     login:          david01
     password:       hgiue
@@ -153,6 +166,11 @@ User(james01):
     password:       goooogleee
     profile:        p_james01
 
+User(buelent01):
+    login:          buelent01
+    password:       uludag
+    profile:        p_buelent01
+
 Status(david01):
     message:        Wir sind schockiert, dass Oracle Unternehmen und Behörden einem Risiko aussetzt, das sie Hunderte Millionen Dollar an Produktivität kostet.
     profile:        p_david01
@@ -192,6 +210,10 @@ Status(charles01):
 Status(james01):
     message:        Oracle geht es immer nur ums Geld. Das ist die einzige Metrik die sie verstehen.
     profile:        p_james01
+
+Status(buelent01):
+    message:        Für Deutschland sehe ich keine Notwendigkeit, Fachkräfte aus dem Ausland zu holen. Ich bin davon überzeugt, dass wir hier genügend deutsche und ausländische Absolventen an den Hochschulen haben.
+    profile:        p_buelent01
 
 ProfileAttribute(david01):
     companyEmail:   n.n.
@@ -264,3 +286,11 @@ ProfileAttribute(james01):
     mobilePhone:    n.n.
     privatePhone:   n.n.
     profile:        p_james01
+
+ProfileAttribute(buelent01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+    profile:        p_buelent01

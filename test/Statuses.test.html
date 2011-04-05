@@ -12,11 +12,13 @@
     verifyTextPresent('Welcome, david01')
 
     // Open the contacts page, and verfiy photo
-    open('/statuses')
+    #open('/statuses')
+    clickAndWait(link=World status feed)
     verifyText('//div/div/div/a/img', '<img src="/public/data/photos/david-donatelli.jpg" class="stream-image" alt="David Donatelli">')
 
     // Open the logout page
-    open('/auth/logout')
+    #open('/auth/logout')
+    clickAndWait(link=Logout)
     verifyTextPresent('Good bye.')
     verifyTextPresent('You have been logged out.')
 

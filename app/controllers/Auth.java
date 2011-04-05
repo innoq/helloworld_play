@@ -6,6 +6,7 @@ import models.Profile;
 import models.ProfileAttribute;
 import models.User;
 import play.Logger;
+import play.cache.Cache;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.mvc.Scope.Session;
@@ -25,9 +26,9 @@ public class Auth extends Application {
         if (sampleUser == null) {
             Logger.info("check database, table \"user\" and data");
         } else {
-            hint = "Try User " + sampleUser.login +
-                    " with Password " + sampleUser.password +
-                    " to get started";
+            hint = "Try User " + sampleUser.login
+                    + " with Password " + sampleUser.password
+                    + " to get started";
         }
         renderArgs.put("hint", hint);
         render("auth/login.html");
@@ -60,11 +61,14 @@ public class Auth extends Application {
                 }
             } else {
                 Logger.info("User Profile: %s", user.profile);
+                Cache.add("user.profile", user.profile);
+                Session.current().put("login", login);
                 Session.current().put("user", user.id);
                 Session.current().put("user.profile.id", user.profile.id);
+                Session.current().put("edit", true);
                 checkLogin();
                 //render("home/dashboard.html", login, password, user);
-                render("home/dashboard.html", login, password);
+                render("home/dashboard.html");
             }
         }
     }
@@ -73,10 +77,10 @@ public class Auth extends Application {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
         Logger.info("Method logout()");
         Logger.info("User: %s", currentUser());
-        Session.current().clear();
         renderArgs.put("user", null);
+        renderArgs.put("user.profile.id", null);
+        Session.current().clear();
         render("auth/logout.html");
-
     }
 
     public static void register(
@@ -102,8 +106,8 @@ public class Auth extends Application {
                 Session.current().put("id", user.id);
             } else {
                 validation.addError(
-                        "register", "login/password exists already, " +
-                        "choose different one", "");
+                        "register", "login/password exists already, "
+                        + "choose different one", "");
                 if (validation.hasErrors()) {
                     for (play.data.validation.Error error : validation.errors()) {
                         params.flash();

@@ -76,12 +76,16 @@ public class Profile extends Model {
     }
 
     public String getFullName() {
+        if(firstName == null){
+            firstName = "n.n.";
+            return firstName;
+        }
         return firstName.trim() + " " + lastName.trim();
     }
 
     public String getPhotoFileName() {
         if (photoFileName == null) {
-            photoFileName = "null";
+            photoFileName = "images/user.png";
         }
         return photoFileName.trim();
     }

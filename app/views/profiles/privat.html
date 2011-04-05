@@ -6,23 +6,36 @@
 <div id="col-one">
 
     <div class="profile-image">
-        <img src="/public/${user.profile.photoFileName}" alt="${user.profile.getFullName()}"/>
+        <img src="/public/${user.profile.getPhotoFileName()}" alt="${user.profile.getFullName()}"/>
     </div>
     <!-- /profile-image -->
 
     <div class="profile-actions">
-        <%- if can? :edit, @profile -%>
+        #{if session.edit }
+        #{a @Profiles.edit()}
+        Edit profile
+        #{/a}
+        #{/if}
+        *{<%- if can? :edit, @profile -%>
         <%= link_to edit_profile_url(@profile) do %>
         &raquo; Edit profile
         <%- end -%>
-        <%- end -%>
+        <%- end -%>}*
     </div>
     <!-- /profile-actions -->
 
     <h2>User's profile updates</h2>
 
     <div class="profile-stream">
-        #{status /}
+        <div class="profile-stream-item">
+            <span class="profile-stream-item-date">
+                *{<%= l(status.created_at, :format => :short) %>}*</span>
+            *{<%= status.message %>}*
+            #{list items:statuses, as:'status'}
+            ${status.message}
+            #{/list}
+        </div>
+
         <!--%= render :partial => 'status', :collection => @profile.statuses %-->
     </div>
     <!-- /profile-stream -->
@@ -74,15 +87,15 @@
         <div class="profile-center-contact-label">Private email</div>
         <div class="profile-center-contact-data">${privateEmail}</div>
         <div class="clear"></div>
-        
+
         <div class="profile-center-contact-label">Company email</div>
         <div class="profile-center-contact-data">${companyPhone}</div>
         <div class="clear"></div>
-        
+
         <div class="profile-center-contact-label">Mobile email</div>
         <div class="profile-center-contact-data">${mobilePhone}</div>
         <div class="clear"></div>
-        
+
         <div class="profile-center-contact-label">Private phone</div>
         <div class="profile-center-contact-data">${privatePhone}</div>
         <div class="clear"></div>

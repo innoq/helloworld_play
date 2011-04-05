@@ -18,7 +18,7 @@ import play.mvc.Scope.Session;
 public class Application extends Controller {
 
     @Before(unless = {"Auth.login", "Auth.authenticate", "Auth.signup",
-                        "Auth.register", "Auth.registerUser"})
+                        "Auth.register", "Auth.registerUser" })
     protected static void checkLogin() {
         if (currentUser() == null) {
             Auth.login();

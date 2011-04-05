@@ -1,11 +1,14 @@
 package controllers;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import models.Profile;
 import models.ProfileAttribute;
+import models.Status;
 import models.User;
 import play.Logger;
+import play.mvc.Scope.Session;
 
 /**
  *
@@ -25,6 +28,12 @@ public class Profiles extends Application {
 
     public static void edit() {
         Logger.info("method edit");
+        User user = User.findById(Long.parseLong(Session.current().get("user")));
+        Logger.info("user: " + user);
+        Profile profile = Profile.findById(user.id);
+        Logger.info("profile: " + profile);
+        ProfileAttribute profileAttribute = null;
+        Logger.info("profileAttribute: " + user.profile.profileAttribute);
         render("profiles/edit.html");
     }
 
@@ -49,6 +58,10 @@ public class Profiles extends Application {
             }
         }
         Logger.info("profileAttribute: " + user.profile.profileAttribute);
+        List<Status> statuses =  Status.find("byProfile", profile).fetch();
+        Logger.info("size :" + statuses.size());
+        Collections.reverse(statuses);
+        renderArgs.put("statuses",statuses);
         renderArgs.put("companyEmail", profileAttribute.companyEmail);
         renderArgs.put("companyPhone", profileAttribute.companyPhone);
         renderArgs.put("mobilePhone", profileAttribute.mobilePhone);

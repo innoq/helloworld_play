@@ -1,7 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Dashboard' /}
 
-<h1>Welcome, ${login}<!--%= current_user.profile.first_name %--></h1>
+<h1>Welcome, ${session.login}<!--%= current_user.profile.first_name %--></h1>
 
 <div class="two-col-left">
 
