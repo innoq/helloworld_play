@@ -1,7 +1,9 @@
 package controllers;
 
+import java.util.HashSet;
 import java.util.Random;
 import models.Profile;
+import models.ProfileAttribute;
 import models.User;
 import play.Logger;
 import play.data.validation.MinSize;

@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.HashSet;
 import java.util.List;
 import models.Profile;
 import models.ProfileAttribute;
@@ -23,8 +24,8 @@ public class Profiles extends Application {
     }
 
     public static void edit() {
-        System.out.println("edit");
-        render();
+        Logger.info("method edit");
+        render("profiles/edit.html");
     }
 
     public static void privat(long id) {
@@ -33,17 +34,26 @@ public class Profiles extends Application {
         User user = User.findById(id);
         Logger.info("user: " + user);
         Profile profile = Profile.findById(user.id);
-        List<ProfileAttribute> list = ProfileAttribute.find("byProfile", profile).fetch();
-        ProfileAttribute profileAttribute = list.get(list.size() - 1);
-        if (profileAttribute != null) {
-            profile.profileAttribute.add(profileAttribute);
-            Logger.info("user: " + user.profile.profileAttribute);
-            renderArgs.put("companyEmail", profileAttribute.companyEmail);
-            renderArgs.put("companyPhone", profileAttribute.companyPhone);
-            renderArgs.put("mobilePhone", profileAttribute.mobilePhone);
-            renderArgs.put("privateEmail", profileAttribute.privateEmail);
-            renderArgs.put("privatePhone", profileAttribute.privatePhone);
+        Logger.info("profile: " + profile);
+        ProfileAttribute profileAttribute = null;
+        Logger.info("profileAttribute: " + user.profile.profileAttribute);
+        if (user.profile.profileAttribute.isEmpty()) {
+            redirect("/profiles/edit");
+        } else {
+            List<ProfileAttribute> list = ProfileAttribute.find("byProfile", profile).fetch();
+            if (list.size() > 0) {
+                profileAttribute = list.get(list.size() - 1);
+                profile.profileAttribute.add(profileAttribute);
+            } else {
+                profile.profileAttribute = new HashSet<ProfileAttribute>(1);
+            }
         }
+        Logger.info("profileAttribute: " + user.profile.profileAttribute);
+        renderArgs.put("companyEmail", profileAttribute.companyEmail);
+        renderArgs.put("companyPhone", profileAttribute.companyPhone);
+        renderArgs.put("mobilePhone", profileAttribute.mobilePhone);
+        renderArgs.put("privateEmail", profileAttribute.privateEmail);
+        renderArgs.put("privatePhone", profileAttribute.privatePhone);
         render("profiles/privat.html", user);
     }
 

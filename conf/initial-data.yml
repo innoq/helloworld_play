@@ -96,6 +96,18 @@ Profile(p_charles01):
     businessAddress_id: null
     privateAddress_id:  null
 
+Profile(p_james01):
+    about:              null
+    company:            Infor
+    firstName:          James
+    lastName:           Gosling
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/james-gosling.jpg
+    photoFileSize:      11312
+    profession:         Angestellter
+    businessAddress_id: null
+    privateAddress_id:  null
+
 User(david01):
     login:          david01
     password:       hgiue
@@ -136,6 +148,11 @@ User(charles01):
     password:       4z6t4r2
     profile:        p_charles01
 
+User(james01):
+    login:          james01
+    password:       goooogleee
+    profile:        p_james01
+
 Status(david01):
     message:        Wir sind schockiert, dass Oracle Unternehmen und Behörden einem Risiko aussetzt, das sie Hunderte Millionen Dollar an Produktivität kostet.
     profile:        p_david01
@@ -172,6 +189,10 @@ Status(charles01):
     message:        Der Ex Oracle President hat viel Erfahrung mit Akquisitionen.
     profile:        p_charles01
 
+Status(james01):
+    message:        Oracle geht es immer nur ums Geld. Das ist die einzige Metrik die sie verstehen.
+    profile:        p_james01
+
 ProfileAttribute(david01):
     companyEmail:   n.n.
     privateEmail:   n.n.
@@ -188,45 +209,58 @@ ProfileAttribute(david02):
     privatePhone:   n.n.
     profile:        p_david01
 
-ProfileAttribute(p_larry01):
+ProfileAttribute(larry01):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.
     mobilePhone:    n.n.
     privatePhone:   n.n.
+    profile:        p_larry01
 
-ProfileAttribute(p_samuel01):
+ProfileAttribute(samuel01):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.
     mobilePhone:    n.n.
     privatePhone:   n.n.
+    profile:        p_samuel01
 
-ProfileAttribute(p_mike01):
+ProfileAttribute(mike01):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.
     mobilePhone:    n.n.
     privatePhone:   n.n.
+    profile:        p_mike01
 
-ProfileAttribute(p_leo01):
+ProfileAttribute(leo01):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.
     mobilePhone:    n.n.
     privatePhone:   n.n.
+    profile:        p_leo01
 
-ProfileAttribute(p_oliver01):
+ProfileAttribute(oliver01):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.
     mobilePhone:    n.n.
     privatePhone:   n.n.
+    profile:        p_oliver01
 
-ProfileAttribute(p_charles01):
+ProfileAttribute(charles01):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.
     mobilePhone:    n.n.
     privatePhone:   n.n.
+    profile:        p_charles01
 
+ProfileAttribute(james01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+    profile:        p_james01

@@ -21,6 +21,30 @@
 
 #{/selenium}
 
+#{selenium 'Login required'}
+
+    // Open the login page, and login
+    clearSession()
+    open('/auth/login')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('required')
+
+#{/selenium}
+
+#{selenium 'Password required'}
+
+    // Open the login page, and login
+    clearSession()
+    open('/auth/login')
+    type('login', 'david01')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('required')
+
+#{/selenium}
+
+
 #{selenium 'Logout'}
 
     // Open the logout page
@@ -31,6 +55,7 @@
     clickAndWait('submit')
     waitForPageToLoad(10000)
     verifyTextPresent('Welcome, david01')
+    verifyText('//div/div/div/ul/li/a', '<a href="/auth/logout">Logout</a>')
     open('/auth/logout')
     verifyTextPresent('Good bye.')
     verifyTextPresent('You have been logged out.')

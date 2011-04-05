@@ -25,4 +25,12 @@ public class ProfileAttribute extends Model {
     @JoinColumn
     public Profile profile;
 
+    public ProfileAttribute(){
+        this.companyEmail = "n.n.";
+        this.companyPhone = "n.n.";
+        this.mobilePhone = "n.n.";
+        this.privateEmail = "n.n.";
+        this.privatePhone = "n.n.";
+    }
+
 }

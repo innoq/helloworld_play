@@ -1,0 +1,44 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium 'Profiles/private (with)'}
+
+    // Open the login page, and login
+    clearSession()
+    open('/auth/login')
+    type('login', 'david01')
+    type('password', 'hgiue')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('Welcome, david01')
+
+    // Open the contacts page, and verfiy photo
+    open('/profiles/privat/1')
+    verifyElementPresent(//div/div/img)
+
+    // Open the logout page
+    open('/auth/logout')
+    verifyTextPresent('Good bye.')
+    verifyTextPresent('You have been logged out.')
+
+#{/selenium}
+
+#{selenium 'Profiles/private (without)'}
+
+    // Open the login page, and login
+    clearSession()
+    open('/auth/login')
+    type('login', 'erich01')
+    type('password', 'f53_gfe46')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('Welcome, erich01')
+    
+    // Open the contacts page, and verfiy photo
+    open('/profiles/privat/9')
+    
+    // Open the logout page
+    open('/auth/logout')
+    verifyTextPresent('Good bye.')
+    verifyTextPresent('You have been logged out.')
+
+#{/selenium}

@@ -1,0 +1,23 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium 'Statuses/form'}
+
+    // Open the login page, and login
+    clearSession()
+    open('/auth/login')
+    type('login', 'david01')
+    type('password', 'hgiue')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('Welcome, david01')
+
+    // Open the contacts page, and verfiy photo
+    open('/statuses')
+    verifyText('//div/div/div/a/img', '<img src="/public/data/photos/david-donatelli.jpg" class="stream-image" alt="David Donatelli">')
+
+    // Open the logout page
+    open('/auth/logout')
+    verifyTextPresent('Good bye.')
+    verifyTextPresent('You have been logged out.')
+
+#{/selenium}

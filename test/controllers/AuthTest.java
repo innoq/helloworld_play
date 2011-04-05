@@ -3,6 +3,7 @@ package controllers;
 import org.junit.*;
 import models.*;
 import play.mvc.Scope.Session;
+import play.test.Fixtures;
 
 public class AuthTest extends BasicTest {
 
@@ -95,9 +96,9 @@ public class AuthTest extends BasicTest {
 
     @Test
     public void testRegister() {
-        login = "david01";
+        login = "erich01";
         assertNotSame(login, "folkertm");
-        password = "hgiue";
+        password = "f53_gfe46";
         assertNotSame(password, "hmsygc");
         assertNotNull(login);
         assertNotNull(password);
@@ -128,8 +129,12 @@ public class AuthTest extends BasicTest {
     assertEquals(profileAttribute.companyEmail, "august@helloworld.com");
     //profileAttribute.delete();
     }*/
+    
     @Override
+    @Before
     public void setUpChild() {
+        Fixtures.deleteAll();
+        Fixtures.load("initial-data.yml");
         login = "david01";
         password = "hgiue";
     }

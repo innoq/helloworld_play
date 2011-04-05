@@ -36,7 +36,7 @@ public class Profile extends Model {
     @Required
     @OneToMany(mappedBy = "profile")
     @Embedded
-    public Set<ProfileAttribute> profileAttribute = new HashSet<ProfileAttribute>();
+    public Set<ProfileAttribute> profileAttribute = null;
     //
     @Required
     @OneToMany

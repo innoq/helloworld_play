@@ -3,8 +3,9 @@ package controllers;
 import models.Profile;
 import models.ProfileAttribute;
 import models.User;
+import play.mvc.Before;
 import play.mvc.Scope.Session;
-import play.test.*;
+import play.test.UnitTest;
 
 public abstract class BasicTest extends UnitTest {
 
@@ -18,6 +19,7 @@ public abstract class BasicTest extends UnitTest {
     protected Long value;
     protected Integer id;
 
+    @Before
     public final void setUp() {
         setUpChild();
     }
