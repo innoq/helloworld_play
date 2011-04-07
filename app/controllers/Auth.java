@@ -1,9 +1,7 @@
 package controllers;
 
-import java.util.HashSet;
 import java.util.Random;
 import models.Profile;
-import models.ProfileAttribute;
 import models.User;
 import play.Logger;
 import play.cache.Cache;
@@ -19,9 +17,9 @@ public class Auth extends Application {
 
     public static void login() {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method login()");
+        Logger.info("-i- public static void login()");
         User sampleUser = Auth.userByRandomId();
-        Logger.info("Sample User %s", sampleUser);
+        Logger.info("-v- sampleUser %s", sampleUser);
         String hint = null;
         if (sampleUser == null) {
             Logger.info("check database, table \"user\" and data");
@@ -31,6 +29,7 @@ public class Auth extends Application {
                     + " to get started";
         }
         renderArgs.put("hint", hint);
+        Logger.info("-o- public static void login()");
         render("auth/login.html");
     }
 
@@ -38,8 +37,8 @@ public class Auth extends Application {
             @Required(message = "required") String login,
             @Required(message = "required") String password) {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method authenticate()");
-        checkAuthenticity();
+        Logger.info("-i- public static void authenticate()");
+        //checkAuthenticity();
 
         if (validation.hasErrors()) {
             for (play.data.validation.Error error : validation.errors()) {
@@ -60,26 +59,30 @@ public class Auth extends Application {
                     login();
                 }
             } else {
-                Logger.info("User Profile: %s", user.profile);
-                Cache.add("user.profile", user.profile);
                 Session.current().put("login", login);
                 Session.current().put("user", user.id);
                 Session.current().put("user.profile.id", user.profile.id);
                 Session.current().put("edit", true);
-                checkLogin();
+                currentUser();
+                
                 //render("home/dashboard.html", login, password, user);
-                render("home/dashboard.html");
+                Logger.info("-o- public static void authenticate()");
+                Logger.info("-v- " + user.profile.getFullName());
+                renderArgs.put("user", user);
+                renderArgs.put("user.profile.id", user.profile.id);
+                render("home/dashboard.html", user, user.profile);
             }
         }
     }
 
     public static void logout() {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method logout()");
-        Logger.info("User: %s", currentUser());
+        Logger.info("-i- public static void logout()");
         renderArgs.put("user", null);
         renderArgs.put("user.profile.id", null);
         Session.current().clear();
+        currentUser();
+        Logger.info("-o- public static void logout()");
         render("auth/logout.html");
     }
 
@@ -87,7 +90,7 @@ public class Auth extends Application {
             @Required(message = "required") @MinSize(5) String login,
             @Required(message = "required") @MinSize(5) String password) {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method register()");
+        Logger.info("-i- public static void register()");
         //boolean currentUser = false;
         checkAuthenticity();
         if (validation.hasErrors()) {
@@ -117,6 +120,7 @@ public class Auth extends Application {
                 }
             }
         }
+        Logger.info("-o- public static void register()");
         render("/auth/login.html");
     }
 
@@ -135,26 +139,28 @@ public class Auth extends Application {
         return (count);
     }
 
-    public static int randomId() {
+    protected static int randomId() {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method randomId()");
+        Logger.info("-i- public static void randomId()");
         Long count;
         Random random = new Random();
         int randomId;
         count = Long.valueOf(User.count());
         randomId = random.nextInt(count.intValue());
+        Logger.info("-o- public static void randomId()");
         return (randomId);
     }
 
-    public static User userByRandomId() {
+    protected static User userByRandomId() {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method userByRandomId()");
+        Logger.info("-i- public static void userByRandomId()");
         Long count;
         Random random = new Random();
         int randomId;
         count = Long.valueOf(User.count());
         randomId = random.nextInt(count.intValue());
         User user = User.find("byId", Long.parseLong(String.valueOf(randomId))).first();
+        Logger.info("-o- public static void userByRandomId()");
         return (user);
     }
 }

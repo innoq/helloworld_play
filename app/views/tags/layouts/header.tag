@@ -1,11 +1,11 @@
 <div id="header">
 
     <div id="logo">
-        #{a @Application.index()}<img src="@{'/public/images/logo.png'}" alt="HelloWorld"/>#{/a}
+        #{a @Home.dashboard()}<img src="@{'/public/images/logo.png'}" alt="HelloWorld"/>#{/a}
     </div>
 
     <div id="claim">
-        #{a @Home.dashboard()}<img src="@{'/public/images/claim.png'}" alt="The demo Community by innoQ"/>#{/a}
+        <img src="@{'/public/images/claim.png'}" alt="The demo Community by innoQ"/>
     </div>
 
     <div id="meta">

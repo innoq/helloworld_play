@@ -1,7 +1,7 @@
 # Test data
 
 Profile(p_david01):
-    about:              null
+    about:              n.n.
     company:            HP
     firstName:          David
     lastName:           Donatelli
@@ -9,11 +9,11 @@ Profile(p_david01):
     photoFileName:      data/photos/david-donatelli.jpg
     photoFileSize:      300992
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_rene01):
-    about:              null
+    about:              n.n.
     company:            Telekom
     firstName:          Rene
     lastName:           Obermann
@@ -21,11 +21,11 @@ Profile(p_rene01):
     photoFileName:      data/photos/rene-obermann.jpg
     photoFileSize:      391744
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_larry01):
-    about:              null
+    about:              n.n.
     company:            Oracle
     firstName:          Larry
     lastName:           Ellison
@@ -33,11 +33,11 @@ Profile(p_larry01):
     photoFileName:      data/photos/larry-ellison.jpg
     photoFileSize:      88480
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_samuel01):
-    about:              null
+    about:              n.n.
     company:            IBM
     firstName:          Samuel
     lastName:           Palmisano
@@ -45,11 +45,11 @@ Profile(p_samuel01):
     photoFileName:      data/photos/samuel-palmisano.jpg
     photoFileSize:      216272
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_mike01):
-    about:              null
+    about:              n.n.
     company:            AMD
     firstName:          Mike
     lastName:           Wolfe
@@ -57,11 +57,11 @@ Profile(p_mike01):
     photoFileName:      data/photos/mike-wolfe.jpg
     photoFileSize:      95112
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_leo01):
-    about:              null
+    about:              n.n.
     company:            HP
     firstName:          Leo
     lastName:           Apotheker
@@ -69,11 +69,11 @@ Profile(p_leo01):
     photoFileName:      data/photos/leo-apotheker.jpg
     photoFileSize:      129440
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_oliver01):
-    about:              null
+    about:              n.n.
     company:            SAP
     firstName:          Oliver
     lastName:           Bussmann
@@ -81,11 +81,11 @@ Profile(p_oliver01):
     photoFileName:      data/photos/oliver-bussmann.jpg
     photoFileSize:      10160
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_charles01):
-    about:              null
+    about:              n.n.
     company:            Infor
     firstName:          Charles
     lastName:           Phillips
@@ -93,11 +93,11 @@ Profile(p_charles01):
     photoFileName:      data/photos/charles-phillips.jpg
     photoFileSize:      11312
     profession:         Manager
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_james01):
-    about:              null
+    about:              n.n.
     company:            Infor
     firstName:          James
     lastName:           Gosling
@@ -105,20 +105,20 @@ Profile(p_james01):
     photoFileName:      data/photos/james-gosling.jpg
     photoFileSize:      11312
     profession:         Angestellter
-    businessAddress_id: null
-    privateAddress_id:  null
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 Profile(p_buelent01):
-    about:              null
-    company:            null
-    firstName:          null
-    lastName:           null
-    photoContentType:   null
-    photoFileName:      null
-    photoFileSize:      null
-    profession:         null
-    businessAddress_id: null
-    privateAddress_id:  null
+    about:              n.n.
+    company:            BTC
+    firstName:          Bülent
+    lastName:           Uzuner
+    photoContentType:   n.n.
+    photoFileName:      n.n.
+    photoFileSize:      -1
+    profession:         Manager
+    businessAddress_id: n.n.
+    privateAddress_id:  n.n.
 
 
 User(david01):
@@ -184,7 +184,7 @@ Status(larry01):
     profile:        p_larry01
 
 Status(samuel01):
-    message:        Der Konzern verpflichtet seine Mitarbeiter zu hohen ethiscen Standards. Die eingeleiteten Maßnahmen sollen Korruptionsvorfälle für die Zukunft ausschließen.
+    message:        Der Konzern verpflichtet seine Mitarbeiter zu hohen ethischen Standards. Die eingeleiteten Maßnahmen sollen Korruptionsvorfälle für die Zukunft ausschließen.
     profile:        p_samuel01
 
 Status(mike01):
@@ -256,6 +256,14 @@ ProfileAttribute(mike01):
     profile:        p_mike01
 
 ProfileAttribute(leo01):
+    companyEmail:   n.n.
+    privateEmail:   n.n.
+    companyPhone:   n.n.
+    mobilePhone:    n.n.
+    privatePhone:   n.n.
+    profile:        p_leo01
+
+ProfileAttribute(leo02):
     companyEmail:   n.n.
     privateEmail:   n.n.
     companyPhone:   n.n.

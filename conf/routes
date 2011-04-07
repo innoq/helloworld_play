@@ -38,3 +38,6 @@ GET     /public/                        staticDir:public
 
 #
 *       /admin                          module:crud
+
+# Import Secure routes
+*       /                               module:secure

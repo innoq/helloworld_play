@@ -4,7 +4,9 @@ import java.util.Collections;
 import java.util.List;
 import models.Profile;
 import models.Status;
+import models.User;
 import play.Logger;
+import play.mvc.Scope.Session;
 
 /**
  *
@@ -48,12 +50,14 @@ public class Statuses extends Application {
         }
 
         sublist = statuses.subList(start, end);
-        render("statuses/form.html", sublist, size);
+        User user = User.findById(Long.parseLong(Session.current().get("user")));
+        render("statuses/form.html", sublist, size, user);
     }
 
     public static void save(String message) {
         Logger.info("Method save()");
-        Profile profile = currentUser().profile;
+        Profile profile = null;
+        //currentUser().profile;
         Status status = new Status(message, profile);
         validation.valid(status);
         if (validation.hasErrors()) {

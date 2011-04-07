@@ -1,6 +1,8 @@
 package controllers;
 
-import play.mvc.Controller;
+import models.User;
+import play.Logger;
+import play.mvc.Scope.Session;
 
 /**
  *
@@ -9,13 +11,13 @@ import play.mvc.Controller;
 
 public class Contacts extends Application {
 
-    private static boolean contacts;
-
     public static void index() {
-        contacts = true;
+        Logger.info("-i- public static void index()");
+        boolean contacts = true;
         renderArgs.put("contacts", contacts);
-        System.out.println("contacts " + contacts);
-        render("contacts/index.html");
+        User user = User.findById(Long.parseLong(Session.current().get("user")));
+        Logger.info("-o- public static void index()");
+        render("contacts/index.html", user);
     }
 
 }

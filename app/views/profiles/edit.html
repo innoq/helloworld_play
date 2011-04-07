@@ -5,112 +5,189 @@
 
 <div id="col-one">
 
-  <div class="profile-image">
-    *{<%= image_tag @profile.photo.url(), :alt => @profile.full_name %>}*
-    <img src="/public/${user.profile.getPhotoFileName()}" alt="${user.profile.getFullName()}"/>
-  </div>
-  <!-- /profile-image -->
+    <div class="profile-image">
+        *{<%= image_tag @profile.photo.url(), :alt => @profile.full_name %>}*
+        <img src="/public/${user.profile.getPhotoFileName()}" alt="${user.profile.getFullName()}"/>
+    </div>
+    <!-- /profile-image -->
 
-  <div class="profile-actions">
+    <div class="profile-actions">
 
-  </div>
-  <!-- /profile-actions -->
+    </div>
+    <!-- /profile-actions -->
 
-  <h2>User's profile updates (<%= @profile.statuses.count %>)</h2>
-
-  <div class="profile-stream">
-      #{status /}
-    <!--%= render :partial => 'status', :collection => @profile.statuses %-->
-  </div>
-  <!-- /profile-stream -->
+    <!--h2>User's profile updates (<%= @profile.statuses.count %>)</h2-->
+    <h2>User's profile updates (${count})</h2>
+    *{#{status /}}*
+    #{list items:statuses, as:'status'}
+    <div class="profile-stream">
+        <div class="profile-stream-item">
+            ${status.message}
+            <!--%= render :partial => 'status', :collection => @profile.statuses %-->
+        </div>
+    </div>
+    #{/list}
+    <!-- /profile-stream -->
 
 </div>
 <!-- /col-one -->
 
 <div id="col-two-large">
-  <div class="profile-center">
+    <div class="profile-center">
 
-    <h3>Edit your profile information here:</h3>
-    <br />
+        <h3>Edit your profile information here:</h3>
+        <br />
 
-<%= form_for @profile, :builder => Helloworld::FormBuilder do |f| %>
-    #{errors /}
-  <!--%= render :partial => "/errors", :object => @profile.errors %-->
-  <div class="default-form">
-  <ul>
+        #{form @Profiles.edit()}
+        #{authenticityToken /}
+        <div class="default-form">
+            <ul>
+                <label for="firstName">First name</label>
+                <input type="text" name="firstName" id="firstName" value="${flash.firstName}" />
+                <span class="">#{error 'firstName' /}</span>
 
-    *{<%= f.block :first_name do %>
-      <label>First Name</label>
-      <%= f.text_field :first_name %>
-    <%- end -%>
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" id="lastName" value="${flash.lastName}" />
+                <span class="Error">#{error 'lastName' /}</span>
 
-    <%= f.block :last_name do %>
-      <label>Last Name</label>
-      <%= f.text_field :last_name %>
-    <%- end -%>
+                <label for="lastName">Profession</label>
+                <input type="text" name="profession" id="profession" value="${flash.profession}" />
+                <span class="Error">#{error 'profession' /}</span>
 
-    <%= f.block :profession do %><label>Profession</label>
-      <%= f.text_field :profession %>
-    <%- end -%>
+                <label for="company">Company</label>
+                <input type="text" name="company" id="company" value="${flash.company}" />
+                <span class="Error">#{error 'company' /}</span>
 
-    <%= f.block :company do %><label>Company</label>
-      <%= f.text_field :company %>
-    <%- end -%>
+                <label for="about">About me</label>
+                <textarea name="about" id="about" cols="35" rows="3" >${flash.about}</textarea>
+                <span class="Error">#{error 'about' /}</span>
 
-    <%= f.block :about do %><label>About me</label>
-      <%= f.text_area :about %>
-    <%- end -%>
+                <fieldset>
+                    <legend>Contact data</legend>
+                    <ul>
+                        <label>COMPANY EMAIL:</label>
+                        #{if flash.companyEmail=="n.n."}
+                         <input type="text" name="companyEmail" id="companyEmail" />
+                        #{/if}
+                        #{else}
+                         ${flash.companyEmail}<input type="checkbox" name="companyEmail" /> Delete?<br /><br />
+                        #{/else}
+                        <label>PRIVATE EMAIL:</label>
+                        #{if flash.privateEmail=="n.n."}
+                         <input type="text" name="privateEmail" id="privateEmail" />
+                        #{/if}
+                        #{else}
+                         ${flash.privateEmail}<input type="checkbox" name="privateEmail" /> Delete?<br /><br />
+                        #{/else}
+                        <label>COMPANY PHONE:</label>
+                        #{if flash.companyPhone=="n.n."}
+                         <input type="text" name="companyPhone" id="companyPhone" />
+                        #{/if}
+                        #{else}
+                         ${flash.companyPhone}<input type="checkbox" name="companyPhone" /> Delete?<br /><br />
+                        #{/else}
+                        <label>MOBILE PHONE:</label>
+                        #{if flash.mobilePhone=="n.n."}
+                         <input type="text" name="mobilePhone" id="mobilePhone" value="" />
+                        #{/if}
+                        #{else}
+                         ${flash.mobilePhone}<input type="checkbox" name="mobilePhone" /> Delete?<br /><br />
+                        #{/else}
+                        <label>PRIVATE PHONE:</label>
+                        #{if flash.privatePhone=="n.n."}
+                         <input type="text" name="privatePhone" id="privatePhone" value="" />
+                        #{/if}
+                        #{else}
+                         ${flash.privatePhone}<input type="checkbox" name="privatePhone" /> Delete?<br /><br />
+                        #{/else}
+                    </ul>
+                </fieldset>
 
-    <%= f.block :profile_attributes do %>
-      <fieldset>
-        <legend>Contact data</legend>
+                <li class="submit-blue">
+                    <input class="button-blue" value="Save" name="submit" id="submit" type="submit" />
+                </li>
+            </ul>
+        </div>
+        #{/form}
 
-        <ul>
-          <%= f.fields_for :profile_attributes do |profile_attribute| %>
-            <%= profile_attribute.hidden_field :id %>
-            <%= profile_attribute.hidden_field :attr_type %>
-            <%= profile_attribute.block :value do %>
-              <label><%= profile_attribute.object.attr_type.humanize %>:</label>
-              <%- if profile_attribute.object.new_record? -%>
-                <%= profile_attribute.text_field :value %>
-              <%- else -%>
-                <%= profile_attribute.object.value %> <%= profile_attribute.check_box :_destroy %> Delete? <br /><br />
-              <%- end -%>
-            <%- end -%>
-          <%- end -%>
-        </ul>
+        *{<%= form_for @profile, :builder => Helloworld::FormBuilder do |f| %>
+        #{errors /}
+        <!--%= render :partial => "/errors", :object => @profile.errors %-->
+        <div class="default-form">
+            <ul>
 
-      </fieldset>
-    <%- end -%>
+                <%= f.block :first_name do %>
+                <label>First Name</label>
+                <%= f.text_field :first_name %>
+                <%- end -%>
 
-    <%= f.block :business_address do %>
-      <fieldset>
-        <legend>Business address</legend>
-        <%= f.fields_for :business_address do |ba| %>
-          <%= render "edit_address", :address_form => ba %>
-        <%- end -%>
-      </fieldset>
-    <%- end -%>
+                <%= f.block :last_name do %>
+                <label>Last Name</label>
+                <%= f.text_field :last_name %>
+                <%- end -%>
 
-    <%= f.block :private_address do %>
-      <fieldset>
-        <legend>Private address</legend>
-        <%= f.fields_for :private_address do |pa| %>
-          <%= render "edit_address", :address_form => pa %>
-        <%- end -%>
-      </fieldset>
-    <%- end -%>
+                <%= f.block :profession do %><label>Profession</label>
+                <%= f.text_field :profession %>
+                <%- end -%>
 
-    <li class="submit-blue">
-      <%= f.submit %>
-    </li>}*
+                <%= f.block :company do %><label>Company</label>
+                <%= f.text_field :company %>
+                <%- end -%>
 
-  </ul>
-  </div>
+                <%= f.block :about do %><label>About me</label>
+                <%= f.text_area :about %>
+                <%- end -%>
 
-<%- end -%>
+                <%= f.block :profile_attributes do %>
+                <fieldset>
+                    <legend>Contact data</legend>
 
-  </div>
+                    <ul>
+                        <%= f.fields_for :profile_attributes do |profile_attribute| %>
+                        <%= profile_attribute.hidden_field :id %>
+                        <%= profile_attribute.hidden_field :attr_type %>
+                        <%= profile_attribute.block :value do %>
+                        <label><%= profile_attribute.object.attr_type.humanize %>:</label>
+                        <%- if profile_attribute.object.new_record? -%>
+                        <%= profile_attribute.text_field :value %>
+                        <%- else -%>
+                        <%= profile_attribute.object.value %> <%= profile_attribute.check_box :_destroy %> Delete? <br /><br />
+                        <%- end -%>
+                        <%- end -%>
+                        <%- end -%>
+                    </ul>
+
+                </fieldset>
+                <%- end -%>
+
+                <%= f.block :business_address do %>
+                <fieldset>
+                    <legend>Business address</legend>
+                    <%= f.fields_for :business_address do |ba| %>
+                    <%= render "edit_address", :address_form => ba %>
+                    <%- end -%>
+                </fieldset>
+                <%- end -%>
+
+                <%= f.block :private_address do %>
+                <fieldset>
+                    <legend>Private address</legend>
+                    <%= f.fields_for :private_address do |pa| %>
+                    <%= render "edit_address", :address_form => pa %>
+                    <%- end -%>
+                </fieldset>
+                <%- end -%>
+
+                <li class="submit-blue">
+                    <%= f.submit %>
+                </li>
+
+            </ul>
+        </div>
+
+        <%- end -%>}*
+
+    </div>
 </div>
 
 

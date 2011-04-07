@@ -63,16 +63,18 @@ public class Profile extends Model {
     //
     public String profession = null;
     public String company = null;
-    public StringBuffer about = null;
+    public String about = null;
     public Date createdAt = null;
     public Date updatedAt = null;
     public String firstName = "";
     public String lastName = "";
+    public String fullName = "";
     public String photoFileName = null;
     public String photoContentType = null;
-    public int photoFileSize = 0;
+    public int photoFileSize = -1;
 
     public Profile() {
+        fullName = firstName.trim() + lastName.trim();
     }
 
     public String getFullName() {
@@ -80,6 +82,7 @@ public class Profile extends Model {
             firstName = "n.n.";
             return firstName;
         }
+
         return firstName.trim() + " " + lastName.trim();
     }
 

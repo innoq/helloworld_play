@@ -1,12 +1,9 @@
 package controllers;
 
-import java.util.List;
-import models.Message;
-import models.Post;
+import models.Profile;
 import models.User;
 import play.Logger;
 import play.cache.Cache;
-import play.libs.Codec;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Scope.Session;
@@ -17,85 +14,32 @@ import play.mvc.Scope.Session;
  */
 public class Application extends Controller {
 
+    public static void index() {
+        redirect("auth/login");
+    }
+
     @Before(unless = {"Auth.login", "Auth.authenticate", "Auth.signup",
-                        "Auth.register", "Auth.registerUser" })
+        "Auth.register", "Auth.registerUser"})
     protected static void checkLogin() {
-        if (currentUser() == null) {
-            Auth.login();
-        } else
-        {
-            renderArgs.put("user", currentUser());
+        Logger.info("-i- protected static void checkLogin()");
+        boolean currentUser = Boolean.valueOf(Session.current().get("currentUser"));
+        if (!currentUser) {
+            Logger.info("-o- protected static void checkLogin()");
+            redirect("Auth.login", currentUser);
         }
     }
 
-    protected static User currentUser() {
+    protected static void currentUser() {
+        Logger.info("-i- protected static void currentUser()");
         User user = null;
+        boolean currentUser = false;
         String userString = Session.current().get("user");
-        if (userString == null) {
-        } else {
+        if (userString != null) {
             user = User.findById(Long.parseLong(userString));
         }
-        return user;
+        currentUser = (user == null) ? false : true;
+        Session.current().put("currentUser", currentUser);
+        Logger.info("-v- currentUser: " + currentUser);
+        Logger.info("-o- protected static void currentUser()");
     }
-
-    public static void index() {
-        //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Class: %s, Method: index()", Application.class.getName());
-
-        boolean currentUser = false;
-        Post frontPost = Post.find("order by postedAt desc").first();
-        List<Post> olderPosts = Post.find("order by postedAt desc").from(1).fetch(10);
-        render(frontPost, olderPosts, currentUser);
-    }
-
-    public static void show(Long id) {
-        //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Class: %s, Method: show()", Application.class.getName());
-
-        Post post = Post.findById(id);
-        String randomID = Codec.UUID();
-        render(post, randomID);
-    }
-
-    public static void messages() {
-        //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Class: %s, Method: messages()", Application.class.getName());
-
-        List messages = Cache.get(session.getId() + "messages", List.class);
-        if (messages == null) {
-            //messages = Message.findById(session.get("user"));
-            // Ooops
-            //.findByUser(session.get("user"));
-
-            //Session Management
-            //Setzt die Gültigkeit für den Cache auf 30 Minuten
-            Cache.set(session.getId() + "-messages" + messages, "30mn");
-        }
-        render(messages);
-    }
-
-    public static void messages(int page) {
-        //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Class: %s, Method: messages()", Application.class.getName());
-
-        User user = User.find("byEmail", new Object()).first();
-        List<Message> messages = Message.find("user = ? and read = false order by date desc", user).from(page * 10).fetch(10);
-        render(user, messages);
-    }
-
-    public static void linkTo() {
-
-        render();
-    }
-
-    public static void imageTag() {
-        render();
-    }
-
-    /*public static void hasSessionUser() {
-    setCurrentUser(Scope.Session.current().contains(getUser().toString()) ? true : false);
-    }*/
-    /**
-     * @return the user
-     */
 }

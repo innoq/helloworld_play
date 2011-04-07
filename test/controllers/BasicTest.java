@@ -18,6 +18,7 @@ public abstract class BasicTest extends UnitTest {
     protected long count;
     protected Long value;
     protected Integer id;
+    protected boolean currentUser;
 
     @Before
     public final void setUp() {

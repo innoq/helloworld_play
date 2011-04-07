@@ -29,7 +29,8 @@
     <div class="profile-stream">
         <div class="profile-stream-item">
             <span class="profile-stream-item-date">
-                *{<%= l(status.created_at, :format => :short) %>}*</span>
+                *{<%= l(status.created_at, :format => :short) %>}*
+            </span>
             *{<%= status.message %>}*
             #{list items:statuses, as:'status'}
             ${status.message}

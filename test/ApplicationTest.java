@@ -1,4 +1,5 @@
 
+import controllers.AuthTest;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,6 +15,8 @@ public class ApplicationTest extends FunctionalTest {
     public void testThatIndexPageWorks() {
         Response response = GET("/");
         assertNotNull(response);
+        //assertEquals(response.contentType, "text/html; charset=utf-8");
+        //int status = 404;
         int status = 302;
         assertStatus(status, response);
         //Map<String, Header>
@@ -350,6 +353,11 @@ public class ApplicationTest extends FunctionalTest {
         cookie = cookieIterator.next();
         assertEquals("PLAY_SESSION", cookie.name);
         assertNotNull(cookie.value);
+    }
+
+    @Test
+    public void testAuthRegister() {
+        new AuthTest().testRegister();
     }
 
     /*@Test

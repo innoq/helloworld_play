@@ -27,18 +27,33 @@ public class Profiles extends Application {
     }
 
     public static void edit() {
-        Logger.info("method edit");
+        Logger.info("-i- public static void edit()");
         User user = User.findById(Long.parseLong(Session.current().get("user")));
-        Logger.info("user: " + user);
         Profile profile = Profile.findById(user.id);
-        Logger.info("profile: " + profile);
-        ProfileAttribute profileAttribute = null;
-        Logger.info("profileAttribute: " + user.profile.profileAttribute);
-        render("profiles/edit.html");
+        flash.put("firstName", profile.firstName);
+        flash.put("lastName", profile.lastName);
+        flash.put("profession", profile.profession);
+        flash.put("company", profile.company);
+        flash.put("about", profile.about);
+        Status status = Status.find("byProfile", profile).first();
+        long count = status.count("byProfile",profile);
+        renderArgs.put("count",count);
+        List<Status> statuses =  Status.find("byProfile", profile).fetch();
+        Logger.info("size :" + statuses.size());
+        Collections.reverse(statuses);
+        renderArgs.put("statuses",statuses);
+        ProfileAttribute profileAttribute = ProfileAttribute.find("byProfile", profile).first();
+        flash.put("companyEmail", profileAttribute.companyEmail);
+        flash.put("privateEmail", profileAttribute.privateEmail);
+        flash.put("companyPhone", profileAttribute.companyPhone);
+        flash.put("mobilePhone", profileAttribute.mobilePhone);
+        flash.put("privatePhone", profileAttribute.privatePhone);
+        Logger.info("-o- public static void edit()");
+        render("profiles/edit.html", user, user.profile);
     }
 
     public static void privat(long id) {
-        Logger.info("method privat");
+        Logger.info("-i- public static void privat(long id)");
         Logger.info("id: " + id);
         User user = User.findById(id);
         Logger.info("user: " + user);
@@ -67,6 +82,7 @@ public class Profiles extends Application {
         renderArgs.put("mobilePhone", profileAttribute.mobilePhone);
         renderArgs.put("privateEmail", profileAttribute.privateEmail);
         renderArgs.put("privatePhone", profileAttribute.privatePhone);
+        Logger.info("-o- public static void privat(long id)");
         render("profiles/privat.html", user);
     }
 

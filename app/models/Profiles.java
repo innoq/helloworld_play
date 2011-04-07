@@ -15,7 +15,7 @@ public class Profiles extends Model {
 
     public String profession = null;
     public String company = null;
-    public StringBuffer about = null;
+    public String about = null;
     public int userId = -1;
     public int privateAddressId = -1;
     public int businessAddressId = -1;
