@@ -7,6 +7,8 @@ import play.Logger;
 import play.cache.Cache;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
+import play.data.validation.Valid;
+import play.libs.Crypto;
 import play.mvc.Scope.Session;
 
 /**
@@ -39,7 +41,6 @@ public class Auth extends Application {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
         Logger.info("-i- public static void authenticate()");
         //checkAuthenticity();
-
         if (validation.hasErrors()) {
             for (play.data.validation.Error error : validation.errors()) {
                 params.flash();
@@ -47,6 +48,7 @@ public class Auth extends Application {
             }
             login();
         } else {
+            //User user = User.find("byLoginAndPassword", login, Crypto.passwordHash(password)).first();
             User user = User.find("byLoginAndPassword", login, password).first();
             if (user == null) {
                 validation.addError(
@@ -64,7 +66,7 @@ public class Auth extends Application {
                 Session.current().put("user.profile.id", user.profile.id);
                 Session.current().put("edit", true);
                 currentUser();
-                
+
                 //render("home/dashboard.html", login, password, user);
                 Logger.info("-o- public static void authenticate()");
                 Logger.info("-v- " + user.profile.getFullName());
@@ -91,6 +93,7 @@ public class Auth extends Application {
             @Required(message = "required") @MinSize(5) String password) {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
         Logger.info("-i- public static void register()");
+        //String crypted = Crypto.passwordHash(password);
         //boolean currentUser = false;
         checkAuthenticity();
         if (validation.hasErrors()) {
@@ -102,6 +105,7 @@ public class Auth extends Application {
         } else {
             User user = User.find("byLogin", login).first();
             if (user == null) {
+                //user = new User(login, crypted);
                 user = new User(login, password);
                 user.profile = new Profile();
                 user.profile.save();

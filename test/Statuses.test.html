@@ -2,7 +2,7 @@
 
 #{selenium 'Statuses/form'}
 
-    // Open the login page, and login
+    // Open the login page, and login david01
     clearSession()
     open('/auth/login')
     type('login', 'david01')
@@ -21,5 +21,26 @@
     clickAndWait(link=Logout)
     verifyTextPresent('Good bye.')
     verifyTextPresent('You have been logged out.')
+
+    // Open the login page, and login for buelent01
+    clearSession()
+    open('/')
+    type('login', 'buelent01')
+    type('password', 'uludag')
+    clickAndWait('submit')
+    waitForPageToLoad(10000)
+    verifyTextPresent('Welcome, buelent01')
+
+    // Open the contacts page, and verfiy photo
+    #open('/statuses')
+    clickAndWait(link=World status feed)
+    verifyText('//div/div/div/a/img', '<img src="/public/images/data/user.png" class="stream-image" alt="Bülent Uzuner">')
+
+    // Open the logout page
+    #open('/auth/logout')
+    clickAndWait(link=Logout)
+    verifyTextPresent('Good bye.')
+    verifyTextPresent('You have been logged out.')
+
 
 #{/selenium}

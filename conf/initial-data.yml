@@ -1,7 +1,17 @@
 # Test data
 
+Address(a_buelent01):
+    street:             Oldenburger Straße 10
+    zip:                29000
+    city:               Oldenburg
+
+Address(a_buelent02):
+    street:             Private Straße 102
+    zip:                29000
+    city:               Oldenburg
+
 Profile(p_david01):
-    about:              n.n.
+    about:              null
     company:            HP
     firstName:          David
     lastName:           Donatelli
@@ -9,11 +19,11 @@ Profile(p_david01):
     photoFileName:      data/photos/david-donatelli.jpg
     photoFileSize:      300992
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_rene01):
-    about:              n.n.
+    about:              null
     company:            Telekom
     firstName:          Rene
     lastName:           Obermann
@@ -21,11 +31,11 @@ Profile(p_rene01):
     photoFileName:      data/photos/rene-obermann.jpg
     photoFileSize:      391744
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_larry01):
-    about:              n.n.
+    about:              null
     company:            Oracle
     firstName:          Larry
     lastName:           Ellison
@@ -33,11 +43,11 @@ Profile(p_larry01):
     photoFileName:      data/photos/larry-ellison.jpg
     photoFileSize:      88480
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_samuel01):
-    about:              n.n.
+    about:              null
     company:            IBM
     firstName:          Samuel
     lastName:           Palmisano
@@ -45,11 +55,11 @@ Profile(p_samuel01):
     photoFileName:      data/photos/samuel-palmisano.jpg
     photoFileSize:      216272
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_mike01):
-    about:              n.n.
+    about:              null
     company:            AMD
     firstName:          Mike
     lastName:           Wolfe
@@ -57,11 +67,11 @@ Profile(p_mike01):
     photoFileName:      data/photos/mike-wolfe.jpg
     photoFileSize:      95112
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_leo01):
-    about:              n.n.
+    about:              null
     company:            HP
     firstName:          Leo
     lastName:           Apotheker
@@ -69,11 +79,11 @@ Profile(p_leo01):
     photoFileName:      data/photos/leo-apotheker.jpg
     photoFileSize:      129440
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_oliver01):
-    about:              n.n.
+    about:              null
     company:            SAP
     firstName:          Oliver
     lastName:           Bussmann
@@ -81,11 +91,11 @@ Profile(p_oliver01):
     photoFileName:      data/photos/oliver-bussmann.jpg
     photoFileSize:      10160
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_charles01):
-    about:              n.n.
+    about:              null
     company:            Infor
     firstName:          Charles
     lastName:           Phillips
@@ -93,11 +103,11 @@ Profile(p_charles01):
     photoFileName:      data/photos/charles-phillips.jpg
     photoFileSize:      11312
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_james01):
-    about:              n.n.
+    about:              null
     company:            Infor
     firstName:          James
     lastName:           Gosling
@@ -105,21 +115,32 @@ Profile(p_james01):
     photoFileName:      data/photos/james-gosling.jpg
     photoFileSize:      11312
     profession:         Angestellter
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_buelent01):
-    about:              n.n.
+    about:              'Heute ist er Vorstandsvorsitzender der BTC AG – einer international tätigen IT-Beratungsfirma mit Sitz in Oldenburg – und Chef von über 1.500 Mitarbeitern. Auch politisch und gesellschaftlich mischt Bülent Uzuner in der neuen Heimat Deutschland kräftig mit. Ob bei seinem freiwilligen Engagement in Bildungsprojekten oder in seiner Funktion als Wahlmann für die Wahl zum Bundespräsidenten: Bülent Uzuner bringt sich in die deutsche Gesellschaft ein, vergisst dabei aber seine türkischen Wurzeln nicht.'
     company:            BTC
     firstName:          Bülent
     lastName:           Uzuner
-    photoContentType:   n.n.
-    photoFileName:      n.n.
+    photoContentType:   null
+    photoFileName:      null
     photoFileSize:      -1
     profession:         Manager
-    businessAddress_id: n.n.
-    privateAddress_id:  n.n.
+    businessAddress:    a_buelent01
+    privateAddress:     a_buelent02
 
+Profile(p_volker01):
+    about:              null
+    company:            HP
+    firstName:          Volker
+    lastName:           Schmid
+    photoContentType:   image/jpeg
+    photoFileName:      data/photos/volker-smid.jpg
+    photoFileSize:      25704
+    profession:         Manager
+    businessAddress_id: null
+    privateAddress_id:  null
 
 User(david01):
     login:          david01
@@ -166,10 +187,20 @@ User(james01):
     password:       goooogleee
     profile:        p_james01
 
+User(james01):
+    login:          james01
+    password:       goooogleee
+    profile:        p_james01
+    
 User(buelent01):
     login:          buelent01
     password:       uludag
     profile:        p_buelent01
+
+User(volker01):
+    login:          volker01
+    password:       hoitj657
+    profile:        p_volker01
 
 Status(david01):
     message:        Wir sind schockiert, dass Oracle Unternehmen und Behörden einem Risiko aussetzt, das sie Hunderte Millionen Dollar an Produktivität kostet.
@@ -215,90 +246,103 @@ Status(buelent01):
     message:        Für Deutschland sehe ich keine Notwendigkeit, Fachkräfte aus dem Ausland zu holen. Ich bin davon überzeugt, dass wir hier genügend deutsche und ausländische Absolventen an den Hochschulen haben.
     profile:        p_buelent01
 
+Status(volker01):
+    message:        Das Timing ist immer eine schwierige Frage. Man muss den richtigen Zeitpunkt abwarten.
+    profile:        p_volker01
+
 ProfileAttribute(david01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_david01
 
 ProfileAttribute(david02):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_david01
 
 ProfileAttribute(larry01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_larry01
 
 ProfileAttribute(samuel01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_samuel01
 
 ProfileAttribute(mike01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_mike01
 
 ProfileAttribute(leo01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_leo01
 
 ProfileAttribute(leo02):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_leo01
 
 ProfileAttribute(oliver01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_oliver01
 
 ProfileAttribute(charles01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_charles01
 
 ProfileAttribute(james01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_james01
 
 ProfileAttribute(buelent01):
-    companyEmail:   n.n.
-    privateEmail:   n.n.
-    companyPhone:   n.n.
-    mobilePhone:    n.n.
-    privatePhone:   n.n.
+    companyEmail:   buelent@btc-gmbh.de
+    privateEmail:   buelent.uzuner@gmx.de
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
     profile:        p_buelent01
+
+ProfileAttribute(volker01):
+    companyEmail:   null
+    privateEmail:   null
+    companyPhone:   null
+    mobilePhone:    null
+    privatePhone:   null
+    profile:        p_volker01
+    

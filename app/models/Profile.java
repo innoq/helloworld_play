@@ -1,7 +1,6 @@
 package models;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -23,6 +22,7 @@ public class Profile extends Model {
 
     @OneToOne
     public User user = null;
+
     @Required
     @OneToOne
     @Embedded
@@ -62,11 +62,16 @@ public class Profile extends Model {
     public Set<Status> statuses = null;
     //
     public String profession = null;
-    public String company = null;
+    @Column(nullable = false)
+    public String company = "";
+    @Column(length = 512)
     public String about = null;
+    @Column(updatable = false)
     public Date createdAt = null;
+    @Column(updatable = true)
     public Date updatedAt = null;
     public String firstName = "";
+    @Column(nullable = false)
     public String lastName = "";
     public String fullName = "";
     public String photoFileName = null;
@@ -74,11 +79,12 @@ public class Profile extends Model {
     public int photoFileSize = -1;
 
     public Profile() {
-        fullName = firstName.trim() + lastName.trim();
+        //fullName = firstName.trim() + lastName.trim();
+        //photoFileName = "images/user.png";
     }
 
     public String getFullName() {
-        if(firstName == null){
+        if (firstName == null) {
             firstName = "n.n.";
             return firstName;
         }

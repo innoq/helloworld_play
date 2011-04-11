@@ -78,7 +78,7 @@ public class ProfilesTest extends BasicTest {
         Status status = Status.find("byProfile", profile).first();
         assertNotNull(status);
         assertEquals(status.id, new Long(11));
-        assertEquals(status.count("byProfile",profile),Long.parseLong("1"));
+        assertEquals(status.count("byProfile", profile), Long.parseLong("1"));
 
         login = "leo01";
         password = "nmxsczvm3";
@@ -97,7 +97,7 @@ public class ProfilesTest extends BasicTest {
         status = Status.find("byProfile", profile).first();
         assertNotNull(status);
         assertEquals(status.id, new Long(6));
-        assertEquals(status.count("byProfile",profile),Long.parseLong("2"));
+        assertEquals(status.count("byProfile", profile), Long.parseLong("2"));
 
         login = "leo01";
         password = "nmxsczvm3";
@@ -116,7 +116,7 @@ public class ProfilesTest extends BasicTest {
         profileAttribute = profileAttribute.findById(profile.id);
         assertNotNull(profileAttribute);
         assertEquals(profileAttribute.id, new Long(6));
-        assertEquals(profileAttribute.count("byProfile",profile),Long.parseLong("2"));
+        assertEquals(profileAttribute.count("byProfile", profile), Long.parseLong("2"));
 
         login = "buelent01";
         password = "uludag";
@@ -135,7 +135,33 @@ public class ProfilesTest extends BasicTest {
         profileAttribute = profileAttribute.findById(profile.id);
         assertNotNull(profileAttribute);
         assertEquals(profileAttribute.id, new Long(10));
-        assertEquals(profileAttribute.count("byProfile",profile),Long.parseLong("1"));
+        assertEquals(profileAttribute.count("byProfile", profile), Long.parseLong("1"));
+
+    }
+
+    /**
+     * Test of edit method, of class Profiles.
+     */
+    @Test
+    public void testUpdate() {
+        System.out.println("edit");
+        setUpChild();
+        login = "buelent01";
+        password = "uludag";
+        assertEquals(login, "buelent01");
+        assertEquals(password, "uludag");
+        user = User.find("byLoginAndPassword", login, password).first();
+        assertNotNull(user);
+        session.current().put("user", user.id);
+        assertEquals(Session.current().get("user"), "10");
+        User user02 = User.findById(Long.parseLong(Session.current().get("user")));
+        assertNotNull(user02);
+        assertEquals(user02.login, "buelent01");
+        Profile profile = Profile.findById(user02.id);
+        assertNotNull(profile.id);
+        assertEquals(profile.id, new Long(10));
+        profile.about = "Heute ist er Vorstandsvorsitzender der BTC AG – einer international tätigen IT-Beratungsfirma mit Sitz in Oldenburg – und Chef von über 1.500 Mitarbeitern. Auch politisch und gesellschaftlich mischt Bülent Uzuner in der neuen Heimat Deutschland kräftig mit. Ob bei seinem freiwilligen Engagement in Bildungsprojekten oder in seiner Funktion als Wahlmann für die Wahl zum Bundespräsidenten: Bülent Uzuner bringt sich in die deutsche Gesellschaft ein, vergisst dabei aber seine türkischen Wurzeln nicht.";
+        profile.save();
 
     }
 

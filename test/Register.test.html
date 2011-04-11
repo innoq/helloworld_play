@@ -1,0 +1,14 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium 'Register'}
+
+    // Open the logout page
+    clearSession()
+    open('/auth/signup')
+    waitForPageToLoad(50000)
+    type('login', 'james01')
+    type('password', 'goooogleee')
+    clickAndWait('submit')
+    verifyTextPresent('login/password exists already, choose different one')
+    
+#{/selenium}

@@ -1,5 +1,6 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -16,6 +17,7 @@ import play.db.jpa.Model;
 public class User extends Model {
 
     @Required(message="required")
+    @Column(unique=true)
     public String login;
 
     @Required(message="required")

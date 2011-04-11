@@ -360,6 +360,8 @@ public class ApplicationTest extends FunctionalTest {
         new AuthTest().testRegister();
     }
 
+
+
     /*@Test
     public void testThatLogoutPageWorks() {
         Response response = GET("/auth/login");

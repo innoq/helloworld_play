@@ -24,7 +24,7 @@ verifyTextPresent('You have been logged out.')
 
 #{/selenium}
 
-#{selenium 'Profiles/private (without)'}
+#{selenium 'Profiles/private (erich01)'}
 
 // Open the login page, and login
 clearSession()
@@ -47,7 +47,7 @@ verifyTextPresent('You have been logged out.')
 
 #{/selenium}
 
-#{selenium 'Profiles/edit (without)'}
+#{selenium 'Profiles/edit (buelent01)'}
 
 // Open the login page, and login
 clearSession()
@@ -65,6 +65,26 @@ verifyTextPresent('Edit profile')
 // Open the profile edit page, and verify photo
 clickAndWait(link=Edit profile)
 verifyTextPresent('Für Deutschland sehe ich keine Notwendigkeit,')
+
+verifyElementPresent(identifier=firstName)
+verifyElementPresent(identifier=lastName)
+verifyElementPresent(identifier=profession)
+verifyElementPresent(identifier=company)
+verifyElementPresent(identifier=about)
+
+verifyElementPresent(identifier=bCompanyEmail)
+verifyElementPresent(identifier=bPrivateEmail)
+verifyElementPresent(identifier=companyPhone)
+verifyElementPresent(identifier=mobilePhone)
+verifyElementPresent(identifier=privatePhone)
+
+verifyElementPresent(identifier=businessStreet)
+verifyElementPresent(identifier=businessZip)
+verifyElementPresent(identifier=businessCity)
+
+verifyElementPresent(identifier=privateStreet)
+verifyElementPresent(identifier=privateZip)
+verifyElementPresent(identifier=privateCity)
 
 // Open the logout page
 clickAndWait(link=Logout)

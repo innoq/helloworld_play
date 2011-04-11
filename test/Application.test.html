@@ -13,11 +13,11 @@
     // Open the login page, and login
     clearSession()
     open('/auth/login')
-    type('login', 'david01')
-    type('password', 'hgiue')
+    type('login', 'ulrich01')
+    type('password', 'rgre455lkg')
     clickAndWait('submit')
     waitForPageToLoad(10000)
-    verifyTextPresent('Welcome, david01')
+    verifyTextPresent('correct login/password required for')
 
 #{/selenium}
 

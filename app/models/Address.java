@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import play.db.jpa.Model;
 
@@ -11,12 +12,13 @@ import play.db.jpa.Model;
  */
 @Entity
 @Embeddable
-@Table(name="T_ADDRESS")
+@Table(name = "T_ADDRESS")
 public class Address extends Model {
 
     public String street;
     public String city;
     public String zip;
     public String country;
-
+    @OneToOne
+    public Profile profile;
 }

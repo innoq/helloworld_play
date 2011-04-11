@@ -26,11 +26,11 @@ public class ProfileAttribute extends Model {
     public Profile profile;
 
     public ProfileAttribute(){
-        this.companyEmail = "n.n.";
-        this.companyPhone = "n.n.";
-        this.mobilePhone = "n.n.";
-        this.privateEmail = "n.n.";
-        this.privatePhone = "n.n.";
+        this.companyEmail = null;
+        this.companyPhone = null;
+        this.mobilePhone = null;
+        this.privateEmail = null;
+        this.privatePhone = null;
     }
 
 }

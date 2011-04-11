@@ -1,7 +1,9 @@
 package controllers;
 
+import javax.persistence.PersistenceException;
 import org.junit.*;
 import models.*;
+import play.data.validation.Validation;
 import play.mvc.Scope.Session;
 import play.test.Fixtures;
 
@@ -96,6 +98,7 @@ public class AuthTest extends BasicTest {
 
     @Test
     public void testRegister() {
+
         login = "erich01";
         assertNotSame(login, "folkertm");
         password = "f53_gfe46";
@@ -103,6 +106,7 @@ public class AuthTest extends BasicTest {
         assertNotNull(login);
         assertNotNull(password);
         user = User.find("byLogin", login).first();
+        assertNull(user);
         if (user == null) {
             user = new User(login, password);
             assertNotNull(user);
@@ -115,6 +119,22 @@ public class AuthTest extends BasicTest {
             session.put("user.id", user.id);
             session.put("user.profile", user.profile);
         }
+
+        /*login = "james01";
+        assertNotSame(login, "folkertm");
+        password = "gregkrg";
+        assertNotSame(password, "hmsygc");
+        assertNotNull(login);
+        assertNotNull(password);
+        user = new User(login, password);
+        user.profile = new Profile();
+        assertNotNull(user.profile.save());
+        try {
+            user.save();
+        } catch (PersistenceException persistenceException) {
+            assertNotNull(persistenceException);
+        }*/
+
     }
 
     /*@Test
@@ -129,7 +149,6 @@ public class AuthTest extends BasicTest {
     assertEquals(profileAttribute.companyEmail, "august@helloworld.com");
     //profileAttribute.delete();
     }*/
-    
     @Override
     @Before
     public void setUpChild() {
