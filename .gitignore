@@ -2,6 +2,7 @@
 build.xml
 build/
 build/*
+conf/password-data.yml
 logs
 logs/*
 db/

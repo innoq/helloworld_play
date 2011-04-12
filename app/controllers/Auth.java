@@ -48,8 +48,8 @@ public class Auth extends Application {
             }
             login();
         } else {
-            //User user = User.find("byLoginAndPassword", login, Crypto.passwordHash(password)).first();
-            User user = User.find("byLoginAndPassword", login, password).first();
+            User user = User.find("byLoginAndPassword", login, Crypto.passwordHash(password)).first();
+            //User user = User.find("byLoginAndPassword", login, password).first();
             if (user == null) {
                 validation.addError(
                         "user", "correct login/password required for", "");
@@ -93,7 +93,7 @@ public class Auth extends Application {
             @Required(message = "required") @MinSize(5) String password) {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
         Logger.info("-i- public static void register()");
-        //String crypted = Crypto.passwordHash(password);
+        String crypted = Crypto.passwordHash(password);
         //boolean currentUser = false;
         checkAuthenticity();
         if (validation.hasErrors()) {
@@ -105,8 +105,8 @@ public class Auth extends Application {
         } else {
             User user = User.find("byLogin", login).first();
             if (user == null) {
-                //user = new User(login, crypted);
-                user = new User(login, password);
+                user = new User(login, crypted);
+                //user = new User(login, password);
                 user.profile = new Profile();
                 user.profile.save();
                 user.save();

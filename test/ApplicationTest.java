@@ -2,10 +2,14 @@
 import controllers.AuthTest;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import models.Profile;
+import models.User;
 import org.junit.*;
+import play.libs.Crypto;
 import play.test.*;
 import play.mvc.Http.*;
 
@@ -355,25 +359,46 @@ public class ApplicationTest extends FunctionalTest {
         assertNotNull(cookie.value);
     }
 
-    @Test
-    public void testAuthRegister() {
-        new AuthTest().testRegister();
-    }
-
-
-
     /*@Test
     public void testThatLogoutPageWorks() {
-        Response response = GET("/auth/login");
-        assertIsOk(response);
-        int status = 200;
-        assertStatus(status, response);
-        assertContentType("text/html", response);
-        assertCharset("utf-8", response);
-        
-        response = GET("/auth/logout");
-        assertIsOk(response);
-        assertContentType("text/html", response);
-        assertCharset("utf-8", response);
+    Response response = GET("/auth/login");
+    assertIsOk(response);
+    int status = 200;
+    assertStatus(status, response);
+    assertContentType("text/html", response);
+    assertCharset("utf-8", response);
+
+    response = GET("/auth/logout");
+    assertIsOk(response);
+    assertContentType("text/html", response);
+    assertCharset("utf-8", response);
     }*/
+    @Before
+    public void setUpChild() {
+        //Fixtrue
+        Fixtures.deleteAll();
+        Fixtures.load("initial-data.yml");
+        //User
+        User user = null;
+        String login = "erich01";
+        String password = "f53_gfe46";
+        user = User.find("byLogin", login).first();
+        if (user == null) {
+            user = new User(login, password);
+            user.save();
+            Profile profile = new Profile();
+            profile.user = user;
+            profile.save();
+            user.profile = profile;
+            user.save();
+        }
+        List<User> userList = User.findAll();
+        Iterator iterator = userList.iterator();
+        while (iterator.hasNext()) {
+            user = (User) iterator.next();
+            String crypted = Crypto.passwordHash(user.password);
+            user.password = crypted;
+            user.save();
+        }
+    }
 }

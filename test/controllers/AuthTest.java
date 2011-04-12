@@ -1,14 +1,15 @@
 package controllers;
 
+import java.util.Iterator;
+import java.util.List;
 import javax.persistence.PersistenceException;
 import org.junit.*;
 import models.*;
-import play.data.validation.Validation;
+import play.libs.Crypto;
 import play.mvc.Scope.Session;
 import play.test.Fixtures;
 
 public class AuthTest extends BasicTest {
-
 
     /*@Test
     public void createAndRetieveUser() {
@@ -57,7 +58,9 @@ public class AuthTest extends BasicTest {
         setUpChild();
         assertNotNull(login);
         assertNotNull(password);
-        user = User.find("byLoginAndPassword", login, password).first();
+        String crypto = Crypto.passwordHash(password);
+        assertNotNull(crypto);
+        user = User.find("byLoginAndPassword", login, crypto).first();
         assertNotNull(user);
         assertNotNull(user.id);
         assertNotNull(user.login);
@@ -108,7 +111,8 @@ public class AuthTest extends BasicTest {
         user = User.find("byLogin", login).first();
         assertNull(user);
         if (user == null) {
-            user = new User(login, password);
+            String crypto = Crypto.passwordHash(password);
+            user = new User(login, crypto);
             assertNotNull(user);
             user.profile = new Profile();
             assertNotNull(user.profile);
@@ -120,40 +124,48 @@ public class AuthTest extends BasicTest {
             session.put("user.profile", user.profile);
         }
 
-        /*login = "james01";
+        login = "james01";
         assertNotSame(login, "folkertm");
         password = "gregkrg";
         assertNotSame(password, "hmsygc");
         assertNotNull(login);
         assertNotNull(password);
-        user = new User(login, password);
-        user.profile = new Profile();
-        assertNotNull(user.profile.save());
-        try {
-            user.save();
-        } catch (PersistenceException persistenceException) {
-            assertNotNull(persistenceException);
-        }*/
+        user = User.find("byLogin", login).first();
+        assertNotNull(user);
 
     }
 
-    /*@Test
+    @Test
     public void testProfileAttribute() {
-    profileAttribute = new ProfileAttribute();
-    profileAttribute.companyEmail = "august@helloworld.com";
-    profileAttribute.privateEmail = "august@helloworld.hom";
-    profileAttribute.companyPhone = "0123456789";
-    profileAttribute.mobilePhone = "1234567890";
-    profileAttribute.privatePhone = "2345678901";
-    assertNotNull(profileAttribute);
-    assertEquals(profileAttribute.companyEmail, "august@helloworld.com");
-    //profileAttribute.delete();
-    }*/
+        profileAttribute = new ProfileAttribute();
+        profileAttribute.companyEmail = "august@helloworld.com";
+        profileAttribute.privateEmail = "august@helloworld.hom";
+        profileAttribute.companyPhone = "0123456789";
+        profileAttribute.mobilePhone = "1234567890";
+        profileAttribute.privatePhone = "2345678901";
+        assertNotNull(profileAttribute);
+        assertEquals(profileAttribute.companyEmail, "august@helloworld.com");
+        profileAttribute.save();
+        profileAttribute.delete();
+    }
+
     @Override
     @Before
     public void setUpChild() {
+        //Fixtrue
         Fixtures.deleteAll();
         Fixtures.load("initial-data.yml");
+        //User
+        List<User> userList = User.findAll();
+        Iterator iterator = userList.iterator();
+        User user = null;
+        while (iterator.hasNext()) {
+            user = (User) iterator.next();
+            String crypted = Crypto.passwordHash(user.password);
+            user.password = crypted;
+            user.save();
+        }
+        //Default
         login = "david01";
         password = "hgiue";
     }

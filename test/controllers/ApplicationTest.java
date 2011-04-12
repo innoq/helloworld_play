@@ -21,9 +21,6 @@ import static org.junit.Assert.*;
  */
 public class ApplicationTest extends BasicTest {
 
-    public ApplicationTest() {
-    }
-
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
@@ -54,7 +51,7 @@ public class ApplicationTest extends BasicTest {
         assertNotNull(profile);
         assertNotSame(user, null);
         assertEquals(user.id, profile.id);
-        assertEquals((user==null),false);
+        assertEquals((user == null), false);
         currentUser = (user == null) ? false : true;
         assertTrue(currentUser);
     }
@@ -62,6 +59,7 @@ public class ApplicationTest extends BasicTest {
     @Override
     @Before
     public void setUpChild() {
+        System.out.println("setUpChild");
         Fixtures.deleteAll();
         Fixtures.load("initial-data.yml");
     }
