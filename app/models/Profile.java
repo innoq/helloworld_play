@@ -22,7 +22,7 @@ public class Profile extends Model {
 
     @OneToOne
     public User user = null;
-
+    //
     @Required
     @OneToOne
     @Embedded
@@ -61,19 +61,21 @@ public class Profile extends Model {
     @OneToMany
     public Set<Status> statuses = null;
     //
+    @Column(nullable = true)
     public String profession = null;
-    @Column(nullable = false)
-    public String company = "";
-    @Column(length = 512)
+    @Column(nullable = true)
+    public String company = null;
+    @Column(nullable = true, length = 512)
     public String about = null;
     @Column(updatable = false)
     public Date createdAt = null;
     @Column(updatable = true)
     public Date updatedAt = null;
-    public String firstName = "";
-    @Column(nullable = false)
-    public String lastName = "";
-    public String fullName = "";
+    @Column(nullable = true)
+    public String firstName = null;
+    @Column(nullable = true)
+    public String lastName = null;
+    public String fullName = null;
     public String photoFileName = null;
     public String photoContentType = null;
     public int photoFileSize = -1;
@@ -84,11 +86,9 @@ public class Profile extends Model {
     }
 
     public String getFullName() {
-        if (firstName == null) {
-            firstName = "n.n.";
-            return firstName;
+        if (firstName == null || lastName == null) {
+            return "n.n.";
         }
-
         return firstName.trim() + " " + lastName.trim();
     }
 
@@ -98,4 +98,5 @@ public class Profile extends Model {
         }
         return photoFileName.trim();
     }
+
 }

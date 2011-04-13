@@ -24,11 +24,11 @@
 
         <div class="profile-center-contact-label">Joined at:</div>
         <!--div class="profile-center-contact-data"><%= l(current_user.profile.created_at, :format => :long) %></div-->
-        <div class="profile-center-contact-data">${user}</div>
+        <div class="profile-center-contact-data">#{ifnot user.profile.createdAt==null}${user.profile.createdAt.format()}#{/ifnot}</div>
 
         <div class="profile-center-contact-label">Last profile update:</div>
         <!--div class="profile-center-contact-data"><%= l(current_user.profile.updated_at, :format => :long) %></div-->
-        <div class="profile-center-contact-data">${user}</div>
+        <div class="profile-center-contact-data">#{ifnot user.profile.createdAt==null}${user.profile.updatedAt.format()}#{/ifnot}</div>
 
         <div class="clear"><!-- clear --></div>
 

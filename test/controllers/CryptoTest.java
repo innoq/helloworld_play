@@ -50,19 +50,22 @@ public class CryptoTest extends BasicTest {
         File file = null;
         Writer writer = null;
         BufferedWriter bufferedWriter = null;
+        List<User> userList = User.findAll();
+        assertNotNull(userList);
+        Iterator iterator1 = userList.iterator();
+        Iterator iterator2 = userList.iterator();
+        assertNotNull(iterator1);
+        assertNotNull(iterator2);
         try {
+            //Password Hash
             file = new File(path);
             assertFalse(file.createNewFile());
             writer = new FileWriter(file);
             assertNotNull(writer);
             bufferedWriter = new BufferedWriter(writer);
             assertNotNull(bufferedWriter);
-            List<User> userList = User.findAll();
-            assertNotNull(userList);
-            Iterator iterator = userList.iterator();
-            assertNotNull(iterator);
-            while (iterator.hasNext()) {
-                String crypted = Crypto.passwordHash(((User) iterator.next()).password);
+            while (iterator1.hasNext()) {
+                String crypted = Crypto.passwordHash(((User) iterator1.next()).password);
                 assertNotNull(crypted);
                 bufferedWriter.write(crypted);
                 bufferedWriter.newLine();
@@ -78,16 +81,16 @@ public class CryptoTest extends BasicTest {
     public void testUserCryptoPassword() {
         System.out.println("userCryptoPassword");
         List<User> userList = User.findAll();
-            assertNotNull(userList);
-            Iterator iterator = userList.iterator();
-            assertNotNull(iterator);
-            while (iterator.hasNext()) {
-                User user = (User) iterator.next();
-                String crypted = Crypto.passwordHash(user.password);
-                assertNotNull(crypted);
-                user.password = crypted;
-                user.save();
-            }
+        assertNotNull(userList);
+        Iterator iterator = userList.iterator();
+        assertNotNull(iterator);
+        while (iterator.hasNext()) {
+            User user = (User) iterator.next();
+            String crypted = Crypto.passwordHash(user.password);
+            assertNotNull(crypted);
+            user.password = crypted;
+            user.save();
+        }
     }
 
     @Override

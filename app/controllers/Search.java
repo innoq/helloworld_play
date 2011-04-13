@@ -1,7 +1,5 @@
 package controllers;
 
-import play.mvc.Controller;
-
 /**
  *
  * @editor Folkert Meeuw

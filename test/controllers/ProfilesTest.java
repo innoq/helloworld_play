@@ -4,6 +4,10 @@
  */
 package controllers;
 
+import java.util.Locale;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import play.libs.Crypto;
 import play.test.Fixtures;
 import models.Status;
 import models.Profile;
@@ -13,6 +17,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import play.Logger;
 import static org.junit.Assert.*;
 
 /**
@@ -60,7 +65,6 @@ public class ProfilesTest extends BasicTest {
     @Test
     public void testEdit() {
         System.out.println("edit");
-        setUpChild();
         login = "buelent01";
         password = "uludag";
         assertEquals(login, "buelent01");
@@ -144,8 +148,7 @@ public class ProfilesTest extends BasicTest {
      */
     @Test
     public void testUpdate() {
-        System.out.println("edit");
-        setUpChild();
+        Logger.info("-i- Method testUpdate()");
         login = "buelent01";
         password = "uludag";
         assertEquals(login, "buelent01");
@@ -162,37 +165,59 @@ public class ProfilesTest extends BasicTest {
         assertEquals(profile.id, new Long(10));
         profile.about = "Heute ist er Vorstandsvorsitzender der BTC AG – einer international tätigen IT-Beratungsfirma mit Sitz in Oldenburg – und Chef von über 1.500 Mitarbeitern. Auch politisch und gesellschaftlich mischt Bülent Uzuner in der neuen Heimat Deutschland kräftig mit. Ob bei seinem freiwilligen Engagement in Bildungsprojekten oder in seiner Funktion als Wahlmann für die Wahl zum Bundespräsidenten: Bülent Uzuner bringt sich in die deutsche Gesellschaft ein, vergisst dabei aber seine türkischen Wurzeln nicht.";
         profile.save();
-
+        //
+        login = "john01";
+        password = "cisco-ceo";
+        assertNotSame(login, "buelent01");
+        assertNotSame(password, "uludag");
+        String crypted = Crypto.passwordHash("password");
+        user = User.find("byLoginAndPassword", login, crypted).first();
+        assertNull(user);
+        user = new User(login, crypted);
+        profile = new Profile();
+        long millis = 1302684557558L;
+        assertEquals(millis, Long.parseLong("1302684557558"));
+        Date systemDate = new Date(millis);
+        assertEquals(systemDate.toString(), "Wed Apr 13 10:49:17 CEST 2011");
+        SimpleDateFormat formatter;
+        String pattern = "MMMMMMMM dd, yyyy hh:mm";
+        formatter = new SimpleDateFormat(pattern, Locale.getDefault());
+        String date = formatter.format(systemDate);
+        profile.createdAt = systemDate;
+        assertNotSame(profile.createdAt, "");
+        profile.save();
+        user.profile = profile;
+        user.save();
+        Logger.info("-o- Method testUpdate()");
     }
 
     /**
      * Test of privat method, of class Profiles.
      */
-    @Test
+    /*@Test
     public void testPrivat() {
-        System.out.println("privat");
-        long id = 0L;
-        //Profiles.privat(id);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
+    System.out.println("privat");
+    long id = 0L;
+    //Profiles.privat(id);
+    // TODO review the generated test code and remove the default call to fail.
+    //fail("The test case is a prototype.");
+    }*/
     /**
      * Test of show method, of class Profiles.
      */
-    @Test
+    /*@Test
     public void testShow() {
-        System.out.println("show");
-        int id = 0;
-        //Profiles.show(id);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
+    System.out.println("show");
+    int id = 0;
+    //Profiles.show(id);
+    // TODO review the generated test code and remove the default call to fail.
+    //fail("The test case is a prototype.");
+    }*/
     @Override
     @Before
     public void setUpChild() {
         Fixtures.deleteAll();
         Fixtures.load("initial-data.yml");
+
     }
 }

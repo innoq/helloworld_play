@@ -43,7 +43,7 @@
             #{if status.profile != null}
             <a href="${status.profile.getFullName()}"><img src="/public/${status.profile.getPhotoFileName()}" class="stream-image" alt="${status.profile.getFullName()}"/></a>
             <div class="status-message">${status.message}</div>
-            <a href="${status.profile}" class="username">${status.profile.getFullName()}</a> <span class="status-date">Datum</span>
+            <a href="${status.profile}" class="username">${status.profile.getFullName()}</a> <span class="status-date">${status.createdAt.format()}</span>
             #{/if}
         </div>
 

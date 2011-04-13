@@ -56,10 +56,11 @@
             <%= render "address", :address => @profile.business_address %>
         </div>
         <%- end -%>}*
-        #{if user.profile.businessAddress}
+        #{if user.profile.businessAddress != null }
         <div class="profile-center-company">
             <strong>Company Adress</strong>
-            ${user.profile.businessAddress}
+            <br>${user.profile.businessAddress.street}
+            <br>${user.profile.businessAddress.zip} ${user.profile.businessAddress.city}
         </div>
         #{/if}
 
@@ -69,10 +70,11 @@
             <%= render "address", :address => @profile.private_address %>
         </div>
         <%- end -%>}*
-        #{if user.profile.privateAddress}
+        #{if user.profile.privateAddress != null }
         <div class="profile-center-company">
             <strong>Private Adress</strong>
-            ${user.profile.privateAddress}
+            <br>${user.profile.privateAddress.street}
+            <br>${user.profile.privateAddress.zip} ${user.profile.privateAddress.city}
         </div>
         #{/if}
 

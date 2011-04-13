@@ -58,7 +58,7 @@ public class Statuses extends Application {
         Logger.info("Method save()");
         Profile profile = null;
         //currentUser().profile;
-        Status status = new Status(message, profile);
+        Status status = new Status(message, profile, null, null);
         validation.valid(status);
         if (validation.hasErrors()) {
             render("statuses/form.html", status);

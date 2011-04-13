@@ -19,6 +19,4 @@ public class Address extends Model {
     public String city;
     public String zip;
     public String country;
-    @OneToOne
-    public Profile profile;
 }

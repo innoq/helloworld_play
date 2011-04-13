@@ -11,6 +11,7 @@ import play.libs.Crypto;
 @OnApplicationStart
 public class Bootstrap extends Job {
 
+    @Override
     public void doJob() {
         Logger.info("-i- Method doJob()");
         // Check if the database is empty

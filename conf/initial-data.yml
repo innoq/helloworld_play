@@ -13,132 +13,154 @@ Address(a_buelent02):
 Profile(p_david01):
     about:              null
     company:            HP
+    createdAt:          2011-04-12 17:07:23
     firstName:          David
     lastName:           Donatelli
     photoContentType:   image/jpeg
     photoFileName:      data/photos/david-donatelli.jpg
     photoFileSize:      300992
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_rene01):
     about:              null
     company:            Telekom
+    createdAt:          2011-04-12 17:07:23
     firstName:          Rene
     lastName:           Obermann
     photoContentType:   image/jpeg
     photoFileName:      data/photos/rene-obermann.jpg
     photoFileSize:      391744
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_larry01):
     about:              null
     company:            Oracle
+    createdAt:          2011-04-12 17:07:23
     firstName:          Larry
     lastName:           Ellison
     photoContentType:   image/jpeg
     photoFileName:      data/photos/larry-ellison.jpg
     photoFileSize:      88480
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_samuel01):
     about:              null
     company:            IBM
+    createdAt:          2011-04-12 17:07:23
     firstName:          Samuel
     lastName:           Palmisano
     photoContentType:   image/jpeg
     photoFileName:      data/photos/samuel-palmisano.jpg
     photoFileSize:      216272
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_mike01):
     about:              null
     company:            AMD
+    createdAt:          2011-04-12 17:07:23
     firstName:          Mike
     lastName:           Wolfe
     photoContentType:   image/jpeg
     photoFileName:      data/photos/mike-wolfe.jpg
     photoFileSize:      95112
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_leo01):
     about:              null
     company:            HP
+    createdAt:          2011-04-12 17:07:23
     firstName:          Leo
     lastName:           Apotheker
     photoContentType:   image/jpeg
     photoFileName:      data/photos/leo-apotheker.jpg
     photoFileSize:      129440
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_oliver01):
     about:              null
     company:            SAP
+    createdAt:          2011-04-12 17:07:23
     firstName:          Oliver
     lastName:           Bussmann
     photoContentType:   image/jpeg
     photoFileName:      data/photos/oliver-bussmann.jpg
     photoFileSize:      10160
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_charles01):
     about:              null
     company:            Infor
+    createdAt:          2011-04-12 17:07:23
     firstName:          Charles
     lastName:           Phillips
     photoContentType:   image/jpeg
     photoFileName:      data/photos/charles-phillips.jpg
     photoFileSize:      11312
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_james01):
     about:              null
     company:            Infor
+    createdAt:          2011-04-12 17:07:23
     firstName:          James
     lastName:           Gosling
     photoContentType:   image/jpeg
     photoFileName:      data/photos/james-gosling.jpg
     photoFileSize:      11312
     profession:         Angestellter
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
 Profile(p_buelent01):
     about:              'Heute ist er Vorstandsvorsitzender der BTC AG – einer international tätigen IT-Beratungsfirma mit Sitz in Oldenburg – und Chef von über 1.500 Mitarbeitern. Auch politisch und gesellschaftlich mischt Bülent Uzuner in der neuen Heimat Deutschland kräftig mit. Ob bei seinem freiwilligen Engagement in Bildungsprojekten oder in seiner Funktion als Wahlmann für die Wahl zum Bundespräsidenten: Bülent Uzuner bringt sich in die deutsche Gesellschaft ein, vergisst dabei aber seine türkischen Wurzeln nicht.'
     company:            BTC
+    createdAt:          2011-04-12 17:07:23
     firstName:          Bülent
     lastName:           Uzuner
     photoContentType:   null
     photoFileName:      null
     photoFileSize:      -1
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress:    a_buelent01
     privateAddress:     a_buelent02
 
 Profile(p_volker01):
     about:              null
     company:            HP
+    createdAt:          2011-04-12 17:07:23
     firstName:          Volker
     lastName:           Schmid
     photoContentType:   image/jpeg
     photoFileName:      data/photos/volker-smid.jpg
     photoFileSize:      25704
     profession:         Manager
+    updatedAt:          2011-04-12 17:07:23
     businessAddress_id: null
     privateAddress_id:  null
 
@@ -205,50 +227,74 @@ User(volker01):
 Status(david01):
     message:        Wir sind schockiert, dass Oracle Unternehmen und Behörden einem Risiko aussetzt, das sie Hunderte Millionen Dollar an Produktivität kostet.
     profile:        p_david01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(rene01):
     message:        Mit dem Verkauf von T-Mobile-USA hat die Telekom ein Problem weniger.
     profile:        p_rene01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(larry01):
     message:        Der Entschluss die Softwareentwicklung für Intel's Itanium zu stoppen, fiel nach mehreren Unterredungen mit dem Senior-Management von Intel.
     profile:        p_larry01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(samuel01):
     message:        Der Konzern verpflichtet seine Mitarbeiter zu hohen ethischen Standards. Die eingeleiteten Maßnahmen sollen Korruptionsvorfälle für die Zukunft ausschließen.
     profile:        p_samuel01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(mike01):
     message:        Der 52-Jährihe Mike Wolfe ist neuer Verantwortlicher der Informations-Technologie von AMD.
     profile:        p_mike01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(leo01):
     message:        HP wird das Unternehmen sein, das der neuen IT-Welt die Form gibt.
     profile:        p_leo01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(oliver01):
     message:        Ein Consumer-Produkt mit Enterprise-Anwendungen zu bestücken ist eine Herausforderung.
     profile:        p_oliver01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(leo02):
     message:        Die Auswirkungen von Cloud Computing und wachsender Konnektivität verändern die Art und Weise, wie Endanwender sowie kleine und große Unternehmen IT konsumieren, einsetzen und nutzen.
     profile:        p_leo01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(charles01):
     message:        Der Ex Oracle President hat viel Erfahrung mit Akquisitionen.
     profile:        p_charles01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(james01):
     message:        Oracle geht es immer nur ums Geld. Das ist die einzige Metrik die sie verstehen.
     profile:        p_james01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(buelent01):
     message:        Für Deutschland sehe ich keine Notwendigkeit, Fachkräfte aus dem Ausland zu holen. Ich bin davon überzeugt, dass wir hier genügend deutsche und ausländische Absolventen an den Hochschulen haben.
     profile:        p_buelent01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 Status(volker01):
     message:        Das Timing ist immer eine schwierige Frage. Man muss den richtigen Zeitpunkt abwarten.
     profile:        p_volker01
+    createdAt:      2011-04-12 17:07:23
+    updatedAt:      2011-04-12 17:07:23
 
 ProfileAttribute(david01):
     companyEmail:   null

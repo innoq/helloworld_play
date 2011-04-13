@@ -1,9 +1,7 @@
 package controllers;
 
-import models.Profile;
 import models.User;
 import play.Logger;
-import play.cache.Cache;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Scope.Session;
@@ -24,9 +22,10 @@ public class Application extends Controller {
         Logger.info("-i- protected static void checkLogin()");
         boolean currentUser = Boolean.valueOf(Session.current().get("currentUser"));
         if (!currentUser) {
-            Logger.info("-o- protected static void checkLogin()");
             redirect("Auth.login", currentUser);
         }
+        Logger.info("-o- protected static void checkLogin()");
+
     }
 
     protected static void currentUser() {

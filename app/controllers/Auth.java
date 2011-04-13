@@ -4,10 +4,8 @@ import java.util.Random;
 import models.Profile;
 import models.User;
 import play.Logger;
-import play.cache.Cache;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
-import play.data.validation.Valid;
 import play.libs.Crypto;
 import play.mvc.Scope.Session;
 
@@ -48,8 +46,8 @@ public class Auth extends Application {
             }
             login();
         } else {
-            User user = User.find("byLoginAndPassword", login, Crypto.passwordHash(password)).first();
-            //User user = User.find("byLoginAndPassword", login, password).first();
+            //User user = User.find("byLoginAndPassword", login, Crypto.passwordHash(password)).first();
+            User user = User.find("byLoginAndPassword", login, password).first();
             if (user == null) {
                 validation.addError(
                         "user", "correct login/password required for", "");

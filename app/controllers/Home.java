@@ -1,13 +1,14 @@
 package controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import models.Profile;
 import models.Status;
 import models.User;
 import play.Logger;
-import play.cache.Cache;
-import play.mvc.Controller;
 import play.mvc.Scope.Session;
 
 /**
@@ -43,4 +44,5 @@ public class Home extends Application {
         Logger.info("-o- public static void about()");
         render("home/about.html", user);
     }
+
 }
