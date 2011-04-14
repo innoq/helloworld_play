@@ -15,7 +15,7 @@ import play.mvc.Scope.Session;
 public class Statuses extends Application {
 
     public static void form(int size) {
-        Logger.info("Method form()");
+        Logger.info("-i- public static void form()");
 
         List<Status> statuses = Status.findAll();
         List<Status> sublist = null;
@@ -25,9 +25,9 @@ public class Statuses extends Application {
         /*Iterator<Status> i = statuses.listIterator();
         while (i.hasNext()) {
         Status s = i.next();
-        Logger.info("Status " + s.toString());
+        Logger.info("-v- Status " + s.toString());
         if(s.profile!=null){
-        Logger.info("FullName " + s.profile.firstName);
+        Logger.info("-v- FullName " + s.profile.firstName);
         }
         }*/
 
@@ -51,21 +51,24 @@ public class Statuses extends Application {
 
         sublist = statuses.subList(start, end);
         User user = User.findById(Long.parseLong(Session.current().get("user")));
+        Logger.info("-o- public static void form()");
         render("statuses/form.html", sublist, size, user);
     }
 
     public static void save(String message) {
-        Logger.info("Method save()");
+        Logger.info("-i- public static void save()");
         Profile profile = null;
         //currentUser().profile;
         Status status = new Status(message, profile, null, null);
         validation.valid(status);
         if (validation.hasErrors()) {
+            Logger.info("-o- public static void save()");
             render("statuses/form.html", status);
         }
         // Save
         status.save();
         form(0);
+        Logger.info("-o- public static void save()");
         render();
     }
 }

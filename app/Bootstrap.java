@@ -13,7 +13,7 @@ public class Bootstrap extends Job {
 
     @Override
     public void doJob() {
-        Logger.info("-i- Method doJob()");
+        Logger.info("-i- public void doJob()");
         // Check if the database is empty
         Fixtures.deleteAll();
         Fixtures.load("initial-data.yml");
@@ -26,6 +26,6 @@ public class Bootstrap extends Job {
             user.password = crypted;
             user.save();
         }
-        Logger.info("-o- Method doJob()");
+        Logger.info("-o- public void doJob()");
     }
 }

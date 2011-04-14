@@ -148,7 +148,7 @@ public class ProfilesTest extends BasicTest {
      */
     @Test
     public void testUpdate() {
-        Logger.info("-i- Method testUpdate()");
+        Logger.info("-i- public void testUpdate()");
         login = "buelent01";
         password = "uludag";
         assertEquals(login, "buelent01");
@@ -188,7 +188,7 @@ public class ProfilesTest extends BasicTest {
         profile.save();
         user.profile = profile;
         user.save();
-        Logger.info("-o- Method testUpdate()");
+        Logger.info("-o- public void testUpdate()");
     }
 
     /**

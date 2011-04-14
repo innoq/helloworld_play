@@ -13,11 +13,8 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import play.libs.Crypto;
-import models.Profile;
 import models.User;
-import play.mvc.Scope.Session;
 import play.test.Fixtures;
-import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -45,8 +42,8 @@ public class CryptoTest extends BasicTest {
     public void testPasswordHash() {
         System.out.println("passwordHash");
 
-        String path = "/home/Techniker/playframework/helloworld_play/conf/password-data.yml";
-        assertEquals(path, "/home/Techniker/playframework/helloworld_play/conf/password-data.yml");
+        String path = System.getProperty("user.home")+"/playframework/helloworld_play/conf/password-data.yml";
+        assertEquals(path, System.getProperty("user.home")+"/playframework/helloworld_play/conf/password-data.yml");
         File file = null;
         Writer writer = null;
         BufferedWriter bufferedWriter = null;
@@ -73,7 +70,7 @@ public class CryptoTest extends BasicTest {
             bufferedWriter.close();
             writer.close();
         } catch (IOException ex) {
-            assertNull(ex);
+            assertEquals("",ex);
         }
     }
 
@@ -96,9 +93,9 @@ public class CryptoTest extends BasicTest {
     @Override
     @Before
     public void setUpChild() {
-        Logger.info("-i- Method setUpChild()");
+        Logger.info("-i- public void setUpChild()");
         Fixtures.deleteAll();
         Fixtures.load("initial-data.yml");
-        Logger.info("-o- Method setUpChild()");
+        Logger.info("-o- public void setUpChild()");
     }
 }

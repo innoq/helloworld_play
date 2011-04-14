@@ -20,11 +20,11 @@ public class Home extends Application {
     public static void dashboard() {
         Logger.info("-i- public static void dashboard()");
         User user = User.findById(Long.parseLong(Session.current().get("user")));
-        Logger.info("user: " + user);
+        Logger.info("-v- user: " + user);
         Profile profile = Profile.findById(user.id);
-        Logger.info("profile: " + profile);
+        Logger.info("-v- profile: " + profile);
         List<Status> statuses = Status.find("byProfile", profile).fetch();
-        Logger.info("size :" + statuses.size());
+        Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
         Session.current().put("statuses", statuses);
         Logger.info("-o- public static void dashboard()");

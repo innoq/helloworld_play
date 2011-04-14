@@ -24,9 +24,9 @@ public class Auth extends Application {
         if (sampleUser == null) {
             Logger.info("check database, table \"user\" and data");
         } else {
-            hint = "Try User " + sampleUser.login
-                    + " with Password " + sampleUser.password
-                    + " to get started";
+            hint = "Try User '" + sampleUser.login
+                    + "' with Password '" + sampleUser.password
+                    + "' to get started";
         }
         renderArgs.put("hint", hint);
         Logger.info("-o- public static void login()");
@@ -128,16 +128,18 @@ public class Auth extends Application {
 
     public static void signup() {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method signup()");
+        Logger.info("-i- public static void signup()");
+        Logger.info("-o- public static void signup()");
         render("/auth/register.html");
     }
 
     public static long countUser() {
         //TODO AspectJ Aspekt zur Ausgliederung - Navigation-Tracing
-        Logger.info("Method countUser()");
+        Logger.info("-i- public static long countUser()");
         Long count;
         Random random = new Random();
         count = Long.valueOf(User.count());
+        Logger.info("-o- public static long countUser()");
         return (count);
     }
 

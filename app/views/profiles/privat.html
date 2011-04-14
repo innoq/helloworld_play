@@ -28,16 +28,8 @@
 
     <div class="profile-stream">
         <div class="profile-stream-item">
-            <span class="profile-stream-item-date">
-                *{<%= l(status.created_at, :format => :short) %>}*
-            </span>
-            *{<%= status.message %>}*
-            #{list items:statuses, as:'status'}
-            ${status.message}
-            #{/list}
+            #{status statuses:statuses /}
         </div>
-
-        <!--%= render :partial => 'status', :collection => @profile.statuses %-->
     </div>
     <!-- /profile-stream -->
 
@@ -50,33 +42,19 @@
         <h3>${user.profile.getFullName()}</h3>
         <p>${user.profile.profession} at <strong>${user.profile.company}</strong></p>
 
-        *{<%- if @profile.business_address -%>
+        #{ifnot user.profile.businessAddress == null }
         <div class="profile-center-company">
             <strong>Company Adress</strong>
-            <%= render "address", :address => @profile.business_address %>
+            #{address address:businessAddress /}
         </div>
-        <%- end -%>}*
-        #{if user.profile.businessAddress != null }
-        <div class="profile-center-company">
-            <strong>Company Adress</strong>
-            <br>${user.profile.businessAddress.street}
-            <br>${user.profile.businessAddress.zip} ${user.profile.businessAddress.city}
-        </div>
-        #{/if}
+        #{/ifnot}
 
-        *{<%- if @profile.private_address -%>
+        #{ifnot user.profile.privateAddress == null }
         <div class="profile-center-company">
             <strong>Private Adress</strong>
-            <%= render "address", :address => @profile.private_address %>
+            #{address address:privateAddress /}
         </div>
-        <%- end -%>}*
-        #{if user.profile.privateAddress != null }
-        <div class="profile-center-company">
-            <strong>Private Adress</strong>
-            <br>${user.profile.privateAddress.street}
-            <br>${user.profile.privateAddress.zip} ${user.profile.privateAddress.city}
-        </div>
-        #{/if}
+        #{/ifnot}
 
         <h4>About Me</h4>
         *{<p><%= @profile.about %></p>}*

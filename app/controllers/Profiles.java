@@ -34,29 +34,30 @@ public class Profiles extends Application {
 
     public static void show(int id) {
         Logger.info("-i- public static void show(int id)");
-        Logger.info("Profiles ID: %d", id);
+        Logger.info("-v- Profiles ID: %d", id);
         User user = User.findById(Long.parseLong(Session.current().get("user")));
-        Logger.info("user: " + user);
+        Logger.info("-v- user: " + user);
         Profile profile = Profile.findById(user.id);
-        Logger.info("profile: " + profile);
+        Logger.info("-v- profile: " + profile);
         List<Status> statuses = Status.find("byProfile", profile).fetch();
-        Logger.info("size :" + statuses.size());
+        Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
-        renderArgs.put("count", statuses.size());
-        renderArgs.put("statuses", statuses);
+        renderArgs.put("-v- count", statuses.size());
+        renderArgs.put("-v- statuses", statuses);
         Logger.info("-o- public static void show()");
-        render("profiles/show.html", user, profile);
+        Address businessAddress = profile.businessAddress;
+        render("profiles/show.html", user, profile, statuses, businessAddress);
     }
 
     public static void privat(long id) {
         Logger.info("-i- public static void privat(long id)");
-        Logger.info("id: " + id);
+        Logger.info("-v- id: " + id);
         User user = User.findById(id);
-        Logger.info("user: " + user);
+        Logger.info("-v- user: " + user);
         Profile profile = Profile.findById(user.id);
-        Logger.info("profile: " + profile);
+        Logger.info("-v- profile: " + profile);
         ProfileAttribute profileAttribute = null;
-        Logger.info("profileAttribute: " + user.profile.profileAttribute);
+        Logger.info("-v- profileAttribute: " + user.profile.profileAttribute);
         if (user.profile.profileAttribute.isEmpty()) {
             redirect("/profiles/edit");
         } else {
@@ -68,9 +69,9 @@ public class Profiles extends Application {
                 profile.profileAttribute = new HashSet<ProfileAttribute>(1);
             }
         }
-        Logger.info("profileAttribute: " + user.profile.profileAttribute);
+        Logger.info("-v- profileAttribute: " + user.profile.profileAttribute);
         List<Status> statuses = Status.find("byProfile", profile).fetch();
-        Logger.info("size :" + statuses.size());
+        Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
         renderArgs.put("statuses", statuses);
         renderArgs.put("companyEmail", profileAttribute.companyEmail);
@@ -78,8 +79,10 @@ public class Profiles extends Application {
         renderArgs.put("mobilePhone", profileAttribute.mobilePhone);
         renderArgs.put("privateEmail", profileAttribute.privateEmail);
         renderArgs.put("privatePhone", profileAttribute.privatePhone);
+        Address privateAddress = profile.privateAddress;
+        Address businessAddress = profile.businessAddress;
         Logger.info("-o- public static void privat(long id)");
-        render("profiles/privat.html", user);
+        render("profiles/privat.html", user, privateAddress, businessAddress);
     }
 
     public static void edit() {
@@ -95,7 +98,7 @@ public class Profiles extends Application {
         long count = status.count("byProfile", profile);
         renderArgs.put("count", count);
         List<Status> statuses = Status.find("byProfile", profile).fetch();
-        Logger.info("size :" + statuses.size());
+        Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
         renderArgs.put("statuses", statuses);
         ProfileAttribute profileAttribute = ProfileAttribute.find("byProfile", profile).first();
@@ -128,8 +131,9 @@ public class Profiles extends Application {
             }
         }
 
+        Address businessAddress = null;
         if (user.profile.businessAddress != null) {
-            Address businessAddress = user.profile.businessAddress.findById(user.profile.businessAddress.id);
+            businessAddress = user.profile.businessAddress.findById(user.profile.businessAddress.id);
             flash.put("businessStreet", businessAddress.street);
             flash.put("businessZip", businessAddress.zip);
             flash.put("businessCity", businessAddress.city);
@@ -166,6 +170,7 @@ public class Profiles extends Application {
             String privateStreet,
             String privateZip,
             String privateCity) {
+        Logger.info("-i- public static void update()");
         checkAuthenticity();
         //validation.maxSize(about, 512);
         User user = null;
@@ -297,12 +302,14 @@ public class Profiles extends Application {
         long count = status.count("byProfile", user.profile);
         renderArgs.put("count", count);
         List<Status> statuses = Status.find("byProfile", user.profile).fetch();
-        Logger.info("size :" + statuses.size());
+        Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
         renderArgs.put("statuses", statuses);
         renderArgs.put("user", user);
-        renderArgs.put("user.profile",user.profile);
-        render("profiles/show.html");
+        renderArgs.put("user.profile", user.profile);
+        Address businessAddress = user.profile.businessAddress;
+        Logger.info("-o- public static void update()");
+        render("profiles/show.html", businessAddress);
 
     }
 }

@@ -18,15 +18,12 @@
 
     <!--h2>User's profile updates (<%= @profile.statuses.count %>)</h2-->
     <h2>User's profile updates (${count})</h2>
-    *{#{status /}}*
-    #{list items:statuses, as:'status'}
     <div class="profile-stream">
         <div class="profile-stream-item">
-            ${status.message}
-            <!--%= render :partial => 'status', :collection => @profile.statuses %-->
+            #{status statuses:statuses /}
         </div>
     </div>
-    #{/list}
+    
     <!-- /profile-stream -->
 
 </div>
@@ -117,6 +114,7 @@
                     <input type="text" name="businessCity" id="businessCity" value="${flash.businessCity}" />
                     <span class="">#{error 'businessCity' /}</span>
                 </fieldset>
+                
 
                 <fieldset>
                     <legend>Private address</legend>

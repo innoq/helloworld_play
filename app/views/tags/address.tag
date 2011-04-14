@@ -1,7 +1,7 @@
 <p>
-  <%- if address -%>
-    <%= address.street %><br />
-    <%= address.city %> <%= address.zip %><br />
-    <%= address.country %>
-  <%- end -%>
+#{if _address }
+    ${_address.street}<br />
+    ${_address.zip} ${_address.city}<br />
+    ${_address.country}<br />
+#{/if}
 </p>
