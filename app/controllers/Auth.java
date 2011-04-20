@@ -138,7 +138,11 @@ public class Auth extends Application {
         Logger.info("-i- public static long countUser()");
         Long count;
         Random random = new Random();
-        count = Long.valueOf(User.count());
+        if (User.count() > 0) {
+            count = Long.valueOf(User.count());
+        } else {
+            count = 10L;
+        }
         Logger.info("-o- public static long countUser()");
         return (count);
     }
@@ -149,7 +153,11 @@ public class Auth extends Application {
         Long count;
         Random random = new Random();
         int randomId;
-        count = Long.valueOf(User.count());
+        if (User.count() > 0) {
+            count = Long.valueOf(User.count());
+        } else {
+            count = 10L;
+        }
         randomId = random.nextInt(count.intValue());
         Logger.info("-o- public static void randomId()");
         return (randomId);
@@ -161,7 +169,11 @@ public class Auth extends Application {
         Long count;
         Random random = new Random();
         int randomId;
-        count = Long.valueOf(User.count());
+        if (User.count() > 0) {
+            count = Long.valueOf(User.count());
+        } else {
+            count = 10L;
+        }
         randomId = random.nextInt(count.intValue());
         User user = User.find("byId", Long.parseLong(String.valueOf(randomId))).first();
         Logger.info("-o- public static void userByRandomId()");
