@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Hello,World. Dashboard' /}
+#{set title:'Dashboard' /}
 
 <h1>Welcome, ${session.login}<!--%= current_user.profile.first_name %--></h1>
 
@@ -48,7 +48,7 @@
     <h2>Stream of my contacts</h2>
 
     <div class="stream">
-        *{<%- @statuses.each do |status| -%>
+        <%- @statuses.each do |status| -%>
         <div class="status">
             <%= link_to (image_tag status.profile.photo.url , :alt => "username", :class=> "stream-image"), private_profile_url(status.profile) %>
             <div class="status-message"><%= status.message %></div>
@@ -57,9 +57,7 @@
 
         </div>
         <div class="clear"><!-- clear --></div>
-        <%- end -%>}*
-        #{status statuses:statuses /}
-
+        <%- end -%>
     </div>
 
 
@@ -73,7 +71,7 @@
     <!-- AWAITING CONFIRMATION -->
     <h2>Contacts waiting for confirmation</h2>
     <div class="contact-list list-in-dashboard">
-        *{#{layouts/contact /}}*
+        #{layouts/contact /}
         <!--%= render :partial => "layouts/contact", :collection => @unaccepted_contacts %-->
         <!-- /items -->
         <div class="clear"><!-- clear --></div>
@@ -84,7 +82,7 @@
 
     <h2>Contacts of your contacts</h2>
     <div class="contact-list list-in-dashboard">
-        *{#{layouts/contact /}}*
+        #{layouts/contact /}
         <!--%= render :partial => "layouts/contact", :collection => @contacts_of_contacts %-->
         <!-- /items -->
         <div class="clear"><!-- clear --></div>

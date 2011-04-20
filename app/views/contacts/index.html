@@ -1,30 +1,25 @@
 #{extends 'main.html' /}
-#{set title:'Hello,World. My Contacts' /}
+#{set title:'My Contacts' /}
+
+#{if contacts}
 
 <h1>My Contacts</h1>
 
 <div class="pager">
-    *{<%= will_paginate @contacts %>}*
-    #{paginate.list items:paginator, as:'contact'}
-    #{/paginate.list}
-    #{paginate.controls items:paginator /}
+  <%= will_paginate @contacts %>
 </div>
 
+
 <div class="contact-list">
-    #{paginate.list items:paginator, as:'contact'}
-        #{layouts/contact /}
-    #{/paginate.list}
-    *{<%= render :partial => "layouts/contact", :collection => @contacts %>}*
-    <!-- /items -->
+    #{layouts/contact /}
+    <!--%= render :partial => "layouts/contact", :collection => @contacts %-->
+  <!-- /items -->
 </div>
 <!-- contact-list -->
 
 <div class="clear"><!-- clear --></div>
 
 <br />
-*{<%= link_to "Search contact", search_url(), :class => "button-blue" %>}*
+<%= link_to "Search contact", search_url(), :class => "button-blue" %>
 
-<form method="get" class="search" action="@{Search.search()}">
-    <input type="submit"  value="Search contact" class="button-blue" />
-</form>
-
+#{/if}

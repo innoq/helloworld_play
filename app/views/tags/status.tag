@@ -2,6 +2,6 @@
     <span class="profile-stream-item-date">
         ${status.createdAt.format()}<br />
     </span>
-    ${status.message}<br />
+    ${status.message}
 #{/list}
 

@@ -10,27 +10,6 @@ Address(a_buelent02):
     zip:                29000
     city:               Oldenburg
 
-Address(a_james01):
-    street:             1600 Amphitheatre Parkway
-    zip:
-    city:               Mountain View, CA 94043
-
-Address(a_james02):
-    street:
-    zip:
-    city:
-
-Address(a_david01):
-    street:             3000 Hanover Street
-    zip:                94304-1185
-    city:               Palo Alto, CA
-    country:            USA
-
-Address(a_david02):
-    street:
-    zip:
-    city:
-
 Profile(p_david01):
     about:              null
     company:            HP
@@ -42,8 +21,8 @@ Profile(p_david01):
     photoFileSize:      300992
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    a_david01
-    privateAddress:     a_david02
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_rene01):
     about:              null
@@ -56,8 +35,8 @@ Profile(p_rene01):
     photoFileSize:      391744
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_larry01):
     about:              null
@@ -70,8 +49,8 @@ Profile(p_larry01):
     photoFileSize:      88480
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_samuel01):
     about:              null
@@ -84,8 +63,8 @@ Profile(p_samuel01):
     photoFileSize:      216272
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_mike01):
     about:              null
@@ -98,8 +77,8 @@ Profile(p_mike01):
     photoFileSize:      95112
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_leo01):
     about:              null
@@ -112,8 +91,8 @@ Profile(p_leo01):
     photoFileSize:      129440
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_oliver01):
     about:              null
@@ -126,8 +105,8 @@ Profile(p_oliver01):
     photoFileSize:      10160
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_charles01):
     about:              null
@@ -140,8 +119,8 @@ Profile(p_charles01):
     photoFileSize:      11312
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_james01):
     about:              null
@@ -154,8 +133,8 @@ Profile(p_james01):
     photoFileSize:      11312
     profession:         Angestellter
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    a_james01
-    privateAddress:     a_james02
+    businessAddress_id: null
+    privateAddress_id:  null
 
 Profile(p_buelent01):
     about:              'Heute ist er Vorstandsvorsitzender der BTC AG – einer international tätigen IT-Beratungsfirma mit Sitz in Oldenburg – und Chef von über 1.500 Mitarbeitern. Auch politisch und gesellschaftlich mischt Bülent Uzuner in der neuen Heimat Deutschland kräftig mit. Ob bei seinem freiwilligen Engagement in Bildungsprojekten oder in seiner Funktion als Wahlmann für die Wahl zum Bundespräsidenten: Bülent Uzuner bringt sich in die deutsche Gesellschaft ein, vergisst dabei aber seine türkischen Wurzeln nicht.'
@@ -182,8 +161,8 @@ Profile(p_volker01):
     photoFileSize:      25704
     profession:         Manager
     updatedAt:          2011-04-12 17:07:23
-    businessAddress:    null
-    privateAddress:     null
+    businessAddress_id: null
+    privateAddress_id:  null
 
 User(david01):
     login:          david01
@@ -405,14 +384,6 @@ ProfileAttribute(buelent01):
     privatePhone:   null
     profile:        p_buelent01
 
-ProfileAttribute(buelent02):
-    companyEmail:   buelent@btc-gmbh.com
-    privateEmail:   null
-    companyPhone:   +49(0)40 3333-14601
-    mobilePhone:    null
-    privatePhone:   null
-    profile:        p_buelent01
-
 ProfileAttribute(volker01):
     companyEmail:   null
     privateEmail:   null
@@ -420,67 +391,4 @@ ProfileAttribute(volker01):
     mobilePhone:    null
     privatePhone:   null
     profile:        p_volker01
-
-Relation(r_david01_james01):
-    source:         p_david01
-    destination:    p_james01
-    comment:        null
-    accepted:       true
-    createdAt:      2011-04-18 18:34:23
-    updatedAt:      2011-04-18 18:34:23
-
-Relation(r_james01_david01):
-    source:         p_james01
-    destination:    p_david01
-    comment:        null
-    accepted:       false
-    createdAt:      2011-04-18 18:34:23
-    updatedAt:      2011-04-18 18:34:23
-
-Relation(r_volker01_james01):
-    source:         p_volker01
-    destination:    p_james01
-    comment:        null
-    accepted:       true
-    createdAt:      2011-04-18 18:34:23
-    updatedAt:      2011-04-18 18:34:23
-
-Relation(r_james01_volker01):
-    source:         p_james01
-    destination:    p_volker01
-    comment:        null
-    accepted:       false
-    createdAt:      2011-04-18 18:34:23
-    updatedAt:      2011-04-18 18:34:23
-
-Relation(r_buelent01_james01):
-    source:         p_buelent01
-    destination:    p_james01
-    comment:        null
-    accepted:       true
-    createdAt:      2011-04-19 17:56:23
-    updatedAt:      2011-04-19 17:56:23
-
-Relation(r_james01_buelent01):
-    source:         p_james01
-    destination:    p_buelent01
-    comment:        null
-    accepted:       false
-    createdAt:      2011-04-19 17:56:23
-    updatedAt:      2011-04-19 17:56:23
-
-Relation(r_david01_volker01):
-    source:         p_david01
-    destination:    p_volker01
-    comment:        null
-    accepted:       true
-    createdAt:      2011-04-19 13:54:23
-    updatedAt:      2011-04-18 13:54:23
-
-Relation(r_volker01_david01):
-    source:         p_volker01
-    destination:    p_david01
-    comment:        null
-    accepted:       false
-    createdAt:      2011-04-18 13:54:23
-    updatedAt:      2011-04-18 13:54:23
+    

@@ -1,15 +1,11 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,28 +36,30 @@ public class Profile extends Model {
     @Required
     @OneToMany(mappedBy = "profile")
     @Embedded
-    public Collection<ProfileAttribute> profileAttribute = null;
+    public Set<ProfileAttribute> profileAttribute = null;
     //
     @Required
     @OneToMany
-    public List<Relation> contact = new ArrayList<Relation>();
+    public Set<Contact> contact = null;
     //
-    @OneToMany(mappedBy="source")
-    public Collection<Relation> relations = null;
+    @OneToMany
+    @JoinColumn(name = "source_id")
+    public Set<Relation> relations = null;
     //
-    @OneToMany(mappedBy="destination")
-    public Collection<Relation> incomingRelations = null;
+    @OneToMany
+    @Column(name = "destination_id")
+    public Set<Relation> incomingRelations = null;
     //
     @OneToMany
     @Column(name = "from_id")
-    public Collection<Message> sendMessages = null;
+    public Set<Message> sendMessages = null;
     //
     @OneToMany
     @Column(name = "to_id")
-    public Collection<Message> receivedMessages = null;
+    public Set<Message> receivedMessages = null;
     //
-    @OneToMany(mappedBy = "profile")
-    public Collection<Status> statuses = null;
+    @OneToMany
+    public Set<Status> statuses = null;
     //
     @Column(nullable = true)
     public String profession = null;
@@ -100,4 +98,5 @@ public class Profile extends Model {
         }
         return photoFileName.trim();
     }
+
 }
