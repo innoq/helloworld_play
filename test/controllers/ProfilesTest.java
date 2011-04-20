@@ -139,7 +139,7 @@ public class ProfilesTest extends BasicTest {
         profileAttribute = profileAttribute.findById(profile.id);
         assertNotNull(profileAttribute);
         assertEquals(profileAttribute.id, new Long(10));
-        assertEquals(profileAttribute.count("byProfile", profile), Long.parseLong("1"));
+        assertEquals(profileAttribute.count("byProfile", profile), Long.parseLong("2"));
 
     }
 

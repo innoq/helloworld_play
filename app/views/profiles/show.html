@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Show' /}
+#{set title:'Hello,World. Show' /}
 
 <h1>Public Profile</h1>
 
@@ -7,7 +7,7 @@
 
     <div class="profile-image">
         *{<%= image_tag @profile.photo.url(), :alt => @profile.full_name %>}*
-        <img src="/public/${user.profile.getPhotoFileName()}" alt="${user.profile.getFullName()}"/>
+        <img src="/public/${profile.getPhotoFileName()}" alt="${profile.getFullName()}"/>
     </div>
     <!-- /profile-image -->
 
@@ -33,13 +33,13 @@
     <div class="profile-center">
 
         <h3>*{<%= @profile.full_name %>}*
-            ${user.profile.getFullName()}</h3>
+            ${profile.getFullName()}</h3>
         <p>*{<%= @profile.profession %>}*
-            ${user.profile.profession} at <strong>
+            ${profile.profession} at <strong>
                 *{<%= @profile.company %>}*
-                ${user.profile.company}</strong></p>
+                ${profile.company}</strong></p>
 
-        #{if user.profile.businessAddress != null }
+        #{if profile.businessAddress != null }
         <div class="profile-center-company">
             <strong>Business Adress</strong>
             #{address address:businessAddress /}
@@ -47,7 +47,7 @@
         #{/if}
 
         <h4>About Me</h4>
-        <p>${user.profile.about}</p>
+        <p>${profile.about}</p>
 
         <!--
         <a href="#" title="" class="button-blue">Send Message</a>
@@ -57,10 +57,12 @@
 <!-- /col-two -->
 
 <div id="col-three">
-    <h2>User's contacts (<%= @profile.contacts.relation_accepted.count || 0 %>)</h2>
+    <h2>User's contacts *{(<%= @profile.contacts.relation_accepted.count || 0 %>)}* (${count})</h2>
 
     <div class="contact-list-small">
-        #{layouts/contact /}
+        #{paginate.list items:paginator, as:'contact'}
+        #{contact2 /}
+        #{/paginate.list}
         <!--%= render :partial => 'contact', :collection => @profile.contacts.relation_accepted %-->
     </div>
     <!-- /contact-list-small -->

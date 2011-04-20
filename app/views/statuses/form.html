@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'World Status Feed' /}
+#{set title:'Hello,World. World Status Feed' /}
 
 <h1>World status feed</h1>
 
@@ -41,9 +41,9 @@
         #{list items:sublist, as:'status'}
         <div class="status">
             #{if status.profile != null}
-            <a href="${status.profile.getFullName()}"><img src="/public/${status.profile.getPhotoFileName()}" class="stream-image" alt="${status.profile.getFullName()}"/></a>
+            <a href="/profiles/show/${status.profile.id}"><img src="/public/${status.profile.getPhotoFileName()}" class="stream-image" alt="${status.profile.getFullName()}"/></a>
             <div class="status-message">${status.message}</div>
-            <a href="${status.profile}" class="username">${status.profile.getFullName()}</a> <span class="status-date">${status.createdAt.format()}</span>
+            <a href="/profiles/show/${status.profile.id}" class="username">${status.profile.getFullName()}</a> <span class="status-date">${status.createdAt.format()}</span>
             #{/if}
         </div>
 

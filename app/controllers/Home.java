@@ -1,11 +1,14 @@
 package controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Locale;
 import models.Profile;
+import models.Relation;
 import models.Status;
 import models.User;
 import play.Logger;
@@ -23,12 +26,16 @@ public class Home extends Application {
         Logger.info("-v- user: " + user);
         Profile profile = Profile.findById(user.id);
         Logger.info("-v- profile: " + profile);
-        List<Status> statuses = Status.find("byProfile", profile).fetch();
+        List<Relation> list = Relation.find("byDestination", profile).fetch();
+        ListIterator<Relation> listIterator = list.listIterator();
+        List<Status> statuses = new ArrayList<Status>();
+        while (listIterator.hasNext()) {
+            statuses.add((Status)Status.find("byProfile", listIterator.next().source).first());
+        }
         Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
-        Session.current().put("statuses", statuses);
         Logger.info("-o- public static void dashboard()");
-        render("home/dashboard.html", user, profile);
+        render("home/dashboard.html", user, profile, statuses);
     }
 
     public static void imprint() {
@@ -44,5 +51,4 @@ public class Home extends Application {
         Logger.info("-o- public static void about()");
         render("home/about.html", user);
     }
-
 }

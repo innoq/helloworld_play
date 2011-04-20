@@ -1,19 +1,20 @@
 package controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
+import java.util.ListIterator;
 import models.Address;
 import models.Profile;
 import models.ProfileAttribute;
+import models.Relation;
 import models.Status;
 import models.User;
 import play.Logger;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
+import play.modules.paginate.ValuePaginator;
 import play.mvc.Scope.Session;
 
 /**
@@ -32,21 +33,36 @@ public class Profiles extends Application {
         render();
     }
 
-    public static void show(int id) {
+    public static void show(long id) {
         Logger.info("-i- public static void show(int id)");
         Logger.info("-v- Profiles ID: %d", id);
-        User user = User.findById(Long.parseLong(Session.current().get("user")));
+        User user = User.findById(id);
         Logger.info("-v- user: " + user);
         Profile profile = Profile.findById(user.id);
         Logger.info("-v- profile: " + profile);
         List<Status> statuses = Status.find("byProfile", profile).fetch();
         Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
-        renderArgs.put("-v- count", statuses.size());
-        renderArgs.put("-v- statuses", statuses);
-        Logger.info("-o- public static void show()");
+        Logger.info("-v- count: " + statuses.size());
+        Logger.info("-v- statuses " + statuses);
         Address businessAddress = profile.businessAddress;
-        render("profiles/show.html", user, profile, statuses, businessAddress);
+        List<Relation> list = Relation.find("byDestination", profile).fetch();
+        ListIterator<Relation> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            Relation r = listIterator.next();
+            if (r.accepted) {
+                profile.contact.add(r);
+            }
+        }
+        Logger.info("-v- Contact: " + profile.contact.size());
+        renderArgs.put("count", profile.contact.size());
+        ValuePaginator paginator = new ValuePaginator(profile.contact);
+        paginator.setBoundaryControlsEnabled(false);
+        paginator.setPageSize(4);
+        user = User.findById(Long.parseLong(Session.current().get("user")));
+        renderArgs.put("paginator", paginator);
+        Logger.info("-o- public static void show()");
+        render("profiles/show.html",user, profile, statuses, businessAddress);
     }
 
     public static void privat(long id) {
@@ -82,6 +98,21 @@ public class Profiles extends Application {
         Address privateAddress = profile.privateAddress;
         Address businessAddress = profile.businessAddress;
         Logger.info("-o- public static void privat(long id)");
+        List<Relation> list = Relation.find("byDestination", profile).fetch();
+        ListIterator<Relation> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            Relation r = listIterator.next();
+            if (r.accepted) {
+                profile.contact.add(r);
+            }
+        }
+        Logger.info("-v- Contact: " + profile.contact.size());
+        renderArgs.put("count", profile.contact.size());
+        ValuePaginator paginator = new ValuePaginator(profile.contact);
+        paginator.setBoundaryControlsEnabled(false);
+        paginator.setPageSize(4);
+        Logger.info("-o- public static void index()");
+        renderArgs.put("paginator", paginator);
         render("profiles/privat.html", user, privateAddress, businessAddress);
     }
 
@@ -307,6 +338,7 @@ public class Profiles extends Application {
         renderArgs.put("statuses", statuses);
         renderArgs.put("user", user);
         renderArgs.put("user.profile", user.profile);
+        renderArgs.put("profile", user.profile);
         Address businessAddress = user.profile.businessAddress;
         Logger.info("-o- public static void update()");
         render("profiles/show.html", businessAddress);
