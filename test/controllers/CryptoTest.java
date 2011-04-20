@@ -4,6 +4,7 @@
  */
 package controllers;
 
+import play.Play;
 import play.Logger;
 import java.io.Writer;
 import java.io.BufferedWriter;
@@ -42,8 +43,8 @@ public class CryptoTest extends BasicTest {
     public void testPasswordHash() {
         System.out.println("passwordHash");
 
-        String path = System.getProperty("user.home")+"/playframework/helloworld_play/conf/password-data.yml";
-        assertEquals(path, System.getProperty("user.home")+"/playframework/helloworld_play/conf/password-data.yml");
+        String path = Play.applicationPath+"/conf/password-data.yml";
+        assertEquals(path, Play.applicationPath+"/conf/password-data.yml");
         File file = null;
         Writer writer = null;
         BufferedWriter bufferedWriter = null;
