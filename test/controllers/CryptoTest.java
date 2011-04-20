@@ -43,8 +43,8 @@ public class CryptoTest extends BasicTest {
     public void testPasswordHash() {
         System.out.println("passwordHash");
 
-        String path = Play.applicationPath+"/conf/password-data.yml";
-        assertEquals(path, Play.applicationPath+"/conf/password-data.yml");
+        String path = Play.tmpDir+"/password-data.yml";
+        assertEquals(path, Play.tmpDir+"/password-data.yml");
         File file = null;
         Writer writer = null;
         BufferedWriter bufferedWriter = null;
@@ -57,7 +57,7 @@ public class CryptoTest extends BasicTest {
         try {
             //Password Hash
             file = new File(path);
-            assertFalse(file.createNewFile());
+            assertTrue(file.createNewFile());
             writer = new FileWriter(file);
             assertNotNull(writer);
             bufferedWriter = new BufferedWriter(writer);
