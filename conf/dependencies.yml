@@ -1,0 +1,2 @@
+require:
+    play -> migrate 1.4
