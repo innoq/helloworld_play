@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+<h2>Comments</h2>
+<table class="entity Comment">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+				<th>Author</th>
+				<th>Posted At</th>
+				<th>Content</th>
+				<th>Post</th>
+				<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{Comments.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{Comments.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{Comments.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+					<td>${entity.author}</td>
+					<td>${entity.postedAt}</td>
+					<td>${entity.content}</td>
+					<td>${entity.post}</td>
+					<td>${entity.id}</td>
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+<a href="@{Comments.create}">Create</a>
+

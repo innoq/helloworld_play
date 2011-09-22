@@ -1,2 +1,3 @@
 require:
-    play -> migrate 1.4
+    - play -> migrate 1.4
+    - play -> scaffold 0.1

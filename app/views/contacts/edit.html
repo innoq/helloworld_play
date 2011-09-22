@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+<h2>Edit Contact</h2>
+<div class="entity">
+#{form @Contacts.update(), id:'createForm'}
+	#{include 'Contacts/_form.html' /}
+	<input type="submit" name="submit" value="Save" />
+#{/form}
+</div>
+<a href="@{Contacts.index}">Cancel</a>
+

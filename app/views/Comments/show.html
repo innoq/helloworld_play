@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+<h2>View Comment</h2>
+<div class="entity">
+	<div class="row">
+		<span class="elem">
+			author:
+		</span>
+		<span class="value">
+      ${entity.author}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			postedAt:
+		</span>
+		<span class="value">
+      ${entity.postedAt}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			content:
+		</span>
+		<span class="value">
+      ${entity.content}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			post:
+		</span>
+		<span class="value">
+      ${entity.post}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+</div>
+<a href="@{Comments.index}">Back</a>
+

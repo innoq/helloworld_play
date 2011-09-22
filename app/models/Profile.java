@@ -39,10 +39,10 @@ public class Profile extends Model {
     public Set<Relation> incomingRelations = null;
     //
     @OneToMany(mappedBy = "from")
-    public Set<Message> sendMessages = null;
+    public Set<ProfileMessage> sendMessages = null;
     //
     @OneToMany(mappedBy = "to")
-    public Set<Message> receivedMessages = null;
+    public Set<ProfileMessage> receivedMessages = null;
     //
     @OneToMany(mappedBy = "profile")
     public Set<Status> statuses = null;

@@ -1,0 +1,73 @@
+ <div class="row">
+  <div class="label">Title</div>
+  <div class="field">
+      <input type="text" name="entity.title" value="${entity?.title}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.title')}</span>
+</div>
+ <div class="row">
+  <div class="label">Posted At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#postedAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="postedAt" type="text" name="entity.postedAt" 
+        value="${entity?.postedAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.postedAt')}</span>
+</div>
+ <div class="row">
+  <div class="label">Content</div>
+  <div class="field">
+      <textarea name="entity.content" rows="10" cols="40">${entity?.content}</textarea>
+  </div>
+  <span class="error">${errors.forKey('entity.content')}</span>
+</div>
+ <div class="row">
+  <div class="label">Author</div>
+  <div class="field">
+        <select name="entity.author.id">
+                      <option value="">(None)</option>              
+        %{ models.User.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.author?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.author')}</span>
+</div>
+ <div class="row">
+  <div class="label">Tags</div>
+  <div class="field">
+        <select name="entity.tags.id" multiple>
+        %{ models.Tag.all().fetch().sort{ it.toString() }.each() { }%
+          %{ 
+            selected = false;
+            entity?.tags.each() { f ->
+              if (f.id == it?.id)
+                selected = true;
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.tags')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

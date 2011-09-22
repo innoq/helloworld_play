@@ -10,7 +10,7 @@ import play.db.jpa.*;
  * @editor Folkert Meeuw
  */
 @Entity
-public class Message extends Model {
+public class ProfileMessage extends Model {
     
     public String subject;
     public String body;

@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+<h2>Edit Comment</h2>
+<div class="entity">
+#{form @Comments.update(), id:'createForm'}
+	#{include 'Comments/_form.html' /}
+	<input type="submit" name="submit" value="Save" />
+#{/form}
+</div>
+<a href="@{Comments.index}">Cancel</a>
+

@@ -1,0 +1,61 @@
+ <div class="row">
+  <div class="label">Company Email</div>
+  <div class="field">
+      <input type="text" name="entity.companyEmail" value="${entity?.companyEmail}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.companyEmail')}</span>
+</div>
+ <div class="row">
+  <div class="label">Private Email</div>
+  <div class="field">
+      <input type="text" name="entity.privateEmail" value="${entity?.privateEmail}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.privateEmail')}</span>
+</div>
+ <div class="row">
+  <div class="label">Company Phone</div>
+  <div class="field">
+      <input type="text" name="entity.companyPhone" value="${entity?.companyPhone}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.companyPhone')}</span>
+</div>
+ <div class="row">
+  <div class="label">Mobile Phone</div>
+  <div class="field">
+      <input type="text" name="entity.mobilePhone" value="${entity?.mobilePhone}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.mobilePhone')}</span>
+</div>
+ <div class="row">
+  <div class="label">Private Phone</div>
+  <div class="field">
+      <input type="text" name="entity.privatePhone" value="${entity?.privatePhone}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.privatePhone')}</span>
+</div>
+ <div class="row">
+  <div class="label">Profile</div>
+  <div class="field">
+        <select name="entity.profile.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.profile?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.profile')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

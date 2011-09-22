@@ -29,7 +29,6 @@ public class ControllersTest extends FunctionalTest {
             user = new User(login, password);
             user.save();
             Profile profile = new Profile();
-            profile.user = user;
             profile.save();
             user.profile = profile;
             user.save();

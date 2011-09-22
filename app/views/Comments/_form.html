@@ -1,0 +1,55 @@
+ <div class="row">
+  <div class="label">Author</div>
+  <div class="field">
+      <input type="text" name="entity.author" value="${entity?.author}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.author')}</span>
+</div>
+ <div class="row">
+  <div class="label">Posted At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#postedAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="postedAt" type="text" name="entity.postedAt" 
+        value="${entity?.postedAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.postedAt')}</span>
+</div>
+ <div class="row">
+  <div class="label">Content</div>
+  <div class="field">
+      <textarea name="entity.content" rows="10" cols="40">${entity?.content}</textarea>
+  </div>
+  <span class="error">${errors.forKey('entity.content')}</span>
+</div>
+ <div class="row">
+  <div class="label">Post</div>
+  <div class="field">
+        <select name="entity.post.id">
+                      <option value="">(None)</option>              
+        %{ models.Post.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.post?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.post')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

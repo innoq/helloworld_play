@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+<h2>View Post</h2>
+<div class="entity">
+	<div class="row">
+		<span class="elem">
+			title:
+		</span>
+		<span class="value">
+      ${entity.title}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			postedAt:
+		</span>
+		<span class="value">
+      ${entity.postedAt}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			content:
+		</span>
+		<span class="value">
+      ${entity.content}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			author:
+		</span>
+		<span class="value">
+      ${entity.author}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			tags:
+		</span>
+		<span class="value">
+      ${entity.tags}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+</div>
+<a href="@{Posts.index}">Back</a>
+

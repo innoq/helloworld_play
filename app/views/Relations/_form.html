@@ -1,0 +1,44 @@
+ <div class="row">
+  <div class="label">Source</div>
+  <div class="field">
+        <select name="entity.source.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.source?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.source')}</span>
+</div>
+ <div class="row">
+  <div class="label">Destination</div>
+  <div class="field">
+        <select name="entity.destination.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.destination?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.destination')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

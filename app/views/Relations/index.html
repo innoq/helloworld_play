@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+<h2>Relations</h2>
+<table class="entity Relation">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+				<th>Source</th>
+				<th>Destination</th>
+				<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{Relations.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{Relations.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{Relations.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+					<td>${entity.source}</td>
+					<td>${entity.destination}</td>
+					<td>${entity.id}</td>
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+<a href="@{Relations.create}">Create</a>
+

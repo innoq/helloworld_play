@@ -1,0 +1,40 @@
+ <div class="row">
+  <div class="label">Login</div>
+  <div class="field">
+      <input type="text" name="entity.login" value="${entity?.login}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.login')}</span>
+</div>
+ <div class="row">
+  <div class="label">Password</div>
+  <div class="field">
+      <input type="text" name="entity.password" value="${entity?.password}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.password')}</span>
+</div>
+ <div class="row">
+  <div class="label">Profile</div>
+  <div class="field">
+        <select name="entity.profile.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.profile?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.profile')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+
