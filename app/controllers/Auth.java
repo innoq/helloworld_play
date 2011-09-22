@@ -13,6 +13,7 @@ import play.mvc.Scope.Session;
  *
  * @editor Folkert Meeuw
  */
+// TODO replace with Secure.class
 public class Auth extends Application {
 
     public static void login() {

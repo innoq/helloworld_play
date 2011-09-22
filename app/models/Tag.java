@@ -12,7 +12,6 @@ import play.data.validation.*;
  */
 
 @Entity
-@Table(name="T_TAG")
 public class Tag extends Model implements Comparable<Tag> {
  
     @Required
@@ -37,6 +36,7 @@ public class Tag extends Model implements Comparable<Tag> {
         return result;
     }
     
+    @Override
     public String toString() {
         return name;
     }

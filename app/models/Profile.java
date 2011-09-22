@@ -3,12 +3,9 @@ package models;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -17,48 +14,37 @@ import play.db.jpa.Model;
  * @editor Folkert Meeuw
  */
 @Entity
-@Table(name = "T_PROFILE")
 public class Profile extends Model {
 
-    @OneToOne
-    public User user = null;
-    //
     @Required
     @OneToOne
-    @Embedded
     public Address privateAddress = null;
     //
     @Required
     @OneToOne
-    @Embedded
     public Address businessAddress = null;
     //
     @Required
     @OneToMany(mappedBy = "profile")
-    @Embedded
     public Set<ProfileAttribute> profileAttribute = null;
     //
     @Required
     @OneToMany
     public Set<Contact> contact = null;
     //
-    @OneToMany
-    @JoinColumn(name = "source_id")
+    @OneToMany(mappedBy = "source")
     public Set<Relation> relations = null;
     //
-    @OneToMany
-    @Column(name = "destination_id")
+    @OneToMany(mappedBy = "destination")
     public Set<Relation> incomingRelations = null;
     //
-    @OneToMany
-    @Column(name = "from_id")
+    @OneToMany(mappedBy = "from")
     public Set<Message> sendMessages = null;
     //
-    @OneToMany
-    @Column(name = "to_id")
+    @OneToMany(mappedBy = "to")
     public Set<Message> receivedMessages = null;
     //
-    @OneToMany
+    @OneToMany(mappedBy = "profile")
     public Set<Status> statuses = null;
     //
     @Column(nullable = true)

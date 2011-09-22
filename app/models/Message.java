@@ -10,13 +10,12 @@ import play.db.jpa.*;
  * @editor Folkert Meeuw
  */
 @Entity
-@Table(name="T_MESSAGE")
 public class Message extends Model {
     
     public String subject;
     public String body;
-    public int fromId;
-    public int toId;
+    public Profile from;
+    public Profile to;
     public Date createdAt;
     public Date updatedAt;
     

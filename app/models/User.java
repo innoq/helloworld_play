@@ -3,7 +3,6 @@ package models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -13,7 +12,6 @@ import play.db.jpa.Model;
  */
 
 @Entity
-@Table(name="T_USER")
 public class User extends Model {
 
     @Required(message="required")
@@ -26,9 +24,7 @@ public class User extends Model {
     @OneToOne(optional=true)
     public Profile profile;
 
-    public User () {
-        
-    }
+    public User () {}
 
     public User(String login, String password) {
         this.login = login;

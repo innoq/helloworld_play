@@ -10,7 +10,6 @@ import play.db.jpa.Model;
  */
 
 @Entity
-@Table(name="T_CONTACT")
 public class Contact extends Model {
 
 }
