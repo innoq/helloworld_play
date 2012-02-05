@@ -1,0 +1,70 @@
+ <div class="row">
+  <div class="label">Login</div>
+  <div class="field">
+      <input type="text" name="entity.login" value="${entity?.login}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.login')}</span>
+</div>
+ <div class="row">
+  <div class="label">Password</div>
+  <div class="field">
+      <input type="password" name="entity.password" value="${entity?.password}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.password')}</span>
+</div>
+ <div class="row">
+  <div class="label">Profile</div>
+  <div class="field">
+        <select name="entity.profile.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.profile?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.profile')}</span>
+</div>
+ <div class="row">
+  <div class="label">Created At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#createdAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="createdAt" type="text" name="entity.createdAt" 
+        value="${entity?.createdAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.createdAt')}</span>
+</div>
+ <div class="row">
+  <div class="label">Updated At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#updatedAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="updatedAt" type="text" name="entity.updatedAt" 
+        value="${entity?.updatedAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.updatedAt')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

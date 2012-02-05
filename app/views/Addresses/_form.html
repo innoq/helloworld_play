@@ -1,0 +1,36 @@
+ <div class="row">
+  <div class="label">Street</div>
+  <div class="field">
+      <input type="text" name="entity.street" value="${entity?.street}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.street')}</span>
+</div>
+ <div class="row">
+  <div class="label">City</div>
+  <div class="field">
+      <input type="text" name="entity.city" value="${entity?.city}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.city')}</span>
+</div>
+ <div class="row">
+  <div class="label">Zip</div>
+  <div class="field">
+      <input type="text" name="entity.zip" value="${entity?.zip}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.zip')}</span>
+</div>
+ <div class="row">
+  <div class="label">Country</div>
+  <div class="field">
+      <input type="text" name="entity.country" value="${entity?.country}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.country')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

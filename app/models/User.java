@@ -29,9 +29,9 @@ public class User extends Model {
     public Date updatedAt;
     
     @OneToMany(mappedBy = "fromUser")
-    public List<Message> messagesSend;
+    public List<UserMessage> messagesSend;
     @OneToMany(mappedBy = "toUser")
-    public List<Message> messagesReceived;
+    public List<UserMessage> messagesReceived;
 
     public User() {
         this.createdAt = new Date(new Date().getTime());

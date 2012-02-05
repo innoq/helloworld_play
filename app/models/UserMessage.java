@@ -11,7 +11,7 @@ import play.db.jpa.Model;
  * @editor Folkert Meeuw
  */
 @Entity
-public class Message extends Model {
+public class UserMessage extends Model {
 
     public String subject;
     @Lob
@@ -23,7 +23,7 @@ public class Message extends Model {
     public Date createdAt;
     public Date updatedAt;
 
-    public Message() {
+    public UserMessage() {
         this.createdAt = new Date(new Date().getTime());
         this.updatedAt = new Date(new Date().getTime());
     }
