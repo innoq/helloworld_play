@@ -2,3 +2,4 @@ require:
   - play
   - play -> migrate 1.4
   - play -> secure
+  - play -> scaffold 0.1
