@@ -1,0 +1,32 @@
+#{extends 'main.html' /}
+<h2>Addresses</h2>
+<table class="entity Address">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+				<th>Street</th>
+				<th>City</th>
+				<th>Zip</th>
+				<th>Country</th>
+				<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{Addresses.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{Addresses.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{Addresses.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+					<td>${entity.street}</td>
+					<td>${entity.city}</td>
+					<td>${entity.zip}</td>
+					<td>${entity.country}</td>
+					<td>${entity.id}</td>
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+<a href="@{Addresses.create}">Create</a>
+

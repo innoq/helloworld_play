@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+<h2>UserMessages</h2>
+<table class="entity UserMessage">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+				<th>Subject</th>
+				<th>Body</th>
+				<th>From User</th>
+				<th>To User</th>
+				<th>Created At</th>
+				<th>Updated At</th>
+				<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{UserMessages.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{UserMessages.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{UserMessages.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+					<td>${entity.subject}</td>
+					<td>${entity.body}</td>
+					<td>${entity.fromUser}</td>
+					<td>${entity.toUser}</td>
+					<td>${entity.createdAt}</td>
+					<td>${entity.updatedAt}</td>
+					<td>${entity.id}</td>
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+<a href="@{UserMessages.create}">Create</a>
+

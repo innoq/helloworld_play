@@ -59,7 +59,7 @@ public class Statuses extends Application {
         Logger.info("-i- public static void save()");
         Profile profile = null;
         //currentUser().profile;
-        Status status = new Status(message, profile, null, null);
+        Status status = new Status(message, profile);
         validation.valid(status);
         if (validation.hasErrors()) {
             Logger.info("-o- public static void save()");

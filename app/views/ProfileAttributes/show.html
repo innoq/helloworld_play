@@ -1,0 +1,38 @@
+#{extends 'main.html' /}
+<h2>View ProfileAttribute</h2>
+<div class="entity">
+	<div class="row">
+		<span class="elem">
+			type:
+		</span>
+		<span class="value">
+      ${entity.type}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			value:
+		</span>
+		<span class="value">
+      ${entity.value}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			profile:
+		</span>
+		<span class="value">
+      ${entity.profile}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+</div>
+<a href="@{ProfileAttributes.index}">Back</a>
+

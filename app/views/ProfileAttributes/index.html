@@ -1,0 +1,30 @@
+#{extends 'main.html' /}
+<h2>ProfileAttributes</h2>
+<table class="entity ProfileAttribute">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+				<th>Type</th>
+				<th>Value</th>
+				<th>Profile</th>
+				<th>Id</th>
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{ProfileAttributes.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{ProfileAttributes.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{ProfileAttributes.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+					<td>${entity.type}</td>
+					<td>${entity.value}</td>
+					<td>${entity.profile}</td>
+					<td>${entity.id}</td>
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+<a href="@{ProfileAttributes.create}">Create</a>
+

@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+<h2>Create ProfileAttribute</h2>
+<div class="entity">
+#{form @ProfileAttributes.save(), id:'createForm'}
+	#{include 'ProfileAttributes/_form.html' /}
+	<input type="submit" name="submit" value="Save" />
+#{/form}
+</div>
+<a href="@{ProfileAttributes.index}">Cancel</a>
+

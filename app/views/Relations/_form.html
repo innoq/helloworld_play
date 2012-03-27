@@ -1,0 +1,90 @@
+ <div class="row">
+  <div class="label">Source</div>
+  <div class="field">
+        <select name="entity.source.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.source?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.source')}</span>
+</div>
+ <div class="row">
+  <div class="label">Destination</div>
+  <div class="field">
+        <select name="entity.destination.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.destination?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.destination')}</span>
+</div>
+ <div class="row">
+  <div class="label">Comment</div>
+  <div class="field">
+      <input type="text" name="entity.comment" value="${entity?.comment}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.comment')}</span>
+</div>
+ <div class="row">
+  <div class="label">Accepted</div>
+  <div class="field">
+      <input type="checkbox" name="entity.accepted"
+        ${entity?.accepted ? 'checked':''}
+      />
+  </div>
+  <span class="error">${errors.forKey('entity.accepted')}</span>
+</div>
+ <div class="row">
+  <div class="label">Created At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#createdAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="createdAt" type="text" name="entity.createdAt" 
+        value="${entity?.createdAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.createdAt')}</span>
+</div>
+ <div class="row">
+  <div class="label">Updated At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#updatedAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="updatedAt" type="text" name="entity.updatedAt" 
+        value="${entity?.updatedAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.updatedAt')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+
