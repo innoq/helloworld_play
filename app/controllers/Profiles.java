@@ -1,11 +1,8 @@
 package controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import models.Address;
 import models.Profile;
 import models.ProfileAttribute;
@@ -57,28 +54,28 @@ public class Profiles extends Application {
         Profile profile = Profile.findById(user.id);
         Logger.info("-v- profile: " + profile);
         ProfileAttribute profileAttribute = null;
-        Logger.info("-v- profileAttribute: " + user.profile.profileAttribute);
-        if (user.profile.profileAttribute.isEmpty()) {
-            redirect("/profiles/edit");
-        } else {
-            List<ProfileAttribute> list = ProfileAttribute.find("byProfile", profile).fetch();
-            if (list.size() > 0) {
-                profileAttribute = list.get(list.size() - 1);
-                profile.profileAttribute.add(profileAttribute);
-            } else {
-                profile.profileAttribute = new HashSet<ProfileAttribute>(1);
-            }
-        }
-        Logger.info("-v- profileAttribute: " + user.profile.profileAttribute);
+//        Logger.info("-v- profileAttribute: " + user.profile.profileAttribute);
+//        if (user.profile.profileAttribute.isEmpty()) {
+//            redirect("/profiles/edit");
+//        } else {
+//            List<ProfileAttribute> list = ProfileAttribute.find("byProfile", profile).fetch();
+//            if (list.size() > 0) {
+//                profileAttribute = list.get(list.size() - 1);
+//                profile.profileAttribute.add(profileAttribute);
+//            } else {
+//                profile.profileAttribute = new HashSet<ProfileAttribute>(1);
+//            }
+//        }
+//        Logger.info("-v- profileAttribute: " + user.profile.profileAttribute);
         List<Status> statuses = Status.find("byProfile", profile).fetch();
         Logger.info("-v- size :" + statuses.size());
         Collections.reverse(statuses);
-        renderArgs.put("statuses", statuses);
-        renderArgs.put("companyEmail", profileAttribute.companyEmail);
-        renderArgs.put("companyPhone", profileAttribute.companyPhone);
-        renderArgs.put("mobilePhone", profileAttribute.mobilePhone);
-        renderArgs.put("privateEmail", profileAttribute.privateEmail);
-        renderArgs.put("privatePhone", profileAttribute.privatePhone);
+//        renderArgs.put("statuses", statuses);
+//        renderArgs.put("companyEmail", profileAttribute.companyEmail);
+//        renderArgs.put("companyPhone", profileAttribute.companyPhone);
+//        renderArgs.put("mobilePhone", profileAttribute.mobilePhone);
+//        renderArgs.put("privateEmail", profileAttribute.privateEmail);
+//        renderArgs.put("privatePhone", profileAttribute.privatePhone);
         Address privateAddress = profile.privateAddress;
         Address businessAddress = profile.businessAddress;
         Logger.info("-o- public static void privat(long id)");
@@ -103,33 +100,33 @@ public class Profiles extends Application {
         renderArgs.put("statuses", statuses);
         ProfileAttribute profileAttribute = ProfileAttribute.find("byProfile", profile).first();
         //ProfileAttribute profileAttribute = ProfileAttribute.findById(profile.id);
-        if (profileAttribute != null) {
-            if (profileAttribute.companyEmail == null) {
-                flash.put("companyEmail", null);
-            } else {
-                flash.put("companyEmail", profileAttribute.companyEmail);
-            }
-            if (profileAttribute.privateEmail == null) {
-                flash.put("privateEmail", null);
-            } else {
-                flash.put("privateEmail", profileAttribute.privateEmail);
-            }
-            if (profileAttribute.companyPhone == null) {
-                flash.put("companyPhone", null);
-            } else {
-                flash.put("companyPhone", profileAttribute.companyPhone);
-            }
-            if (profileAttribute.mobilePhone == null) {
-                flash.put("mobilePhone", null);
-            } else {
-                flash.put("mobilePhone", profileAttribute.mobilePhone);
-            }
-            if (profileAttribute.privatePhone == null) {
-                flash.put("privatePhone", null);
-            } else {
-                flash.put("privatePhone", profileAttribute.privatePhone);
-            }
-        }
+//        if (profileAttribute != null) {
+//            if (profileAttribute.companyEmail == null) {
+//                flash.put("companyEmail", null);
+//            } else {
+//                flash.put("companyEmail", profileAttribute.companyEmail);
+//            }
+//            if (profileAttribute.privateEmail == null) {
+//                flash.put("privateEmail", null);
+//            } else {
+//                flash.put("privateEmail", profileAttribute.privateEmail);
+//            }
+//            if (profileAttribute.companyPhone == null) {
+//                flash.put("companyPhone", null);
+//            } else {
+//                flash.put("companyPhone", profileAttribute.companyPhone);
+//            }
+//            if (profileAttribute.mobilePhone == null) {
+//                flash.put("mobilePhone", null);
+//            } else {
+//                flash.put("mobilePhone", profileAttribute.mobilePhone);
+//            }
+//            if (profileAttribute.privatePhone == null) {
+//                flash.put("privatePhone", null);
+//            } else {
+//                flash.put("privatePhone", profileAttribute.privatePhone);
+//            }
+//        }
 
         Address businessAddress = null;
         if (user.profile.businessAddress != null) {
@@ -195,58 +192,58 @@ public class Profiles extends Application {
                 user.profile.company = company;
                 user.profile.about = about;
             }
-            ProfileAttribute profileAttribute = ProfileAttribute.find("byProfile", user.profile).first();
-            if (profileAttribute == null) {
-                profileAttribute = new ProfileAttribute();
-                profileAttribute.profile = user.profile;
-
-            }
-            if (bCompanyEmail) {
-                profileAttribute.companyEmail = null;
-            } else {
-                if (companyEmail == null || companyEmail.equalsIgnoreCase("")) {
-                    profileAttribute.companyEmail = profileAttribute.companyEmail;
-                } else {
-                    profileAttribute.companyEmail = companyEmail;
-                }
-            }
-            if (bPrivateEmail) {
-                profileAttribute.privateEmail = null;
-            } else {
-                if (privateEmail == null || privateEmail.equalsIgnoreCase("")) {
-                    profileAttribute.privateEmail = profileAttribute.privateEmail;
-                } else {
-                    profileAttribute.privateEmail = privateEmail;
-                }
-            }
-            if (bCompanyPhone) {
-                profileAttribute.companyPhone = null;
-            } else {
-                if (companyPhone == null || companyPhone.equalsIgnoreCase("")) {
-                    profileAttribute.companyPhone = profileAttribute.companyPhone;
-                } else {
-                    profileAttribute.companyPhone = companyPhone;
-                }
-            }
-            if (bMobilePhone) {
-                profileAttribute.mobilePhone = null;
-            } else {
-                if (mobilePhone == null || mobilePhone.equalsIgnoreCase("")) {
-                    profileAttribute.mobilePhone = profileAttribute.mobilePhone;
-                } else {
-                    profileAttribute.mobilePhone = mobilePhone;
-                }
-            }
-            if (bPrivatePhone) {
-                profileAttribute.privatePhone = null;
-            } else {
-                if (privatePhone == null || privatePhone.equalsIgnoreCase("")) {
-                    profileAttribute.privatePhone = profileAttribute.privatePhone;
-                } else {
-                    profileAttribute.privatePhone = privatePhone;
-                }
-            }
-            profileAttribute.save();
+//            ProfileAttribute profileAttribute = ProfileAttribute.find("byProfile", user.profile).first();
+//            if (profileAttribute == null) {
+//                profileAttribute = new ProfileAttribute();
+//                profileAttribute.profile = user.profile;
+//
+//            }
+//            if (bCompanyEmail) {
+//                profileAttribute.companyEmail = null;
+//            } else {
+//                if (companyEmail == null || companyEmail.equalsIgnoreCase("")) {
+//                    profileAttribute.companyEmail = profileAttribute.companyEmail;
+//                } else {
+//                    profileAttribute.companyEmail = companyEmail;
+//                }
+//            }
+//            if (bPrivateEmail) {
+//                profileAttribute.privateEmail = null;
+//            } else {
+//                if (privateEmail == null || privateEmail.equalsIgnoreCase("")) {
+//                    profileAttribute.privateEmail = profileAttribute.privateEmail;
+//                } else {
+//                    profileAttribute.privateEmail = privateEmail;
+//                }
+//            }
+//            if (bCompanyPhone) {
+//                profileAttribute.companyPhone = null;
+//            } else {
+//                if (companyPhone == null || companyPhone.equalsIgnoreCase("")) {
+//                    profileAttribute.companyPhone = profileAttribute.companyPhone;
+//                } else {
+//                    profileAttribute.companyPhone = companyPhone;
+//                }
+//            }
+//            if (bMobilePhone) {
+//                profileAttribute.mobilePhone = null;
+//            } else {
+//                if (mobilePhone == null || mobilePhone.equalsIgnoreCase("")) {
+//                    profileAttribute.mobilePhone = profileAttribute.mobilePhone;
+//                } else {
+//                    profileAttribute.mobilePhone = mobilePhone;
+//                }
+//            }
+//            if (bPrivatePhone) {
+//                profileAttribute.privatePhone = null;
+//            } else {
+//                if (privatePhone == null || privatePhone.equalsIgnoreCase("")) {
+//                    profileAttribute.privatePhone = profileAttribute.privatePhone;
+//                } else {
+//                    profileAttribute.privatePhone = privatePhone;
+//                }
+//            }
+//            profileAttribute.save();
             if (!businessStreet.isEmpty()
                     || !businessZip.isEmpty()
                     || !businessCity.isEmpty()) {

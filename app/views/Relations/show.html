@@ -1,0 +1,62 @@
+#{extends 'main.html' /}
+<h2>View Relation</h2>
+<div class="entity">
+	<div class="row">
+		<span class="elem">
+			source:
+		</span>
+		<span class="value">
+      ${entity.source}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			destination:
+		</span>
+		<span class="value">
+      ${entity.destination}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			comment:
+		</span>
+		<span class="value">
+      ${entity.comment}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			accepted:
+		</span>
+		<span class="value">
+      ${entity.accepted}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			createdAt:
+		</span>
+		<span class="value">
+      ${entity.createdAt}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			updatedAt:
+		</span>
+		<span class="value">
+      ${entity.updatedAt}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+</div>
+<a href="@{Relations.index}">Back</a>
+

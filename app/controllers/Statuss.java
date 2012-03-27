@@ -1,49 +1,49 @@
 package controllers;
 
 import java.util.List;
-import models.User;
+import models.Status;
 import play.mvc.Controller;
 import play.i18n.Messages;
 import play.data.validation.Validation;
 import play.data.validation.Valid;
 
-public class Users extends Controller {
+public class Statuss extends Controller {
     public static void index() {
-        List<User> entities = models.User.all().fetch();
+        List<Status> entities = models.Status.all().fetch();
         render(entities);
     }
 
-    public static void create(User entity) {
+    public static void create(Status entity) {
         render(entity);
     }
 
     public static void show(java.lang.Long id) {
-        User entity = User.findById(id);
+        Status entity = Status.findById(id);
         render(entity);
     }
 
     public static void edit(java.lang.Long id) {
-        User entity = User.findById(id);
+        Status entity = Status.findById(id);
         render(entity);
     }
 
     public static void delete(java.lang.Long id) {
-        User entity = User.findById(id);
+        Status entity = Status.findById(id);
         entity.delete();
         index();
     }
     
-    public static void save(@Valid User entity) {
+    public static void save(@Valid Status entity) {
         if (validation.hasErrors()) {
             flash.error(Messages.get("scaffold.validation"));
             render("@create", entity);
         }
         entity.save();
-        flash.success(Messages.get("scaffold.created", "User"));
+        flash.success(Messages.get("scaffold.created", "Status"));
         index();
     }
 
-    public static void update(@Valid User entity) {
+    public static void update(@Valid Status entity) {
         if (validation.hasErrors()) {
             flash.error(Messages.get("scaffold.validation"));
             render("@edit", entity);
@@ -52,7 +52,7 @@ public class Users extends Controller {
               entity = entity.merge();
         
         entity.save();
-        flash.success(Messages.get("scaffold.updated", "User"));
+        flash.success(Messages.get("scaffold.updated", "Status"));
         index();
     }
 }

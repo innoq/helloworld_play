@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+<h2>View Address</h2>
+<div class="entity">
+	<div class="row">
+		<span class="elem">
+			street:
+		</span>
+		<span class="value">
+      ${entity.street}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			city:
+		</span>
+		<span class="value">
+      ${entity.city}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			zip:
+		</span>
+		<span class="value">
+      ${entity.zip}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			country:
+		</span>
+		<span class="value">
+      ${entity.country}
+		</span>
+	</div>
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+</div>
+<a href="@{Addresses.index}">Back</a>
+

@@ -1,0 +1,40 @@
+ <div class="row">
+  <div class="label">Type</div>
+  <div class="field">
+      <input type="text" name="entity.type" value="${entity?.type}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.type')}</span>
+</div>
+ <div class="row">
+  <div class="label">Value</div>
+  <div class="field">
+      <input type="text" name="entity.value" value="${entity?.value}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.value')}</span>
+</div>
+ <div class="row">
+  <div class="label">Profile</div>
+  <div class="field">
+        <select name="entity.profile.id">
+                      <option value="">(None)</option>              
+        %{ models.Profile.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.profile?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.profile')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+

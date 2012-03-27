@@ -1,0 +1,116 @@
+ <div class="row">
+  <div class="label">Profession</div>
+  <div class="field">
+      <input type="text" name="entity.profession" value="${entity?.profession}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.profession')}</span>
+</div>
+ <div class="row">
+  <div class="label">Company</div>
+  <div class="field">
+      <input type="text" name="entity.company" value="${entity?.company}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.company')}</span>
+</div>
+ <div class="row">
+  <div class="label">About</div>
+  <div class="field">
+      <textarea name="entity.about" rows="10" cols="40">${entity?.about}</textarea>
+  </div>
+  <span class="error">${errors.forKey('entity.about')}</span>
+</div>
+ <div class="row">
+  <div class="label">Private Address</div>
+  <div class="field">
+        <select name="entity.privateAddress.id">
+                      <option value="">(None)</option>              
+        %{ models.Address.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.privateAddress?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.privateAddress')}</span>
+</div>
+ <div class="row">
+  <div class="label">Business Address</div>
+  <div class="field">
+        <select name="entity.businessAddress.id">
+                      <option value="">(None)</option>              
+        %{ models.Address.all().fetch().sort{ it.toString() }.each() { }%
+          %{
+            selected = false;
+            if (entity?.businessAddress?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+  </div>
+  <span class="error">${errors.forKey('entity.businessAddress')}</span>
+</div>
+ <div class="row">
+  <div class="label">Created At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#createdAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="createdAt" type="text" name="entity.createdAt" 
+        value="${entity?.createdAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.createdAt')}</span>
+</div>
+ <div class="row">
+  <div class="label">Updated At</div>
+  <div class="field">
+      <script type="text/javascript">
+        $(function() {
+          $("#updatedAt").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="updatedAt" type="text" name="entity.updatedAt" 
+        value="${entity?.updatedAt?.format('yyyy-MM-dd')}"
+        size="10" />
+  </div>
+  <span class="error">${errors.forKey('entity.updatedAt')}</span>
+</div>
+ <div class="row">
+  <div class="label">First Name</div>
+  <div class="field">
+      <input type="text" name="entity.firstName" value="${entity?.firstName}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.firstName')}</span>
+</div>
+ <div class="row">
+  <div class="label">Last Name</div>
+  <div class="field">
+      <input type="text" name="entity.lastName" value="${entity?.lastName}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.lastName')}</span>
+</div>
+ <div class="row">
+  <div class="label">Photo</div>
+  <div class="field">
+      <input type="text" name="entity.photo" value="${entity?.photo}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.photo')}</span>
+</div>
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+
